@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trusted Agents — Veilige AI-agents voor Europese organisaties</title>
+  <meta name="description" content="Trusted Agents levert beheerde AI-agents op private Europese infrastructuur: veilig, controleerbaar en AVG-bewust." />
+  <style>
+    :root{
+      --bg:#f6f2ea;
+      --paper:#fffaf1;
+      --ink:#101512;
+      --muted:#5e665f;
+      --line:#ded5c4;
+      --green:#163f2b;
+      --green2:#23563c;
+      --lime:#d7f268;
+      --sand:#eadcc5;
+      --blue:#1b3f55;
+      --shadow: 0 22px 70px rgba(16,21,18,.12);
+      --radius: 28px;
+      --max: 1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 8% 2%, rgba(215,242,104,.38), transparent 26rem),
+        radial-gradient(circle at 90% 10%, rgba(35,86,60,.18), transparent 28rem),
+        linear-gradient(180deg, #fbf7ef 0%, var(--bg) 52%, #efe6d7 100%);
+    }
+    a{color:inherit;text-decoration:none}
+    .nav{
+      position:sticky;top:0;z-index:10;
+      backdrop-filter: blur(18px);
+      background:rgba(246,242,234,.78);
+      border-bottom:1px solid rgba(222,213,196,.7);
+    }
+    .nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;gap:20px}
+    .brand{font-weight:800;letter-spacing:-.04em;font-size:22px;display:flex;align-items:center;gap:10px}
+    .brand-dot{width:12px;height:12px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 6px rgba(215,242,104,.23)}
+    .nav-links{display:flex;gap:22px;align-items:center;font-size:14px;color:#303832}
+    .button{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:13px 18px;font-weight:750;border:1px solid var(--green);background:var(--green);color:#fff;box-shadow:0 10px 26px rgba(22,63,43,.16)}
+    .button.secondary{background:transparent;color:var(--green);box-shadow:none}
+    .button.light{background:var(--lime);color:#17240f;border-color:var(--lime)}
+    .section{max-width:var(--max);margin:0 auto;padding:86px 24px}
+    .hero{display:grid;grid-template-columns:1.07fr .93fr;gap:54px;align-items:center;min-height:760px;padding-top:74px}
+    .eyebrow{display:inline-flex;gap:10px;align-items:center;border:1px solid var(--line);background:rgba(255,250,241,.72);padding:8px 12px;border-radius:999px;color:var(--green);font-size:13px;font-weight:760;text-transform:uppercase;letter-spacing:.08em}
+    h1,h2,h3,p{margin:0}
+    h1{font-size:clamp(48px, 7vw, 92px);line-height:.92;letter-spacing:-.075em;margin:24px 0 24px;max-width:900px}
+    h2{font-size:clamp(36px, 5vw, 64px);line-height:1;letter-spacing:-.06em;margin:14px 0 18px}
+    h3{font-size:24px;letter-spacing:-.035em;margin-bottom:12px}
+    .lead{font-size:clamp(19px,2vw,24px);line-height:1.45;color:#323b34;max-width:760px}
+    .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin:34px 0 24px}
+    .trust-row{display:flex;gap:10px;flex-wrap:wrap;color:#2b362e;font-size:14px}
+    .pill{border:1px solid var(--line);background:rgba(255,250,241,.82);padding:9px 12px;border-radius:999px;font-weight:650}
+    .agent-card{background:#122b20;color:#f7f2e7;border-radius:38px;padding:24px;box-shadow:var(--shadow);position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+    .agent-card:before{content:"";position:absolute;inset:-80px -140px auto auto;width:260px;height:260px;border-radius:50%;background:rgba(215,242,104,.22);filter:blur(8px)}
+    .card-top{display:flex;justify-content:space-between;align-items:center;position:relative;z-index:1}
+    .status{color:#bde9c5;font-size:13px}
+    .metric{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:12px;border-radius:18px;color:#fff}
+    .chat{margin-top:22px;display:grid;gap:12px;position:relative;z-index:1}
+    .bubble{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:15px;line-height:1.35;color:#f4efe4}
+    .bubble.agent{background:var(--paper);color:#172019}
+    .mini{font-size:13px;color:#c7d5cc;margin-bottom:6px}
+    .logos{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0;color:#646b65;text-transform:uppercase;letter-spacing:.08em;font-size:13px;font-weight:760}
+    .sector-row{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;color:#202720;text-transform:none;letter-spacing:0;font-size:16px;font-weight:650}
+    .two-col{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
+    .statement{font-size:clamp(28px,4vw,52px);line-height:1.08;letter-spacing:-.055em;font-weight:800}
+    .muted{color:var(--muted);line-height:1.65;font-size:17px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+    .tile{background:rgba(255,250,241,.78);border:1px solid var(--line);border-radius:var(--radius);padding:24px;min-height:220px;box-shadow:0 12px 35px rgba(20,35,24,.05)}
+    .tile .nr{color:var(--green);font-weight:850;font-size:13px;letter-spacing:.12em;margin-bottom:42px;display:block}
+    .tile.dark{background:var(--green);color:#fff;border-color:var(--green)}
+    .tile.dark .muted{color:#dfe8db}
+    .usecases{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:32px}
+    .case{background:#fffaf1;border:1px solid var(--line);border-radius:26px;padding:24px;display:grid;gap:18px}
+    .case small{font-weight:850;letter-spacing:.1em;color:var(--green);text-transform:uppercase}
+    .example{background:#f0e6d6;border-radius:18px;padding:13px;color:#304034;font-size:14px}
+    .products{display:grid;grid-template-columns:1.15fr .85fr .85fr;gap:18px;margin-top:34px}
+    .product{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:28px;display:flex;flex-direction:column;gap:18px;min-height:390px}
+    .product.featured{background:#10291f;color:white;transform:translateY(-10px)}
+    .product.featured .muted{color:#d6e5d9}.product.featured .tag{background:rgba(215,242,104,.15);color:var(--lime);border-color:rgba(215,242,104,.3)}
+    .tag{align-self:flex-start;border:1px solid var(--line);border-radius:999px;padding:8px 10px;font-weight:800;font-size:12px;color:var(--green);text-transform:uppercase;letter-spacing:.08em}
+    ul{padding-left:19px;margin:0;line-height:1.75;color:inherit}.price{font-size:34px;font-weight:880;letter-spacing:-.05em;margin-top:auto}.price span{font-size:14px;color:inherit;font-weight:600;opacity:.75}
+    .proof{background:#13291f;color:#fff;border-radius:42px;padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
+    .proof h2{color:#fff}.proof .muted{color:#dce7dc}.quote{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:22px;border-radius:26px;font-size:22px;line-height:1.35;letter-spacing:-.03em}
+    .footer-cta{background:linear-gradient(135deg, #143f2b, #0c1d16);color:#fff;border-radius:48px;padding:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;overflow:hidden;position:relative}
+    .footer-cta:after{content:"Trusted Agents";position:absolute;right:-18px;bottom:-22px;font-size:92px;font-weight:900;letter-spacing:-.09em;color:rgba(255,255,255,.05)}
+    .footer-cta .muted{color:#d9e3dc}
+    footer{padding:34px 24px;color:#626961;border-top:1px solid var(--line)}
+    .foot-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    @media(max-width:900px){.hero,.two-col,.proof,.footer-cta{grid-template-columns:1fr}.products,.grid,.usecases{grid-template-columns:1fr}.nav-links{display:none}.hero{min-height:auto}.product.featured{transform:none}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#"><span class="brand-dot"></span>Trusted Agents<span style="color:var(--green)">.</span></a>
+      <div class="nav-links">
+        <a href="#agents">AI-agents</a>
+        <a href="#oplossingen">Oplossingen</a>
+        <a href="#security">Security</a>
+        <a href="#prijzen">Prijzen</a>
+        <a class="button secondary" href="https://www.bernarddonners-ai.nl">BernardDonners-AI</a>
+        <a class="button" href="#contact">Plan demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section hero">
+      <div>
+        <div class="eyebrow">Hermes · Managed AI agents · Europa</div>
+        <h1>Veilige AI-agents. Data onder controle.</h1>
+        <p class="lead">Trusted Agents helpt Europese organisaties om terugkerend kenniswerk te automatiseren met beheerde AI-agents op private EU-infrastructuur. Niet als losse chatbot, maar als gecontroleerde digitale collega met geheugen, planning en menselijke goedkeuring.</p>
+        <div class="hero-actions">
+          <a class="button light" href="#contact">Plan een demo van 20 minuten</a>
+          <a class="button secondary" href="#security">Bekijk security-aanpak</a>
+        </div>
+        <div class="trust-row">
+          <span class="pill">Private EU-server</span>
+          <span class="pill">AVG/GDPR-bewust</span>
+          <span class="pill">Human approval</span>
+          <span class="pill">Gebaseerd op Hermes by Nous Research</span>
+        </div>
+      </div>
+      <aside class="agent-card" aria-label="AI agent demo kaart">
+        <div class="card-top">
+          <div><strong>Trusted Agent</strong><div class="status">online · private EU workspace</div></div>
+          <div class="metric">11u/week<br><small>ruis minder</small></div>
+        </div>
+        <div class="chat">
+          <div class="bubble"><div class="mini">Operations · 09:41</div>Welke dossiers missen nog informatie voordat we ze kunnen afhandelen?</div>
+          <div class="bubble agent"><div class="mini">Trusted Agent · 09:42</div>Ik heb drie dossiers gevonden. Twee kunnen direct worden voorbereid; één wacht op akkoord. Ik zet de conceptmail klaar, maar verstuur niets zonder jouw bevestiging.</div>
+          <div class="bubble"><div class="mini">Security policy</div>Actie vereist menselijke goedkeuring · gegevens blijven binnen EU-workspace.</div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="logos">Voor organisaties waar details, vertrouwen en privacy tellen
+        <div class="sector-row">
+          <span>Onderwijs</span><span>Zorg & welzijn</span><span>Verenigingen</span><span>Zakelijke dienstverlening</span><span>Juridisch & bestuur</span><span>MKB</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section two-col" id="agents">
+      <div>
+        <div class="eyebrow">De stelling</div>
+        <p class="statement">Ruis vertraagt organisaties. Vertrouwde AI-agents geven focus terug.</p>
+      </div>
+      <div>
+        <p class="muted">Veel AI-projecten blijven hangen in losse prompts en experimenten. Trusted Agents draait het om: we beginnen bij terugkerend werk, afspraken over data, duidelijke grenzen en een agent die pas handelt wanneer dat verantwoord is.</p>
+        <br>
+        <p class="muted">De link met BernardDonners-AI zit in de visie: generatieve AI is een General Purpose Technology, maar de waarde ontstaat pas na de hype — als mensen beter leren denken, beslissen en organiseren.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="eyebrow">Wat maakt een agent vertrouwd?</div>
+      <h2>Niet alleen slim. Ook beheersbaar.</h2>
+      <div class="grid">
+        <article class="tile"><span class="nr">01</span><h3>Blijvend geheugen</h3><p class="muted">De agent onthoudt afspraken, voorkeuren en eerdere sessies, zodat context niet telkens opnieuw hoeft.</p></article>
+        <article class="tile"><span class="nr">02</span><h3>Menselijke controle</h3><p class="muted">Mail, publicaties en gevoelige acties worden klaargezet voor akkoord. Jij blijft eigenaar van de beslissing.</p></article>
+        <article class="tile dark"><span class="nr">03</span><h3>Private EU-infrastructuur</h3><p class="muted">Een beheerde omgeving met duidelijke afspraken over toegang, logging, back-ups en data-opslag.</p></article>
+        <article class="tile"><span class="nr">04</span><h3>Gepland & proactief</h3><p class="muted">Dagelijkse briefings, controles, monitoring en opvolging draaien op schema — zonder dat iemand eraan hoeft te denken.</p></article>
+        <article class="tile"><span class="nr">05</span><h3>Waar je al werkt</h3><p class="muted">Gebruik via mail, Telegram, WhatsApp of browser. Geen extra portaal als dat niet nodig is.</p></article>
+        <article class="tile"><span class="nr">06</span><h3>AI-geletterdheid</h3><p class="muted">Bernards onderwijsachtergrond helpt teams begrijpen wat AI wel en niet moet doen.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="oplossingen">
+      <div class="eyebrow">Oplossingen</div>
+      <h2>Vijf soorten werk die je kunt overdragen</h2>
+      <p class="lead">De eerste versie richt zich op concrete, terugkerende workflows. Klein beginnen, veilig bewijzen, daarna uitbreiden.</p>
+      <div class="usecases">
+        <article class="case"><small>Inbox & agenda</small><h3>Een assistent die voorwerk doet</h3><p class="muted">Samenvatten, triëren, conceptantwoorden schrijven en reminders klaarzetten.</p><div class="example">“Elke ochtend: vat mijn inbox samen, markeer urgente mails en zet conceptantwoorden klaar.”</div></article>
+        <article class="case"><small>Onderzoek & monitoring</small><h3>Continu zicht op ontwikkelingen</h3><p class="muted">Volg bronnen, concurrenten, beleid, subsidies of aanbestedingen en ontvang bruikbare briefings.</p><div class="example">“Elke maandag 09:00: nieuwe kansen en wijzigingen, geen data-dump maar besluitinformatie.”</div></article>
+        <article class="case"><small>Workflowautomatisering</small><h3>Het herhaalbare werk geregeld</h3><p class="muted">Dossiers controleren, documenten ordenen, intake verwerken en ontbrekende informatie signaleren.</p><div class="example">“Nieuwe aanvraag binnen → checklist doorlopen → ontbrekende stukken gevraagd.”</div></article>
+        <article class="case"><small>Content & kennis</small><h3>Van ideeën naar consistente output</h3><p class="muted">Artikelen, posts, lesmateriaal en klantnotities in een herkenbare toon.</p><div class="example">“Maak van één briefing een LinkedIn-post, korte mail en achtergrondnotitie.”</div></article>
+        <article class="case"><small>Business development</small><h3>Kansen vinden zonder ruis</h3><p class="muted">Leads zoeken, relevantie beoordelen en persoonlijke outreach voorbereiden.</p><div class="example">“Vind 10 organisaties die passen bij deze propositie en zet conceptmails klaar.”</div></article>
+        <article class="case"><small>AI-training</small><h3>Teams leren kritisch werken met AI</h3><p class="muted">Niet alleen tools uitleggen, maar oordeel, verantwoordelijkheid en werkafspraken ontwikkelen.</p><div class="example">“A lot of people got better at producing output, not better at thinking.”</div></article>
+      </div>
+    </section>
+
+    <section class="section" id="prijzen">
+      <div class="eyebrow">Producten</div>
+      <h2>Eén propositie, drie instapniveaus</h2>
+      <div class="products">
+        <article class="product featured">
+          <span class="tag">Vlaggenschip</span>
+          <h3>Trusted Hermes Agent</h3>
+          <p class="muted">Een beheerde, autonome AI-agent met geheugen, skills en geplande taken op private EU-infrastructuur.</p>
+          <ul><li>Blijvend geheugen</li><li>Geplande taken en monitoring</li><li>Menselijke goedkeuring voor risicovolle acties</li><li>Configuratie op jouw werkprocessen</li></ul>
+          <div class="price">Vanaf €— <span>/ maand</span></div>
+        </article>
+        <article class="product">
+          <span class="tag">Instap</span>
+          <h3>Trusted Assistant</h3>
+          <p class="muted">Een lichtere assistent voor inbox, agenda, korte vragen en conceptteksten.</p>
+          <ul><li>Mail- en chatworkflow</li><li>Concepten klaarzetten</li><li>Dagelijkse standup</li></ul>
+          <div class="price">Intake nodig</div>
+        </article>
+        <article class="product">
+          <span class="tag">Fundament</span>
+          <h3>Managed EU Cloud</h3>
+          <p class="muted">De technische basis: hosting, updates, monitoring, back-ups en toegangsafspraken.</p>
+          <ul><li>Private omgeving</li><li>EU-hosting</li><li>Logging en beheer</li></ul>
+          <div class="price">Inbegrepen</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="security">
+      <div class="proof">
+        <div>
+          <div class="eyebrow" style="background:rgba(255,255,255,.08);color:var(--lime);border-color:rgba(255,255,255,.15)">Security & data</div>
+          <h2>Europese controle is geen detail. Het is de basis.</h2>
+          <p class="muted">Voor organisaties die met klantgegevens, dossiers of bedrijfsinformatie werken, moet AI niet alleen handig zijn. Het moet uitlegbaar, beheersbaar en begrensd zijn.</p>
+        </div>
+        <div class="quote">“Niet alles wat technologisch kan is ook maatschappelijk gewenst.”<br><br><span style="font-size:15px;color:#c9d6cc">— lijn vanuit BernardDonners-AI, vertaald naar veilige zakelijke toepassing</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="footer-cta">
+        <div>
+          <h2>Klaar om één workflow veilig te automatiseren?</h2>
+          <p class="muted">We starten klein: één proces, één agent, duidelijke grenzen. Daarna meten we wat het oplevert en beslissen we of opschalen logisch is.</p>
+        </div>
+        <div style="display:grid;gap:14px;justify-items:start;z-index:1">
+          <a class="button light" href="mailto:info@trustedagents.nl?subject=Demo%20Trusted%20Agents">Plan een demo</a>
+          <a class="button secondary" style="color:#fff;border-color:rgba(255,255,255,.5)" href="https://www.bernarddonners-ai.nl">Lees Bernards AI-visie</a>
+          <p class="muted" style="font-size:14px">Placeholder: e-mail, agenda-link en juridische claims nog definitief maken.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="foot-inner">
+      <div>© 2026 Trusted Agents — prototype</div>
+      <div>Gebouwd als eerste richting op basis van Trustable-structuur + BernardDonners-AI visie.</div>
+    </div>
+  </footer>
+</body>
+</html>
