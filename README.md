@@ -15,6 +15,7 @@ Eerste lokale prototype voor `trustedagents.nl`.
 - Project Taxi wordt publiek alleen abstract geframed: onder Oplossingen blijft `Geheugensteun` als brede categorie staan; de detailsectie `In ontwikkeling` is onder embargo en bevat geen leesbare werkwijze, scenario’s, namen of projectgeheimen.
 - Deploymentopties toegevoegd en aangescherpt tot drie pakketten: `Managed Agent` (€29/maand per bot), `Private Agent Server` (dedicated, vanaf €79/maand) en `Bring your own` (eigen cloud/VPS/Mac met setup + beheer). Hetzner is voorkeursroute voor automatische provisioning; Hostinger blijft optioneel/affiliate.
 - Positionering aangescherpt naar Nederlandse MKB-bedrijven, met Bernard Donners geïntroduceerd als Lector AI aan TIO Business School in Amsterdam en Groningen en verwijzing naar bernarddonners-ai.nl.
+- NL/EN-taalknop toegevoegd in de navigatie; de publieke site schakelt client-side tussen Nederlandse en Engelse copy, inclusief title/meta description en juridische/responsibility-teksten.
 - Sectie `Voorwaarden & privacy` toegevoegd met voorwaarden/privacytekst en een expliciete `Ik begrijp dat...` verantwoord-gebruik box.
   - AI als General Purpose Technology
   - waarde komt na de hype / reis geen sprint

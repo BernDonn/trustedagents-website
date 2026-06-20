@@ -45,6 +45,9 @@
     .brand-dot{width:12px;height:12px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 6px rgba(215,242,104,.23)}
     .nav-links{display:flex;gap:14px;align-items:center;font-size:13px;color:#303832}
     .nav .button{padding:11px 14px}
+    .language-toggle{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:rgba(255,250,241,.9);border-radius:999px;padding:5px;color:var(--green);font-size:12px;font-weight:850;box-shadow:0 8px 22px rgba(22,63,43,.08);white-space:nowrap}
+    .language-toggle button{border:0;background:transparent;color:var(--green);border-radius:999px;padding:7px 9px;font:inherit;cursor:pointer;opacity:.55}
+    .language-toggle button.active{background:var(--green);color:#fff;opacity:1}
     .button{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:13px 18px;font-weight:700;border:1px solid var(--green);background:var(--green);color:#fff;box-shadow:0 10px 26px rgba(22,63,43,.16)}
     .button.secondary{background:transparent;color:var(--green);box-shadow:none}
     .button.light{background:var(--lime);color:#17240f;border-color:var(--lime)}
@@ -105,6 +108,7 @@
     .acceptance-box h3{color:#fff}.acceptance-box p,.acceptance-box li{color:#dce7dc}.checkline{display:flex;gap:12px;align-items:flex-start;margin-top:14px;font-weight:700;color:#fff}.checkline:before{content:"✓";display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--lime);color:#10291f;flex:0 0 26px;font-weight:900}
     .embargo-card{background:linear-gradient(135deg,#10291f,#173a2a);color:#fff;border-color:#10291f;position:relative;overflow:hidden}
     .embargo-card:after{content:"Onder embargo";position:absolute;right:18px;bottom:14px;font-weight:900;font-size:38px;letter-spacing:-.06em;color:rgba(255,255,255,.07)}
+    body[data-lang="en"] .embargo-card:after{content:"Under embargo"}
     .embargo-lines{display:grid;gap:10px;margin-top:18px}.embargo-lines span{display:block;height:13px;border-radius:999px;background:rgba(255,255,255,.16);filter:blur(2px)}
     .proof{background:#13291f;color:#fff;border-radius:42px;padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
     .proof h2{color:#fff}.proof .muted{color:#dce7dc}.quote{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:22px;border-radius:26px;font-size:22px;line-height:1.35;letter-spacing:-.03em}
@@ -121,6 +125,10 @@
   <nav class="nav">
     <div class="nav-inner">
       <a class="brand" href="#"><span class="brand-dot"></span>Trusted Agents<span style="color:var(--green)">.</span></a>
+      <div class="language-toggle" aria-label="Language selector">
+        <button type="button" class="active" data-lang-button="nl">NL</button>
+        <button type="button" data-lang-button="en">EN</button>
+      </div>
       <div class="nav-links">
         <a href="#agents">AI-agents</a>
         <a href="#oplossingen">Oplossingen</a>
@@ -438,5 +446,276 @@
       <div><a href="#voorwaarden">Voorwaarden</a> · <a href="#privacy">Privacybeleid</a> · Gebouwd voor Nederlandse MKB-bedrijven + Bernards AI-visie.</div>
     </div>
   </footer>
+  <script>
+    const translations = {
+      en: {
+        "Trusted Agents — Veilige AI-agents voor Nederlands MKB": "Trusted Agents — Secure AI agents for Dutch SMEs",
+        "Trusted Agents levert beheerde AI-agents voor het Nederlandse MKB: veilig, controleerbaar en AVG-bewust.": "Trusted Agents delivers managed AI agents for Dutch SMEs: secure, controllable and GDPR-aware.",
+        "AI-agents": "AI agents",
+        "Oplossingen": "Solutions",
+        "Prijzen": "Pricing",
+        "Deploy je agent": "Deploy your agent",
+        "Modelkeuze": "Model choice",
+        "Voorwaarden": "Terms",
+        "Plan demo": "Book demo",
+        "Hermes + OpenClaw · Managed AI agents · Nederlands MKB": "Hermes + OpenClaw · Managed AI agents · Dutch SMEs",
+        "Veilige AI-agents. Data onder controle.": "Secure AI agents. Data under control.",
+        "Initiatiefnemer Bernard Donners, Lector AI aan TIO Business School in Amsterdam en Groningen, werkt met een team van experts aan agent-oplossingen op basis van Hermes en OpenClaw die aangestuurd worden met Telegram en WhatsApp.": "Founder Bernard Donners, Professor of Applied AI at TIO Business School in Amsterdam and Groningen, works with a team of experts on agent solutions based on Hermes and OpenClaw, controlled through Telegram and WhatsApp.",
+        "Bekijk security-aanpak": "View security approach",
+        "Private EU-server": "Private EU server",
+        "AVG/GDPR-bewust": "GDPR-aware",
+        "Human approval": "Human approval",
+        "online · Telegram + WhatsApp · private EU workspace": "online · Telegram + WhatsApp · private EU workspace",
+        "11u/week": "11h/week",
+        "ruis minder": "less noise",
+        "Welke dossiers missen nog informatie voordat we ze kunnen afhandelen?": "Which files are still missing information before we can process them?",
+        "Ik heb drie dossiers gevonden. Twee kunnen direct worden voorbereid; één wacht op akkoord. Ik zet de conceptmail klaar, maar verstuur niets zonder jouw bevestiging.": "I found three files. Two can be prepared immediately; one is waiting for approval. I will draft the email, but send nothing without your confirmation.",
+        "Actie vereist menselijke goedkeuring · gegevens blijven binnen EU-workspace.": "Action requires human approval · data remains inside the EU workspace.",
+        "Voor Nederlandse MKB-bedrijven waar details, vertrouwen en privacy tellen": "For Dutch SMEs where details, trust and privacy matter",
+        "Onderwijs": "Education",
+        "Zorg & welzijn": "Care & wellbeing",
+        "Verenigingen": "Associations",
+        "Zakelijke dienstverlening": "Professional services",
+        "Juridisch & bestuur": "Legal & governance",
+        "MKB": "SME",
+        "De stelling": "The point",
+        "Ruis vertraagt bedrijven. Vertrouwde AI-agents geven focus terug.": "Noise slows companies down. Trusted AI agents bring focus back.",
+        "Veel AI-projecten blijven hangen in losse prompts en experimenten. Trusted Agents draait het om: we beginnen bij terugkerend werk, afspraken over data, duidelijke grenzen en een agent die pas handelt wanneer dat verantwoord is.": "Many AI projects get stuck in loose prompts and experiments. Trusted Agents reverses that: we start with recurring work, data agreements, clear boundaries and an agent that only acts when it is responsible to do so.",
+        "Bernard Donners is Lector AI aan TIO Business School in Amsterdam en Groningen. Op": "Bernard Donners is Professor of Applied AI at TIO Business School in Amsterdam and Groningen. On",
+        "werkt hij zijn visie uit: generatieve AI is een General Purpose Technology, maar de waarde ontstaat pas na de hype — als mensen beter leren denken, beslissen en organiseren.": "he develops his vision: generative AI is a General Purpose Technology, but value only emerges after the hype — when people learn to think, decide and organize better.",
+        "Wat maakt een agent vertrouwd?": "What makes an agent trusted?",
+        "Niet alleen slim. Ook beheersbaar.": "Not just smart. Also controllable.",
+        "Blijvend geheugen": "Persistent memory",
+        "De agent onthoudt afspraken, voorkeuren en eerdere sessies, zodat context niet telkens opnieuw hoeft.": "The agent remembers agreements, preferences and previous sessions, so context does not need to be repeated every time.",
+        "Menselijke controle": "Human control",
+        "Mail, publicaties en gevoelige acties worden klaargezet voor akkoord. Jij blijft eigenaar van de beslissing.": "Email, publications and sensitive actions are prepared for approval. You remain the owner of the decision.",
+        "Private EU-infrastructuur": "Private EU infrastructure",
+        "Een beheerde omgeving met duidelijke afspraken over toegang, logging, back-ups en data-opslag.": "A managed environment with clear agreements about access, logging, backups and data storage.",
+        "Gepland & proactief": "Scheduled & proactive",
+        "Dagelijkse briefings, controles, monitoring en opvolging draaien op schema — zonder dat iemand eraan hoeft te denken.": "Daily briefings, checks, monitoring and follow-up run on schedule — without anyone having to remember.",
+        "Waar je al werkt": "Where you already work",
+        "Gebruik via mail, Telegram, WhatsApp of browser. Geen extra portaal als dat niet nodig is.": "Use it through email, Telegram, WhatsApp or browser. No extra portal when it is not needed.",
+        "AI-geletterdheid": "AI literacy",
+        "Bernards rol als Lector AI helpt teams begrijpen wat AI wel en niet moet doen.": "Bernard's role as Professor of Applied AI helps teams understand what AI should and should not do.",
+        "Zes soorten werk die je kunt overdragen": "Six types of work you can hand over",
+        "De eerste versie richt zich op concrete, terugkerende workflows. Klein beginnen, veilig bewijzen, daarna uitbreiden — met ruimte voor mensgerichte pilots waar rust, vertrouwen en regie centraal staan.": "The first version focuses on concrete, recurring workflows. Start small, prove value safely, then expand — with room for human-centered pilots where calm, trust and control come first.",
+        "Inbox & agenda": "Inbox & calendar",
+        "Een assistent die voorwerk doet": "An assistant that prepares the work",
+        "Samenvatten, triëren, conceptantwoorden schrijven en reminders klaarzetten.": "Summarize, triage, draft replies and prepare reminders.",
+        "“Elke ochtend: vat mijn inbox samen, markeer urgente mails en zet conceptantwoorden klaar.”": "“Every morning: summarize my inbox, mark urgent emails and prepare draft replies.”",
+        "Onderzoek & monitoring": "Research & monitoring",
+        "Continu zicht op ontwikkelingen": "Continuous visibility on developments",
+        "Volg bronnen, concurrenten, beleid, subsidies of aanbestedingen en ontvang bruikbare briefings.": "Follow sources, competitors, policy, grants or tenders and receive usable briefings.",
+        "“Elke maandag 09:00: nieuwe kansen en wijzigingen, geen data-dump maar besluitinformatie.”": "“Every Monday 09:00: new opportunities and changes, not a data dump but decision information.”",
+        "Workflowautomatisering": "Workflow automation",
+        "Het herhaalbare werk geregeld": "Recurring work handled",
+        "Dossiers controleren, documenten ordenen, intake verwerken en ontbrekende informatie signaleren.": "Check files, organize documents, process intake and flag missing information.",
+        "“Nieuwe aanvraag binnen → checklist doorlopen → ontbrekende stukken gevraagd.”": "“New request received → checklist completed → missing documents requested.”",
+        "Content & kennis": "Content & knowledge",
+        "Van ideeën naar consistente output": "From ideas to consistent output",
+        "Artikelen, posts, lesmateriaal en klantnotities in een herkenbare toon.": "Articles, posts, teaching material and client notes in a recognizable voice.",
+        "“Maak van één briefing een LinkedIn-post, korte mail en achtergrondnotitie.”": "“Turn one briefing into a LinkedIn post, short email and background note.”",
+        "Business development": "Business development",
+        "Kansen vinden zonder ruis": "Find opportunities without noise",
+        "Leads zoeken, relevantie beoordelen en persoonlijke outreach voorbereiden.": "Find leads, assess relevance and prepare personal outreach.",
+        "“Vind 10 bedrijven die passen bij deze propositie en zet conceptmails klaar.”": "“Find 10 companies that fit this proposition and prepare draft emails.”",
+        "AI-training": "AI training",
+        "Teams leren kritisch werken met AI": "Teams learn to work critically with AI",
+        "Niet alleen tools uitleggen, maar oordeel, verantwoordelijkheid en werkafspraken ontwikkelen.": "Not just explaining tools, but developing judgment, responsibility and work agreements.",
+        "Geheugensteun": "Memory support",
+        "Mensgerichte ondersteuning": "Human-centered support",
+        "Een voorzichtige verkenning van AI die mensen helpt overzicht te houden in dagelijkse situaties — met privacy, rust en menselijke regie als uitgangspunt.": "A careful exploration of AI that helps people keep overview in daily situations — with privacy, calm and human control as starting points.",
+        "“Een kleine, veilige steunlaag voor momenten waarop context en overzicht belangrijk zijn.”": "“A small, safe support layer for moments when context and overview matter.”",
+        "In ontwikkeling": "In development",
+        "Onder embargo": "Under embargo",
+        "Een mensgerichte AI-pilot is in voorbereiding. De inhoudelijke uitwerking blijft voorlopig bewust niet openbaar, zodat concept, aanpak en partners beschermd blijven.": "A human-centered AI pilot is in preparation. The substantive details deliberately remain private for now, protecting the concept, approach and partners.",
+        "Niet publiek": "Not public",
+        "Details afgeschermd": "Details protected",
+        "Deze pilot wordt alleen gedeeld in één-op-één gesprekken of onder afspraak. De publieke site vermeldt bewust geen werkwijze, scenario’s of namen.": "This pilot is only shared in one-to-one conversations or under agreement. The public site deliberately does not disclose methods, scenarios or names.",
+        "Publiek kader": "Public frame",
+        "Wat we wél zeggen": "What we do say",
+        "Trusted Agents onderzoekt naast zakelijke workflows ook zorgvuldig hoe AI kan bijdragen aan rust, overzicht en vertrouwen in persoonlijke contexten. Altijd met privacy, menselijke regie en maatschappelijke zorgvuldigheid als grens.": "Alongside business workflows, Trusted Agents carefully explores how AI can contribute to calm, overview and trust in personal contexts. Always bounded by privacy, human control and social responsibility.",
+        "Beschermd:": "Protected:",
+        "conceptdetails, demonstraties, namen en mogelijke samenwerkingen worden pas gedeeld wanneer dat expliciet is afgesproken.": "concept details, demonstrations, names and potential collaborations are only shared when explicitly agreed.",
+        "Pakketten": "Packages",
+        "Drie manieren om je agent te draaien": "Three ways to run your agent",
+        "1 · Starter": "1 · Starter",
+        "Managed Agent": "Managed Agent",
+        "Voor individuen en MKB-bedrijven die snel willen starten: jouw agent draait in de beheerde Trusted Agents-omgeving met eigen botkoppeling en gescheiden configuratie.": "For individuals and SMEs that want to start quickly: your agent runs in the managed Trusted Agents environment with its own bot connection and separated configuration.",
+        "Telegram-bot of WhatsApp-flow": "Telegram bot or WhatsApp flow",
+        "Eigen AI-sleutel of afgesproken modelroute": "Own AI key or agreed model route",
+        "Geïsoleerde agent-worker": "Isolated agent worker",
+        "Menselijke goedkeuring voor gevoelige acties": "Human approval for sensitive actions",
+        "/ maand per bot": "/ month per bot",
+        "2 · Dedicated": "2 · Dedicated",
+        "Private Agent Server": "Private Agent Server",
+        "Voor klanten die extra isolatie willen: een eigen beheerde omgeving op Europese cloudinfrastructuur, met aparte monitoring en onderhoud.": "For customers who want extra isolation: their own managed environment on European cloud infrastructure, with separate monitoring and maintenance.",
+        "Dedicated VPS of private workspace": "Dedicated VPS or private workspace",
+        "Automatische installatie en updates": "Automatic installation and updates",
+        "Meer controle over data en toegang": "More control over data and access",
+        "Geschikt voor privacygevoelige processen": "Suitable for privacy-sensitive processes",
+        "Vanaf €79": "From €79",
+        "/ maand": "/ month",
+        "3 · Bring your own": "3 · Bring your own",
+        "Eigen cloud of Mac": "Own cloud or Mac",
+        "Voor mensen en organisaties die zelf eigenaar willen blijven van de infrastructuur. Trusted Agents helpt met setup, koppeling en beheerafspraken.": "For people and organizations that want to remain owners of the infrastructure. Trusted Agents helps with setup, integration and management agreements.",
+        "Eigen VPS, Mac mini of bestaande omgeving": "Own VPS, Mac mini or existing environment",
+        "Eenmalige setup": "One-time setup",
+        "Maandelijkse support mogelijk": "Monthly support possible",
+        "Jij houdt de infrastructuurrelatie": "You keep the infrastructure relationship",
+        "Setup + beheer": "Setup + management",
+        "Deploy je agent": "Deploy your agent",
+        "Van eerste gesprek naar werkende agent": "From first conversation to working agent",
+        "We maken deployment concreet: niet “we doen iets met AI”, maar een beheerde agent die veilig draait en via Telegram of WhatsApp bereikbaar is.": "We make deployment concrete: not “we do something with AI”, but a managed agent that runs safely and is reachable via Telegram or WhatsApp.",
+        "Wat je krijgt": "What you get",
+        "Een werkende Trusted Agent met Hermes als motor en OpenClaw als communicatiekanaal. Eerst klein, daarna uitbreiden.": "A working Trusted Agent with Hermes as the engine and OpenClaw as the communication channel. Start small, then expand.",
+        "E-mail concepten": "Email drafts",
+        "Browser / desktop": "Browser / desktop",
+        "Intake & use-case": "Intake & use case",
+        "We kiezen één workflow: inbox, monitoring, dossiers, content of business development.": "We choose one workflow: inbox, monitoring, files, content or business development.",
+        "Private agent workspace": "Private agent workspace",
+        "We richten Hermes/OpenClaw in op een beheerde EU-omgeving met duidelijke data-afspraken.": "We set up Hermes/OpenClaw in a managed EU environment with clear data agreements.",
+        "Kanaal koppelen": "Connect channel",
+        "Telegram of WhatsApp wordt het dagelijkse bedieningspaneel. Geen nieuwe app nodig.": "Telegram or WhatsApp becomes the daily control surface. No new app needed.",
+        "De agent zet concepten en acties klaar, maar gevoelige stappen wachten op jouw akkoord.": "The agent prepares drafts and actions, but sensitive steps wait for your approval.",
+        "Telegram + WhatsApp flow": "Telegram + WhatsApp flow",
+        "De agent leeft in het kanaal waar de gebruiker al zit. Telegram is ideaal voor snelle start en interne teams; WhatsApp is handig voor gebruikers die geen nieuwe tool willen leren.": "The agent lives in the channel where the user already is. Telegram is ideal for quick starts and internal teams; WhatsApp is useful for users who do not want to learn a new tool.",
+        "Jij · WhatsApp": "You · WhatsApp",
+        "Vat mijn inbox samen en zet de drie belangrijkste antwoorden klaar.": "Summarize my inbox and prepare the three most important replies.",
+        "Ik heb 18 mails bekeken. Drie vragen actie. Ik heb conceptantwoorden opgesteld en één reminder gezet. Wil je ze controleren?": "I reviewed 18 emails. Three require action. I drafted replies and set one reminder. Do you want to review them?",
+        "Jij · Telegram": "You · Telegram",
+        "Akkoord met mail 1 en 2. Mail 3 eerst aanpassen: korter en zakelijker.": "Approved for emails 1 and 2. First adjust email 3: shorter and more businesslike.",
+        "Voor de eerste commerciële versie houden we de belofte scherp: deploy één agent, één workflow, één kanaal. Daarna pas uitbreiden.": "For the first commercial version we keep the promise sharp: deploy one agent, one workflow, one channel. Only then expand.",
+        "Modelkeuze & toegang": "Model choice & access",
+        "Kies de slimste route per taak": "Choose the smartest route per task",
+        "Trusted Agents kan werken met meerdere modelroutes. Zo zit je niet vast aan één leverancier en kun je per workflow kiezen voor betrouwbaarheid, prijs, snelheid of maximale redeneerkracht.": "Trusted Agents can work with multiple model routes. That way you are not locked into one provider and can choose reliability, price, speed or maximum reasoning power per workflow.",
+        "Directe API": "Direct API",
+        "Anthropic API-sleutel": "Anthropic API key",
+        "Voor Claude-modellen via een eigen Anthropic API-key. Geschikt voor zorgvuldige analyse, schrijven, samenvatten en workflows waar consistentie belangrijk is.": "For Claude models through your own Anthropic API key. Suitable for careful analysis, writing, summarizing and workflows where consistency matters.",
+        "Heldere providerrelatie": "Clear provider relationship",
+        "Eigen verbruik en facturatie": "Own usage and billing",
+        "Goed als primaire route of fallback": "Good as primary route or fallback",
+        "Modelrouter": "Model router",
+        "OpenRouter API-sleutel": "OpenRouter API key",
+        "OpenRouter werkt als modelhub: één sleutel geeft toegang tot veel modellen van verschillende aanbieders. Handig om kosten, snelheid en kwaliteit te vergelijken.": "OpenRouter works as a model hub: one key gives access to many models from different providers. Useful for comparing cost, speed and quality.",
+        "Meerdere modellen onder één ingang": "Multiple models through one entry point",
+        "Snel wisselen of fallback instellen": "Switch quickly or set a fallback",
+        "Nuttig voor experimenten en prijsoptimalisatie": "Useful for experiments and price optimization",
+        "ChatGPT / OpenAI Codex OAuth": "ChatGPT / OpenAI Codex OAuth",
+        "Voor klanten die via ChatGPT/Codex willen werken zonder losse API-key. Je logt eenmalig in; de agent gebruikt daarna een beveiligde OAuth-koppeling.": "For customers who want to work through ChatGPT/Codex without a separate API key. You log in once; the agent then uses a secure OAuth connection.",
+        "Geen API-key kopiëren": "No API key copying",
+        "Handig voor Codex/ChatGPT-workflows": "Useful for Codex/ChatGPT workflows",
+        "Toegang kan later worden ingetrokken": "Access can be revoked later",
+        "Hoe het werkt:": "How it works:",
+        "tijdens deployment kiezen we de primaire modelroute en minimaal één fallback. Sleutels of OAuth-tokens worden niet in de website gezet; ze horen in de private agent-workspace. Hermes gebruikt de gekozen provider voor het denkwerk, OpenClaw levert het Telegram/WhatsApp-kanaal, en gevoelige acties blijven wachten op menselijke goedkeuring.": "during deployment we choose the primary model route and at least one fallback. Keys or OAuth tokens are not placed in the website; they belong in the private agent workspace. Hermes uses the chosen provider for reasoning, OpenClaw provides the Telegram/WhatsApp channel, and sensitive actions keep waiting for human approval.",
+        "Waar draait je agent?": "Where does your agent run?",
+        "Managed, dedicated of bring your own": "Managed, dedicated or bring your own",
+        "De standaardroute is een beheerde Trusted Agents-omgeving. Wie meer isolatie of eigenaarschap wil, kiest voor een dedicated server of brengt eigen infrastructuur mee.": "The standard route is a managed Trusted Agents environment. Those who want more isolation or ownership choose a dedicated server or bring their own infrastructure.",
+        "1 · Managed": "1 · Managed",
+        "Trusted Agents Cloud": "Trusted Agents Cloud",
+        "De agent draait op door Trusted Agents beheerde Europese infrastructuur. Klanten krijgen een eigen bot, eigen configuratie en gescheiden geheimen.": "The agent runs on European infrastructure managed by Trusted Agents. Customers get their own bot, configuration and separated secrets.",
+        "Beste start voor €29/maand": "Best start for €29/month",
+        "Snelle activatie": "Quick activation",
+        "Beheer, updates en monitoring inbegrepen": "Management, updates and monitoring included",
+        "Eigen Hetzner VPS": "Own Hetzner VPS",
+        "Voor klanten met hogere eisen aan isolatie. De server wordt automatisch ingericht en door Trusted Agents beheerd.": "For customers with higher isolation requirements. The server is automatically set up and managed by Trusted Agents.",
+        "Eigen VPS per klant": "Own VPS per customer",
+        "Geschikt voor gevoelige workflows": "Suitable for sensitive workflows",
+        "Eigen cloud, VPS of Mac": "Own cloud, VPS or Mac",
+        "Voor mensen en organisaties die zelf de infrastructuurrelatie houden. Trusted Agents verzorgt setup, koppeling, updates of support volgens afspraak.": "For people and organizations that keep the infrastructure relationship themselves. Trusted Agents provides setup, integration, updates or support as agreed.",
+        "Eigen Mac mini, VPS of bestaande cloud": "Own Mac mini, VPS or existing cloud",
+        "Meer eigenaarschap": "More ownership",
+        "Setupfee + beheerabonnement mogelijk": "Setup fee + management subscription possible",
+        "Infrastructuurkeuze:": "Infrastructure choice:",
+        "voor automatische provisioning is Hetzner de voorkeursroute. Hostinger blijft interessant als optionele affiliate- of klant-hostingroute, maar niet als standaard backend voor de managed omgeving.": "for automatic provisioning, Hetzner is the preferred route. Hostinger remains interesting as an optional affiliate or customer-hosting route, but not as the standard backend for the managed environment.",
+        "Security & data": "Security & data",
+        "Nederlandse controle is geen detail. Het is de basis.": "Dutch control is not a detail. It is the basis.",
+        "Voor MKB-bedrijven die met klantgegevens, dossiers of bedrijfsinformatie werken, moet AI niet alleen handig zijn. Het moet uitlegbaar, beheersbaar en begrensd zijn.": "For SMEs working with customer data, files or business information, AI must not only be useful. It must be explainable, controllable and bounded.",
+        "“Niet alles wat technologisch kan is ook maatschappelijk gewenst.”": "“Not everything that is technologically possible is socially desirable.”",
+        "— lijn vanuit bernarddonners-ai.nl, vertaald naar veilige zakelijke toepassing": "— line from bernarddonners-ai.nl, translated into safe business application",
+        "Klaar om je eerste agent te deployen?": "Ready to deploy your first agent?",
+        "We starten klein: één proces, één agent, één kanaal — Telegram of WhatsApp. Daarna meten we wat het oplevert en beslissen we of opschalen logisch is.": "We start small: one process, one agent, one channel — Telegram or WhatsApp. Then we measure the value and decide whether scaling makes sense.",
+        "Lees Bernards AI-visie": "Read Bernard's AI vision",
+        "Altijd met menselijke goedkeuring, duidelijke datagrenzen en verantwoord gebruik.": "Always with human approval, clear data boundaries and responsible use.",
+        "Voorwaarden & privacy": "Terms & privacy",
+        "Duidelijke afspraken voor verantwoord gebruik": "Clear agreements for responsible use",
+        "Trusted Agents werkt met heldere grenzen: AI ondersteunt, de gebruiker houdt controle en gevoelige acties vragen expliciete menselijke goedkeuring.": "Trusted Agents works with clear boundaries: AI supports, the user remains in control and sensitive actions require explicit human approval.",
+        "Algemene voorwaarden": "General terms",
+        "Trusted Agents levert advies, configuratie, automatisering en beheer van AI-agents voor zakelijke gebruikers. De dienstverlening is gericht op ondersteuning van werkprocessen, niet op het overnemen van professionele verantwoordelijkheid van de klant.": "Trusted Agents provides advice, configuration, automation and management of AI agents for business users. The service supports work processes and does not take over the customer's professional responsibility.",
+        "De klant blijft verantwoordelijk voor de keuze om AI-output te gebruiken, te versturen, te publiceren of om te zetten in een besluit.": "The customer remains responsible for the choice to use, send, publish or turn AI output into a decision.",
+        "AI-output kan onjuist, onvolledig, verouderd of ongeschikt zijn voor de specifieke situatie.": "AI output can be incorrect, incomplete, outdated or unsuitable for the specific situation.",
+        "De agent vervangt geen juridisch, medisch, financieel, fiscaal of ander professioneel advies.": "The agent does not replace legal, medical, financial, tax or other professional advice.",
+        "Risicovolle acties, externe communicatie, publicaties, betalingen en besluiten vereisen menselijke controle en expliciet akkoord.": "Risky actions, external communication, publications, payments and decisions require human control and explicit approval.",
+        "De klant staat ervoor in dat aangeleverde gegevens rechtmatig mogen worden verwerkt en geen rechten van derden schenden.": "The customer warrants that submitted data may be lawfully processed and does not infringe third-party rights.",
+        "Trusted Agents mag werkzaamheden opschorten wanneer gebruik onveilig, onrechtmatig of strijdig met afspraken lijkt.": "Trusted Agents may suspend work when use appears unsafe, unlawful or contrary to agreements.",
+        "Aansprakelijkheid is beperkt tot directe schade en maximaal het bedrag dat voor de betreffende dienst is betaald, voor zover wettelijk toegestaan.": "Liability is limited to direct damage and at most the amount paid for the relevant service, to the extent permitted by law.",
+        "Verantwoord gebruik": "Responsible use",
+        "Bevestiging bij activatie": "Confirmation at activation",
+        "Deze bevestiging hoort bij intake, offerte en activatie van iedere agent.": "This confirmation belongs to the intake, quotation and activation of every agent.",
+        "Ik begrijp dat ik verantwoordelijk ben voor het controleren van AI-output voordat ik die gebruik, verstuur, publiceer of omzet in een besluit.": "I understand that I am responsible for checking AI output before I use, send, publish or turn it into a decision.",
+        "Ik begrijp dat een AI-agent fouten kan maken en dat Trusted Agents geen aansprakelijkheid aanvaardt voor beslissingen die zonder menselijke controle worden genomen.": "I understand that an AI agent can make mistakes and that Trusted Agents accepts no liability for decisions made without human control.",
+        "Ik begrijp dat ik geen gegevens mag aanleveren waarvoor ik geen rechtmatige grondslag of toestemming heb.": "I understand that I may not submit data for which I have no lawful basis or consent.",
+        "Ik begrijp dat gevoelige acties pas mogen plaatsvinden na mijn expliciete akkoord.": "I understand that sensitive actions may only take place after my explicit approval.",
+        "Privacybeleid": "Privacy policy",
+        "Trusted Agents verwerkt persoonsgegevens en bedrijfsgegevens alleen voor zover dat nodig is om de agent te configureren, te beveiligen, uit te voeren, te beheren en de afgesproken ondersteuning te leveren.": "Trusted Agents processes personal data and business data only to the extent necessary to configure, secure, operate and manage the agent and provide the agreed support.",
+        "Verwerkte gegevens kunnen bestaan uit contactgegevens, bedrijfsinformatie, agent-instellingen, prompts, taakgeschiedenis, documenten, berichten en technische logs.": "Processed data may include contact details, business information, agent settings, prompts, task history, documents, messages and technical logs.",
+        "Gegevens worden niet verkocht aan derden.": "Data is not sold to third parties.",
+        "Toegang wordt beperkt tot wat noodzakelijk is voor inrichting, beheer, beveiliging en support.": "Access is limited to what is necessary for setup, management, security and support.",
+        "Waar mogelijk worden gegevens geminimaliseerd, afgeschermd en binnen een afgesproken hostingomgeving verwerkt.": "Where possible, data is minimized, shielded and processed within an agreed hosting environment.",
+        "De klant blijft verantwoordelijk voor de rechtmatigheid van gegevens die hij aanlevert of laat koppelen.": "The customer remains responsible for the lawfulness of data they provide or connect.",
+        "Bij klantprojecten kunnen aanvullende afspraken worden vastgelegd over rollen, bewaartermijnen, hostinglocatie, subverwerkers en beveiligingsmaatregelen.": "Customer projects may include additional agreements about roles, retention periods, hosting location, subprocessors and security measures.",
+        "Verzoeken over inzage, correctie, verwijdering of beperking kunnen worden gedaan via het contactadres van Trusted Agents.": "Requests for access, correction, deletion or restriction can be made through Trusted Agents' contact address.",
+        "Gebruik van agents": "Use of agents",
+        "Menselijke controle blijft leidend": "Human control remains leading",
+        "Een Trusted Agent mag voorbereiden, samenvatten, signaleren, ordenen en concepten klaarzetten. De agent handelt niet zelfstandig namens de klant bij gevoelige of externe acties, tenzij dat uitdrukkelijk is afgesproken en technisch is begrensd.": "A Trusted Agent may prepare, summarize, flag, organize and draft. The agent does not act independently on the customer's behalf for sensitive or external actions unless explicitly agreed and technically bounded.",
+        "Geen automatische verzending zonder akkoord waar reputatie, geld, rechten of privacy geraakt kunnen worden.": "No automatic sending without approval where reputation, money, rights or privacy may be affected.",
+        "Geen gebruik voor onrechtmatige, misleidende, discriminerende of schadelijke doeleinden.": "No use for unlawful, misleading, discriminatory or harmful purposes.",
+        "Geen invoer van bijzondere persoonsgegevens of vertrouwelijke gegevens zonder passende grondslag en afspraken.": "No input of special-category personal data or confidential data without an appropriate basis and agreements.",
+        "Bij twijfel geldt: eerst menselijke beoordeling, daarna pas actie.": "When in doubt: human review first, action later.",
+        "Privacybeleid": "Privacy policy",
+        "· Gebouwd voor Nederlandse MKB-bedrijven + Bernards AI-visie.": "· Built for Dutch SMEs + Bernard's AI vision.",
+        "Gebouwd voor Nederlandse MKB-bedrijven + Bernards AI-visie.": "Built for Dutch SMEs + Bernard's AI vision."
+      }
+    };
+
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode(node){
+        if(!node.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        if(node.parentElement.closest('script, style')) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+    const translatableNodes = [];
+    while(walker.nextNode()){
+      const node = walker.currentNode;
+      node.datasetKey = node.nodeValue.trim().replace(/\s+/g, ' ');
+      translatableNodes.push(node);
+    }
+
+    function setLanguage(lang){
+      const dict = translations[lang] || {};
+      document.documentElement.lang = lang;
+      document.body.dataset.lang = lang;
+      document.title = lang === 'en' ? dict['Trusted Agents — Veilige AI-agents voor Nederlands MKB'] : 'Trusted Agents — Veilige AI-agents voor Nederlands MKB';
+      const meta = document.querySelector('meta[name="description"]');
+      if(meta){
+        meta.setAttribute('content', lang === 'en' ? dict['Trusted Agents levert beheerde AI-agents voor het Nederlandse MKB: veilig, controleerbaar en AVG-bewust.'] : 'Trusted Agents levert beheerde AI-agents voor het Nederlandse MKB: veilig, controleerbaar en AVG-bewust.');
+      }
+      translatableNodes.forEach(node => {
+        const original = node.datasetKey;
+        node.nodeValue = lang === 'en' && dict[original] ? node.nodeValue.replace(node.nodeValue.trim(), dict[original]) : node.nodeValue.replace(node.nodeValue.trim(), original);
+      });
+      document.querySelectorAll('[data-lang-button]').forEach(button => {
+        button.classList.toggle('active', button.dataset.langButton === lang);
+      });
+      localStorage.setItem('trustedAgentsLang', lang);
+    }
+
+    document.querySelectorAll('[data-lang-button]').forEach(button => {
+      button.addEventListener('click', () => setLanguage(button.dataset.langButton));
+    });
+
+    setLanguage(localStorage.getItem('trustedAgentsLang') || 'nl');
+  </script>
 </body>
 </html>
