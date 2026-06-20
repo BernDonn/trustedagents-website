@@ -97,6 +97,9 @@
     .provider-card{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:26px;display:flex;flex-direction:column;gap:16px;min-height:310px}
     .provider-card strong{font-size:21px;letter-spacing:-.035em}.provider-card code{background:#f0e6d6;border-radius:10px;padding:3px 7px;font-size:13px}
     .flow-note{margin-top:22px;background:#f0e6d6;border:1px solid var(--line);border-radius:24px;padding:20px;color:#304034;line-height:1.55}
+    .embargo-card{background:linear-gradient(135deg,#10291f,#173a2a);color:#fff;border-color:#10291f;position:relative;overflow:hidden}
+    .embargo-card:after{content:"Onder embargo";position:absolute;right:18px;bottom:14px;font-weight:900;font-size:38px;letter-spacing:-.06em;color:rgba(255,255,255,.07)}
+    .embargo-lines{display:grid;gap:10px;margin-top:18px}.embargo-lines span{display:block;height:13px;border-radius:999px;background:rgba(255,255,255,.16);filter:blur(2px)}
     .proof{background:#13291f;color:#fff;border-radius:42px;padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
     .proof h2{color:#fff}.proof .muted{color:#dce7dc}.quote{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:22px;border-radius:26px;font-size:22px;line-height:1.35;letter-spacing:-.03em}
     .footer-cta{background:linear-gradient(135deg, #143f2b, #0c1d16);color:#fff;border-radius:48px;padding:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;overflow:hidden;position:relative}
@@ -193,7 +196,7 @@
     <section class="section" id="oplossingen">
       <div class="eyebrow">Oplossingen</div>
       <h2>Zes soorten werk die je kunt overdragen</h2>
-      <p class="lead">De eerste versie richt zich op concrete, terugkerende workflows. Klein beginnen, veilig bewijzen, daarna uitbreiden — inclusief mensgerichte pilots waar geheugensteun en rust centraal staan.</p>
+      <p class="lead">De eerste versie richt zich op concrete, terugkerende workflows. Klein beginnen, veilig bewijzen, daarna uitbreiden — met ruimte voor mensgerichte pilots waar rust, vertrouwen en regie centraal staan.</p>
       <div class="usecases">
         <article class="case"><small>Inbox & agenda</small><h3>Een assistent die voorwerk doet</h3><p class="muted">Samenvatten, triëren, conceptantwoorden schrijven en reminders klaarzetten.</p><div class="example">“Elke ochtend: vat mijn inbox samen, markeer urgente mails en zet conceptantwoorden klaar.”</div></article>
         <article class="case"><small>Onderzoek & monitoring</small><h3>Continu zicht op ontwikkelingen</h3><p class="muted">Volg bronnen, concurrenten, beleid, subsidies of aanbestedingen en ontvang bruikbare briefings.</p><div class="example">“Elke maandag 09:00: nieuwe kansen en wijzigingen, geen data-dump maar besluitinformatie.”</div></article>
@@ -201,31 +204,26 @@
         <article class="case"><small>Content & kennis</small><h3>Van ideeën naar consistente output</h3><p class="muted">Artikelen, posts, lesmateriaal en klantnotities in een herkenbare toon.</p><div class="example">“Maak van één briefing een LinkedIn-post, korte mail en achtergrondnotitie.”</div></article>
         <article class="case"><small>Business development</small><h3>Kansen vinden zonder ruis</h3><p class="muted">Leads zoeken, relevantie beoordelen en persoonlijke outreach voorbereiden.</p><div class="example">“Vind 10 organisaties die passen bij deze propositie en zet conceptmails klaar.”</div></article>
         <article class="case"><small>AI-training</small><h3>Teams leren kritisch werken met AI</h3><p class="muted">Niet alleen tools uitleggen, maar oordeel, verantwoordelijkheid en werkafspraken ontwikkelen.</p><div class="example">“A lot of people got better at producing output, not better at thinking.”</div></article>
-        <article class="case"><small>Geheugensteun</small><h3>Rustige hulp bij de volgende stap</h3><p class="muted">Een assistent die helpt herinneren, ordenen en oriënteren — zonder oordeel, zonder medische claims en altijd met menselijke regie.</p><div class="example">“Ik help u rustig herinneren wat vandaag belangrijk is en wie u kunt bellen als dat nodig is.”</div></article>
+        <article class="case"><small>Geheugensteun</small><h3>Mensgerichte ondersteuning</h3><p class="muted">Een voorzichtige verkenning van AI die mensen helpt overzicht te houden in dagelijkse situaties — met privacy, rust en menselijke regie als uitgangspunt.</p><div class="example">“Een kleine, veilige steunlaag voor momenten waarop context en overzicht belangrijk zijn.”</div></article>
       </div>
     </section>
 
     <section class="section" id="pilots">
       <div class="eyebrow">In ontwikkeling</div>
-      <h2>Geheugensteun Pilot</h2>
-      <p class="lead">Een rustige AI-assistent voor mensen die baat hebben bij hulp met herinneren, ordenen en één volgende stap vinden. Gebaseerd op persoonlijke ervaring met de waarde van geheugensteun in het dagelijks leven.</p>
+      <h2>Onder embargo</h2>
+      <p class="lead">Een mensgerichte AI-pilot is in voorbereiding. De inhoudelijke uitwerking blijft voorlopig bewust niet openbaar, zodat concept, aanpak en partners beschermd blijven.</p>
       <div class="deploy-grid">
-        <article class="deploy-panel">
-          <span class="tag">Mensgerichte AI</span>
-          <h3>Wat de pilot onderzoekt</h3>
-          <p class="muted">De pilot richt zich nadrukkelijk niet op diagnose of medische besluitvorming. Het gaat om vriendelijke ondersteuning: rust brengen, helpen oriënteren, afspraken herinneren en een vertrouwd contact erbij halen wanneer dat nodig is.</p>
-          <div class="channel-row">
-            <span class="channel">Eenvoudige taal</span>
-            <span class="channel">Eén stap tegelijk</span>
-            <span class="channel">Vertrouwde contacten</span>
-            <span class="channel">Menselijke regie</span>
-          </div>
+        <article class="deploy-panel embargo-card">
+          <span class="tag" style="color:var(--lime);border-color:rgba(215,242,104,.32);background:rgba(215,242,104,.12)">Niet publiek</span>
+          <h3>Details afgeschermd</h3>
+          <p style="color:#dce7dc;line-height:1.65;font-size:17px">Deze pilot wordt alleen gedeeld in één-op-één gesprekken of onder afspraak. De publieke site vermeldt bewust geen werkwijze, scenario’s of namen.</p>
+          <div class="embargo-lines" aria-hidden="true"><span style="width:88%"></span><span style="width:72%"></span><span style="width:94%"></span><span style="width:64%"></span></div>
         </article>
         <article class="deploy-panel">
-          <span class="tag">Verkenning</span>
-          <h3>Meedenken over de pilot</h3>
-          <p class="muted">We verkennen dit thema met mensen uit zorginnovatie, onderwijs en praktijkervaring. Een eerste LinkedIn-contact heeft aangegeven graag op de hoogte te blijven. Namen of samenwerkingen noemen we pas publiek wanneer dat expliciet is afgesproken.</p>
-          <div class="flow-note" style="margin-top:18px"><strong>Voorbeeldmoment:</strong> “Ik weet even niet wat ik nu moest doen.” De assistent antwoordt rustig, haalt alleen relevante context op en stelt één veilige vervolgstap voor.</div>
+          <span class="tag">Publiek kader</span>
+          <h3>Wat we wél zeggen</h3>
+          <p class="muted">Trusted Agents onderzoekt naast zakelijke workflows ook zorgvuldig hoe AI kan bijdragen aan rust, overzicht en vertrouwen in persoonlijke contexten. Altijd met privacy, menselijke regie en maatschappelijke zorgvuldigheid als grens.</p>
+          <div class="flow-note" style="margin-top:18px"><strong>Beschermd:</strong> conceptdetails, demonstraties, namen en mogelijke samenwerkingen worden pas gedeeld wanneer dat expliciet is afgesproken.</div>
         </article>
       </div>
     </section>
