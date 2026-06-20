@@ -176,6 +176,37 @@ Run one or more Hetzner VPS instances managed by Trusted Agents:
 
 Each bot worker receives only its own token/key at runtime.
 
+### Starter capacity model
+
+Initial assumption: the €29/month Managed Agent does **not** give every customer a dedicated VPS. It runs multiple isolated customer workers on a shared Trusted Agents server. The customer supplies or pays separately for model usage; the €29 covers the managed bot/agent layer, hosting, updates, monitoring and support.
+
+Hetzner cost assumptions used for planning:
+
+- Germany/Finland cost-optimized CX prices seen in public Hetzner material: CX22 €3.79/mo, CX32 €6.80/mo, CX42 €16.40/mo, CX52 €32.40/mo, excluding VAT.
+- Add IPv4 planning cost: about €0.50/mo.
+- Add automatic backups planning cost: about 20% of server base price.
+- Add Dutch VAT for internal gross comparison: 21%.
+
+Planning table:
+
+| Plan | Resources | Planned customer range | Est. infra cost incl. VAT + IPv4 + backup | Infra cost/customer |
+|---|---:|---:|---:|---:|
+| CX22 | 2 vCPU / 4 GB / 40 GB | 3–5 | ~€6.11/mo | ~€1.22–€2.04 |
+| CX32 | 4 vCPU / 8 GB / 80 GB | 8–15 | ~€10.48/mo | ~€0.70–€1.31 |
+| CX42 | 8 vCPU / 16 GB / 160 GB | 20–40 | ~€24.42/mo | ~€0.61–€1.22 |
+| CX52 | 16 vCPU / 32 GB / 320 GB | 40–80 | ~€47.65/mo | ~€0.60–€1.19 |
+
+Important: these are planning ranges, not guarantees. Real capacity depends on whether each customer runs a lightweight Telegram/OpenClaw worker, a heavier Hermes profile, scheduled tasks, memory/database usage, and concurrent traffic.
+
+Recommended MVP path:
+
+1. Start with **CX32** as the first production-like shared node.
+2. Cap it initially at **10 paying bots** until measured.
+3. Instrument memory, CPU, disk, response latency, Telegram errors and model-call failures.
+4. If stable, raise cap to 15 bots or move to CX42.
+5. Keep one staging/test node separate from production.
+6. Move privacy-sensitive or heavy users into Dedicated.
+
 ### Dedicated VPS environment
 
 For higher-tier customers:
