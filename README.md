@@ -4,6 +4,7 @@ Eerste lokale prototype voor `trustedagents.nl`.
 
 ## Bestanden
 - `index.html` — self-contained HTML/CSS prototype
+- `apps/onboarding/` — eerste Managed Agent backend: onboarding-intents, encrypted secrets, manual payment activation en worker-template
 - `DEPLOYMENT_AUTOMATION.md` — blauwdruk voor betaalde onboarding, Hetzner/Hostinger-keuze en provisioning
 
 ## Uitgangspunten

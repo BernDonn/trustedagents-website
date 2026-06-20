@@ -244,7 +244,20 @@ The repository now contains `infra/hetzner/` with the first OpenTofu/Hetzner str
 - `scripts/check.sh` for local checks
 - local `.gitignore` to keep tokens, tfvars, state and private keys out of Git
 
-The scaffold has been initialized and validated locally with OpenTofu. It is not applied yet because a Hetzner Cloud API token and explicit cost/server confirmation are still required.
+The scaffold has been initialized, applied to staging, and verified with OpenTofu. The current staging node is ready for application deployment experiments, but production should remain separate.
+
+## Managed Agent application scaffold
+
+The repository now also contains `apps/onboarding/` with the first application layer:
+
+- onboarding intent endpoint for customer plan/email/token intake;
+- encrypted secret storage using a local master key;
+- tenant and audit records in SQLite for MVP testing;
+- manual payment activation endpoint as a stand-in for Mollie/Stripe webhooks;
+- worker template that loads one tenant's Telegram/model credentials at runtime and prints only masked status;
+- Dockerfile and local Compose file for the first deployable container shape.
+
+This is not yet customer-live: payment webhooks, HTTPS/admin auth, production secret management and real Telegram polling still need to be added.
 
 ## MVP implementation steps
 
