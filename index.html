@@ -86,6 +86,12 @@
     .product.featured .muted{color:#d6e5d9}.product.featured .tag{background:rgba(215,242,104,.15);color:var(--lime);border-color:rgba(215,242,104,.3)}
     .tag{align-self:flex-start;border:1px solid var(--line);border-radius:999px;padding:8px 10px;font-weight:800;font-size:12px;color:var(--green);text-transform:uppercase;letter-spacing:.08em}
     ul{padding-left:19px;margin:0;line-height:1.75;color:inherit}.price{font-size:34px;font-weight:880;letter-spacing:-.05em;margin-top:auto}.price span{font-size:14px;color:inherit;font-weight:600;opacity:.75}
+    .deploy-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
+    .deploy-panel{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:28px;box-shadow:0 12px 35px rgba(20,35,24,.05)}
+    .deploy-steps{counter-reset:step;display:grid;gap:14px;margin-top:18px}
+    .deploy-step{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;background:#f0e6d6;border-radius:20px;padding:14px}
+    .deploy-step:before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-weight:850}
+    .channel-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.channel{border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 14px;font-weight:800;color:var(--green)}
     .proof{background:#13291f;color:#fff;border-radius:42px;padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
     .proof h2{color:#fff}.proof .muted{color:#dce7dc}.quote{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:22px;border-radius:26px;font-size:22px;line-height:1.35;letter-spacing:-.03em}
     .footer-cta{background:linear-gradient(135deg, #143f2b, #0c1d16);color:#fff;border-radius:48px;padding:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;overflow:hidden;position:relative}
@@ -93,7 +99,7 @@
     .footer-cta .muted{color:#d9e3dc}
     footer{padding:34px 24px;color:#626961;border-top:1px solid var(--line)}
     .foot-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    @media(max-width:900px){.hero,.two-col,.proof,.footer-cta{grid-template-columns:1fr}.products,.grid,.usecases{grid-template-columns:1fr}.nav-links{display:none}.hero{min-height:auto}.product.featured{transform:none}}
+    @media(max-width:900px){.hero,.two-col,.proof,.footer-cta{grid-template-columns:1fr}.products,.grid,.usecases,.deploy-grid{grid-template-columns:1fr}.nav-links{display:none}.hero{min-height:auto}.product.featured{transform:none}}
   </style>
 </head>
 <body>
@@ -105,6 +111,7 @@
         <a href="#oplossingen">Oplossingen</a>
         <a href="#security">Security</a>
         <a href="#prijzen">Prijzen</a>
+        <a href="#deploy">Deploy je agent</a>
         <a class="button secondary" href="https://www.bernarddonners-ai.nl">BernardDonners-AI</a>
         <a class="button" href="#contact">Plan demo</a>
       </div>
@@ -114,28 +121,28 @@
   <main>
     <section class="section hero">
       <div>
-        <div class="eyebrow">Hermes · Managed AI agents · Europa</div>
+        <div class="eyebrow">Hermes + OpenClaw · Managed AI agents · Europa</div>
         <h1>Veilige AI-agents. Data onder controle.</h1>
-        <p class="lead">Trusted Agents helpt Europese organisaties om terugkerend kenniswerk te automatiseren met beheerde AI-agents op private EU-infrastructuur. Niet als losse chatbot, maar als gecontroleerde digitale collega met geheugen, planning en menselijke goedkeuring.</p>
+        <p class="lead">Trusted Agents helpt Europese organisaties om terugkerend kenniswerk te automatiseren met beheerde AI-agents op private EU-infrastructuur. Hermes draait het zware werk; OpenClaw maakt je agent bereikbaar via Telegram en WhatsApp.</p>
         <div class="hero-actions">
-          <a class="button light" href="#contact">Plan een demo van 20 minuten</a>
+          <a class="button light" href="#deploy">Deploy je agent</a>
           <a class="button secondary" href="#security">Bekijk security-aanpak</a>
         </div>
         <div class="trust-row">
           <span class="pill">Private EU-server</span>
           <span class="pill">AVG/GDPR-bewust</span>
           <span class="pill">Human approval</span>
-          <span class="pill">Gebaseerd op Hermes by Nous Research</span>
+          <span class="pill">Hermes + OpenClaw</span>
         </div>
       </div>
       <aside class="agent-card" aria-label="AI agent demo kaart">
         <div class="card-top">
-          <div><strong>Trusted Agent</strong><div class="status">online · private EU workspace</div></div>
+          <div><strong>Trusted Agent</strong><div class="status">online · Telegram + WhatsApp · private EU workspace</div></div>
           <div class="metric">11u/week<br><small>ruis minder</small></div>
         </div>
         <div class="chat">
           <div class="bubble"><div class="mini">Operations · 09:41</div>Welke dossiers missen nog informatie voordat we ze kunnen afhandelen?</div>
-          <div class="bubble agent"><div class="mini">Trusted Agent · 09:42</div>Ik heb drie dossiers gevonden. Twee kunnen direct worden voorbereid; één wacht op akkoord. Ik zet de conceptmail klaar, maar verstuur niets zonder jouw bevestiging.</div>
+          <div class="bubble agent"><div class="mini">Trusted Agent via OpenClaw · 09:42</div>Ik heb drie dossiers gevonden. Twee kunnen direct worden voorbereid; één wacht op akkoord. Ik zet de conceptmail klaar, maar verstuur niets zonder jouw bevestiging.</div>
           <div class="bubble"><div class="mini">Security policy</div>Actie vereist menselijke goedkeuring · gegevens blijven binnen EU-workspace.</div>
         </div>
       </aside>
@@ -200,18 +207,52 @@
           <div class="price">Vanaf €— <span>/ maand</span></div>
         </article>
         <article class="product">
-          <span class="tag">Instap</span>
-          <h3>Trusted Assistant</h3>
-          <p class="muted">Een lichtere assistent voor inbox, agenda, korte vragen en conceptteksten.</p>
-          <ul><li>Mail- en chatworkflow</li><li>Concepten klaarzetten</li><li>Dagelijkse standup</li></ul>
-          <div class="price">Intake nodig</div>
+          <span class="tag">Conversatie-agent</span>
+          <h3>OpenClaw</h3>
+          <p class="muted">De laag waarmee je agent praat waar je al werkt: Telegram, WhatsApp en korte chatflows voor dagelijkse taken.</p>
+          <ul><li>Telegram- en WhatsApp-kanaal</li><li>Snelle vragen en opvolging</li><li>Concepten klaarzetten voor akkoord</li><li>Ideaal als instap naar Hermes</li></ul>
+          <div class="price">Vanaf €— <span>/ maand</span></div>
         </article>
         <article class="product">
           <span class="tag">Fundament</span>
           <h3>Managed EU Cloud</h3>
           <p class="muted">De technische basis: hosting, updates, monitoring, back-ups en toegangsafspraken.</p>
-          <ul><li>Private omgeving</li><li>EU-hosting</li><li>Logging en beheer</li></ul>
+          <ul><li>Private omgeving</li><li>EU-hosting</li><li>Logging en beheer</li><li>Beheer door Trusted Agents</li></ul>
           <div class="price">Inbegrepen</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="deploy">
+      <div class="eyebrow">Deploy je agent</div>
+      <h2>Van eerste gesprek naar werkende agent</h2>
+      <p class="lead">Net als bij Trustable maken we deployment concreet: niet “we doen iets met AI”, maar een beheerde agent die veilig draait en via Telegram of WhatsApp bereikbaar is.</p>
+      <div class="deploy-grid">
+        <article class="deploy-panel">
+          <h3>Wat je krijgt</h3>
+          <p class="muted">Een werkende Trusted Agent met Hermes als motor en OpenClaw als communicatiekanaal. Eerst klein, daarna uitbreiden.</p>
+          <div class="channel-row">
+            <span class="channel">Telegram</span>
+            <span class="channel">WhatsApp</span>
+            <span class="channel">E-mail concepten</span>
+            <span class="channel">Browser / desktop</span>
+          </div>
+          <div class="deploy-steps">
+            <div class="deploy-step"><div><strong>Intake & use-case</strong><br><span class="muted">We kiezen één workflow: inbox, monitoring, dossiers, content of business development.</span></div></div>
+            <div class="deploy-step"><div><strong>Private agent workspace</strong><br><span class="muted">We richten Hermes/OpenClaw in op een beheerde EU-omgeving met duidelijke data-afspraken.</span></div></div>
+            <div class="deploy-step"><div><strong>Kanaal koppelen</strong><br><span class="muted">Telegram of WhatsApp wordt het dagelijkse bedieningspaneel. Geen nieuwe app nodig.</span></div></div>
+            <div class="deploy-step"><div><strong>Human approval</strong><br><span class="muted">De agent zet concepten en acties klaar, maar gevoelige stappen wachten op jouw akkoord.</span></div></div>
+          </div>
+        </article>
+        <article class="deploy-panel">
+          <h3>Telegram + WhatsApp flow</h3>
+          <p class="muted">De agent leeft in het kanaal waar de gebruiker al zit. Telegram is ideaal voor snelle start en interne teams; WhatsApp is handig voor gebruikers die geen nieuwe tool willen leren.</p>
+          <div class="chat" style="background:#13291f;border-radius:24px;padding:18px">
+            <div class="bubble"><div class="mini">Jij · WhatsApp</div>Vat mijn inbox samen en zet de drie belangrijkste antwoorden klaar.</div>
+            <div class="bubble agent"><div class="mini">OpenClaw → Hermes</div>Ik heb 18 mails bekeken. Drie vragen actie. Ik heb conceptantwoorden opgesteld en één reminder gezet. Wil je ze controleren?</div>
+            <div class="bubble"><div class="mini">Jij · Telegram</div>Akkoord met mail 1 en 2. Mail 3 eerst aanpassen: korter en zakelijker.</div>
+          </div>
+          <p class="muted" style="margin-top:18px">Voor de eerste commerciële versie houden we de belofte scherp: deploy één agent, één workflow, één kanaal. Daarna pas uitbreiden.</p>
         </article>
       </div>
     </section>
@@ -230,11 +271,11 @@
     <section class="section" id="contact">
       <div class="footer-cta">
         <div>
-          <h2>Klaar om één workflow veilig te automatiseren?</h2>
-          <p class="muted">We starten klein: één proces, één agent, duidelijke grenzen. Daarna meten we wat het oplevert en beslissen we of opschalen logisch is.</p>
+          <h2>Klaar om je eerste agent te deployen?</h2>
+          <p class="muted">We starten klein: één proces, één agent, één kanaal — Telegram of WhatsApp. Daarna meten we wat het oplevert en beslissen we of opschalen logisch is.</p>
         </div>
         <div style="display:grid;gap:14px;justify-items:start;z-index:1">
-          <a class="button light" href="mailto:info@trustedagents.nl?subject=Demo%20Trusted%20Agents">Plan een demo</a>
+          <a class="button light" href="mailto:info@trustedagents.nl?subject=Deploy%20mijn%20Trusted%20Agent">Deploy je agent</a>
           <a class="button secondary" style="color:#fff;border-color:rgba(255,255,255,.5)" href="https://www.bernarddonners-ai.nl">Lees Bernards AI-visie</a>
           <p class="muted" style="font-size:14px">Placeholder: e-mail, agenda-link en juridische claims nog definitief maken.</p>
         </div>

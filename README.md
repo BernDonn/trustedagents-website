@@ -6,8 +6,10 @@ Eerste lokale prototype voor `trustedagents.nl`.
 - `index.html` — self-contained HTML/CSS prototype
 
 ## Uitgangspunten
-- Structuur geïnspireerd door trustable.nl: hero, trust badges, sectoren, agent-uitleg, use cases, producten/prijzen, security/data, CTA.
+- Structuur geïnspireerd door trustable.nl: hero, trust badges, sectoren, agent-uitleg, use cases, producten/prijzen, deploy-flow, security/data, CTA.
 - Geen letterlijke kopie van Trustable-tekst, branding, assets of logo.
+- Naast Hermes wordt OpenClaw als conversatie-/kanaallaag aangeboden voor Telegram en WhatsApp.
+- `Deploy je agent` is uitgewerkt als eerste commerciële flow: intake → private workspace → Telegram/WhatsApp koppeling → human approval.
 - Elementen uit bernarddonners-ai.nl verwerkt:
   - AI als General Purpose Technology
   - waarde komt na de hype / reis geen sprint
