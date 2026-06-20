@@ -234,6 +234,18 @@ Better:
 - use a small secrets service or age/sops-encrypted files,
 - store only secret references in the app database.
 
+## Local infrastructure scaffold
+
+The repository now contains `infra/hetzner/` with the first OpenTofu/Hetzner structure for the Managed Agent node:
+
+- `versions.tf`, `variables.tf`, `main.tf`, `outputs.tf`
+- `cloud-init.yaml.tftpl` for first-boot Docker preparation
+- `terraform.tfvars.example` for local non-secret configuration
+- `scripts/check.sh` for local checks
+- local `.gitignore` to keep tokens, tfvars, state and private keys out of Git
+
+The scaffold has been initialized and validated locally with OpenTofu. It is not applied yet because a Hetzner Cloud API token and explicit cost/server confirmation are still required.
+
 ## MVP implementation steps
 
 1. Build small onboarding backend.

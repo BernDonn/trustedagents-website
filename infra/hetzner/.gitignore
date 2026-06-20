@@ -1,0 +1,8 @@
+# Sensitive local files
+terraform.tfvars
+*.tfstate
+*.tfstate.*
+.terraform/
+*.pem
+*.key
+.env
