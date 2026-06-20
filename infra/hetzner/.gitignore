@@ -6,3 +6,4 @@ terraform.tfvars
 *.pem
 *.key
 .env
+.env.local
