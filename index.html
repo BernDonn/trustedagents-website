@@ -92,6 +92,10 @@
     .deploy-step{display:grid;grid-template-columns:42px 1fr;gap:14px;align-items:start;background:#f0e6d6;border-radius:20px;padding:14px}
     .deploy-step:before{counter-increment:step;content:counter(step);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-weight:850}
     .channel-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}.channel{border:1px solid var(--line);background:#fff;border-radius:16px;padding:12px 14px;font-weight:800;color:var(--green)}
+    .provider-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+    .provider-card{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:26px;display:flex;flex-direction:column;gap:16px;min-height:310px}
+    .provider-card strong{font-size:21px;letter-spacing:-.035em}.provider-card code{background:#f0e6d6;border-radius:10px;padding:3px 7px;font-size:13px}
+    .flow-note{margin-top:22px;background:#f0e6d6;border:1px solid var(--line);border-radius:24px;padding:20px;color:#304034;line-height:1.55}
     .proof{background:#13291f;color:#fff;border-radius:42px;padding:44px;display:grid;grid-template-columns:1fr 1fr;gap:34px;align-items:center}
     .proof h2{color:#fff}.proof .muted{color:#dce7dc}.quote{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:22px;border-radius:26px;font-size:22px;line-height:1.35;letter-spacing:-.03em}
     .footer-cta{background:linear-gradient(135deg, #143f2b, #0c1d16);color:#fff;border-radius:48px;padding:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;overflow:hidden;position:relative}
@@ -99,7 +103,7 @@
     .footer-cta .muted{color:#d9e3dc}
     footer{padding:34px 24px;color:#626961;border-top:1px solid var(--line)}
     .foot-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    @media(max-width:900px){.hero,.two-col,.proof,.footer-cta{grid-template-columns:1fr}.products,.grid,.usecases,.deploy-grid{grid-template-columns:1fr}.nav-links{display:none}.hero{min-height:auto}.product.featured{transform:none}}
+    @media(max-width:900px){.hero,.two-col,.proof,.footer-cta{grid-template-columns:1fr}.products,.grid,.usecases,.deploy-grid,.provider-grid{grid-template-columns:1fr}.nav-links{display:none}.hero{min-height:auto}.product.featured{transform:none}}
   </style>
 </head>
 <body>
@@ -112,6 +116,7 @@
         <a href="#security">Security</a>
         <a href="#prijzen">Prijzen</a>
         <a href="#deploy">Deploy je agent</a>
+        <a href="#providers">Modelkeuze</a>
         <a class="button secondary" href="https://www.bernarddonners-ai.nl">BernardDonners-AI</a>
         <a class="button" href="#contact">Plan demo</a>
       </div>
@@ -255,6 +260,33 @@
           <p class="muted" style="margin-top:18px">Voor de eerste commerciële versie houden we de belofte scherp: deploy één agent, één workflow, één kanaal. Daarna pas uitbreiden.</p>
         </article>
       </div>
+    </section>
+
+    <section class="section" id="providers">
+      <div class="eyebrow">Modelkeuze & toegang</div>
+      <h2>Kies de slimste route per taak</h2>
+      <p class="lead">Trusted Agents kan werken met meerdere modelroutes. Zo zit je niet vast aan één leverancier en kun je per workflow kiezen voor betrouwbaarheid, prijs, snelheid of maximale redeneerkracht.</p>
+      <div class="provider-grid">
+        <article class="provider-card">
+          <span class="tag">Directe API</span>
+          <strong>Anthropic API-sleutel</strong>
+          <p class="muted">Voor Claude-modellen via een eigen Anthropic API-key. Geschikt voor zorgvuldige analyse, schrijven, samenvatten en workflows waar consistentie belangrijk is.</p>
+          <ul><li>Heldere providerrelatie</li><li>Eigen verbruik en facturatie</li><li>Goed als primaire route of fallback</li></ul>
+        </article>
+        <article class="provider-card">
+          <span class="tag">Modelrouter</span>
+          <strong>OpenRouter API-sleutel</strong>
+          <p class="muted">OpenRouter werkt als modelhub: één sleutel geeft toegang tot veel modellen van verschillende aanbieders. Handig om kosten, snelheid en kwaliteit te vergelijken.</p>
+          <ul><li>Meerdere modellen onder één ingang</li><li>Snel wisselen of fallback instellen</li><li>Nuttig voor experimenten en prijsoptimalisatie</li></ul>
+        </article>
+        <article class="provider-card">
+          <span class="tag">OAuth</span>
+          <strong>ChatGPT / OpenAI Codex OAuth</strong>
+          <p class="muted">Voor klanten die via ChatGPT/Codex willen werken zonder losse API-key. Je logt eenmalig in; de agent gebruikt daarna een beveiligde OAuth-koppeling.</p>
+          <ul><li>Geen API-key kopiëren</li><li>Handig voor Codex/ChatGPT-workflows</li><li>Toegang kan later worden ingetrokken</li></ul>
+        </article>
+      </div>
+      <div class="flow-note"><strong>Hoe het werkt:</strong> tijdens deployment kiezen we de primaire modelroute en minimaal één fallback. Sleutels of OAuth-tokens worden niet in de website gezet; ze horen in de private agent-workspace. Hermes gebruikt de gekozen provider voor het denkwerk, OpenClaw levert het Telegram/WhatsApp-kanaal, en gevoelige acties blijven wachten op menselijke goedkeuring.</div>
     </section>
 
     <section class="section" id="security">

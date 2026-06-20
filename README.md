@@ -10,6 +10,7 @@ Eerste lokale prototype voor `trustedagents.nl`.
 - Geen letterlijke kopie van Trustable-tekst, branding, assets of logo.
 - Naast Hermes wordt OpenClaw als conversatie-/kanaallaag aangeboden voor Telegram en WhatsApp.
 - `Deploy je agent` is uitgewerkt als eerste commerciële flow: intake → private workspace → Telegram/WhatsApp koppeling → human approval.
+- Modeltoegang uitgelegd: Anthropic API-key, OpenRouter API-key en ChatGPT/OpenAI Codex OAuth als drie mogelijke routes; sleutels/tokens horen in de private agent-workspace, niet in de website.
 - Elementen uit bernarddonners-ai.nl verwerkt:
   - AI als General Purpose Technology
   - waarde komt na de hype / reis geen sprint
