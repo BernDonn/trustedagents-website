@@ -13,7 +13,7 @@ Eerste lokale prototype voor `trustedagents.nl`.
 - `Deploy je agent` is uitgewerkt als eerste commerciële flow: intake → private workspace → Telegram/WhatsApp koppeling → human approval.
 - Modeltoegang uitgelegd: Anthropic API-key, OpenRouter API-key en ChatGPT/OpenAI Codex OAuth als drie mogelijke routes; sleutels/tokens horen in de private agent-workspace, niet in de website.
 - Project Taxi wordt publiek alleen abstract geframed: onder Oplossingen blijft `Geheugensteun` als brede categorie staan; de detailsectie `In ontwikkeling` is onder embargo en bevat geen leesbare werkwijze, scenario’s, namen of projectgeheimen.
-- Deploymentopties toegevoegd: Hermes + OpenClaw op eigen Mac, dedicated Mac mini of VPS zoals Hostinger. Hostinger-partnerkorting wordt voorbereid; vaste 10%-claim pas live na bevestigde affiliate/referral-code.
+- Deploymentopties toegevoegd en aangescherpt tot drie pakketten: `Managed Agent` (€29/maand per bot), `Private Agent Server` (dedicated, vanaf €79/maand) en `Bring your own` (eigen cloud/VPS/Mac met setup + beheer). Hetzner is voorkeursroute voor automatische provisioning; Hostinger blijft optioneel/affiliate.
 - Positionering aangescherpt naar Nederlandse MKB-bedrijven, met Bernard Donners geïntroduceerd als Lector AI aan TIO Business School in Amsterdam en Groningen en verwijzing naar bernarddonners-ai.nl.
 - Sectie `Voorwaarden & privacy` toegevoegd met voorwaarden/privacytekst en een expliciete `Ik begrijp dat...` verantwoord-gebruik box.
   - AI als General Purpose Technology

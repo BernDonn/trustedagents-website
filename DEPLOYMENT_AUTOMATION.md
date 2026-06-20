@@ -1,6 +1,6 @@
 # Trusted Agents — deployment automation blueprint
 
-Status: research note for the next implementation phase.
+Status: tier strategy chosen — implement three routes: Starter managed, Dedicated, and Bring-your-own.
 
 ## What the Trustable flow appears to do
 
@@ -68,21 +68,25 @@ Do not make Hostinger the default automated backend unless tests prove the API, 
 
 At €29/month, avoid giving every customer a fully separate VPS by default unless the VPS cost, monitoring and support are tightly controlled.
 
-Recommended pricing model:
+Recommended pricing model, now chosen as the public product structure:
 
 1. **Starter — €29/month per bot**
    - Runs in a managed shared Trusted Agents environment.
    - Each customer gets isolated container/process, encrypted secrets and separate Telegram bot config.
    - Best margin and easiest operations.
+   - This is the default offer on the website: `Managed Agent`.
 
-2. **Dedicated — higher price, e.g. €59–€99/month**
-   - Customer gets a dedicated Hetzner VPS.
+2. **Dedicated — higher price, public starting point €79/month**
+   - Customer gets a dedicated Hetzner VPS or equivalent private workspace.
    - Better isolation and easier story for privacy-sensitive clients.
    - Includes VPS cost, maintenance, monitoring and backups.
+   - This is the second public offer: `Private Agent Server`.
 
 3. **Bring-your-own-cloud / own Mac**
    - Setup fee + monthly support.
    - For customers who want to own infrastructure.
+   - Customer keeps the infrastructure relationship; Trusted Agents provides setup, updates/support and clear responsibility boundaries.
+   - This is the third public offer: `Eigen cloud of Mac`.
 
 ## End-to-end onboarding flow
 
@@ -103,7 +107,7 @@ This app cannot be purely static GitHub Pages because it needs to:
 
 ### Suggested customer flow
 
-1. Customer chooses plan: Starter €29/month or Dedicated.
+1. Customer chooses plan: Starter €29/month, Dedicated, or Bring-your-own.
 2. Customer enters email and company name.
 3. Customer creates Telegram bot via BotFather and pastes token.
 4. Customer pastes Anthropic/OpenRouter API key or chooses provider route.
