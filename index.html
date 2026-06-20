@@ -40,9 +40,10 @@
       border-bottom:1px solid rgba(222,213,196,.7);
     }
     .nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;gap:20px}
-    .brand{font-weight:800;letter-spacing:-.04em;font-size:22px;display:flex;align-items:center;gap:10px}
+    .brand{font-weight:800;letter-spacing:-.04em;font-size:22px;display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0}
     .brand-dot{width:12px;height:12px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 6px rgba(215,242,104,.23)}
-    .nav-links{display:flex;gap:22px;align-items:center;font-size:14px;color:#303832}
+    .nav-links{display:flex;gap:14px;align-items:center;font-size:13px;color:#303832}
+    .nav .button{padding:11px 14px}
     .button{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:13px 18px;font-weight:750;border:1px solid var(--green);background:var(--green);color:#fff;box-shadow:0 10px 26px rgba(22,63,43,.16)}
     .button.secondary{background:transparent;color:var(--green);box-shadow:none}
     .button.light{background:var(--lime);color:#17240f;border-color:var(--lime)}
@@ -103,7 +104,8 @@
     .footer-cta .muted{color:#d9e3dc}
     footer{padding:34px 24px;color:#626961;border-top:1px solid var(--line)}
     .foot-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    @media(max-width:900px){.hero,.two-col,.proof,.footer-cta{grid-template-columns:1fr}.products,.grid,.usecases,.deploy-grid,.provider-grid{grid-template-columns:1fr}.nav-links{display:none}.hero{min-height:auto}.product.featured{transform:none}}
+    @media(max-width:1100px){.nav-links{display:none}}
+    @media(max-width:900px){.hero,.two-col,.proof,.footer-cta{grid-template-columns:1fr}.products,.grid,.usecases,.deploy-grid,.provider-grid{grid-template-columns:1fr}.hero{min-height:auto}.product.featured{transform:none}}
   </style>
 </head>
 <body>
@@ -117,6 +119,8 @@
         <a href="#prijzen">Prijzen</a>
         <a href="#deploy">Deploy je agent</a>
         <a href="#providers">Modelkeuze</a>
+        <a href="#hosting">Hosting</a>
+        <a href="#pilots">Pilots</a>
         <a class="button secondary" href="https://www.bernarddonners-ai.nl">BernardDonners-AI</a>
         <a class="button" href="#contact">Plan demo</a>
       </div>
@@ -188,8 +192,8 @@
 
     <section class="section" id="oplossingen">
       <div class="eyebrow">Oplossingen</div>
-      <h2>Vijf soorten werk die je kunt overdragen</h2>
-      <p class="lead">De eerste versie richt zich op concrete, terugkerende workflows. Klein beginnen, veilig bewijzen, daarna uitbreiden.</p>
+      <h2>Zes soorten werk die je kunt overdragen</h2>
+      <p class="lead">De eerste versie richt zich op concrete, terugkerende workflows. Klein beginnen, veilig bewijzen, daarna uitbreiden — inclusief mensgerichte pilots waar geheugensteun en rust centraal staan.</p>
       <div class="usecases">
         <article class="case"><small>Inbox & agenda</small><h3>Een assistent die voorwerk doet</h3><p class="muted">Samenvatten, triëren, conceptantwoorden schrijven en reminders klaarzetten.</p><div class="example">“Elke ochtend: vat mijn inbox samen, markeer urgente mails en zet conceptantwoorden klaar.”</div></article>
         <article class="case"><small>Onderzoek & monitoring</small><h3>Continu zicht op ontwikkelingen</h3><p class="muted">Volg bronnen, concurrenten, beleid, subsidies of aanbestedingen en ontvang bruikbare briefings.</p><div class="example">“Elke maandag 09:00: nieuwe kansen en wijzigingen, geen data-dump maar besluitinformatie.”</div></article>
@@ -197,6 +201,32 @@
         <article class="case"><small>Content & kennis</small><h3>Van ideeën naar consistente output</h3><p class="muted">Artikelen, posts, lesmateriaal en klantnotities in een herkenbare toon.</p><div class="example">“Maak van één briefing een LinkedIn-post, korte mail en achtergrondnotitie.”</div></article>
         <article class="case"><small>Business development</small><h3>Kansen vinden zonder ruis</h3><p class="muted">Leads zoeken, relevantie beoordelen en persoonlijke outreach voorbereiden.</p><div class="example">“Vind 10 organisaties die passen bij deze propositie en zet conceptmails klaar.”</div></article>
         <article class="case"><small>AI-training</small><h3>Teams leren kritisch werken met AI</h3><p class="muted">Niet alleen tools uitleggen, maar oordeel, verantwoordelijkheid en werkafspraken ontwikkelen.</p><div class="example">“A lot of people got better at producing output, not better at thinking.”</div></article>
+        <article class="case"><small>Geheugensteun</small><h3>Rustige hulp bij de volgende stap</h3><p class="muted">Een assistent die helpt herinneren, ordenen en oriënteren — zonder oordeel, zonder medische claims en altijd met menselijke regie.</p><div class="example">“Ik help u rustig herinneren wat vandaag belangrijk is en wie u kunt bellen als dat nodig is.”</div></article>
+      </div>
+    </section>
+
+    <section class="section" id="pilots">
+      <div class="eyebrow">In ontwikkeling</div>
+      <h2>Geheugensteun Pilot</h2>
+      <p class="lead">Een rustige AI-assistent voor mensen die baat hebben bij hulp met herinneren, ordenen en één volgende stap vinden. Gebaseerd op persoonlijke ervaring met de waarde van geheugensteun in het dagelijks leven.</p>
+      <div class="deploy-grid">
+        <article class="deploy-panel">
+          <span class="tag">Mensgerichte AI</span>
+          <h3>Wat de pilot onderzoekt</h3>
+          <p class="muted">De pilot richt zich nadrukkelijk niet op diagnose of medische besluitvorming. Het gaat om vriendelijke ondersteuning: rust brengen, helpen oriënteren, afspraken herinneren en een vertrouwd contact erbij halen wanneer dat nodig is.</p>
+          <div class="channel-row">
+            <span class="channel">Eenvoudige taal</span>
+            <span class="channel">Eén stap tegelijk</span>
+            <span class="channel">Vertrouwde contacten</span>
+            <span class="channel">Menselijke regie</span>
+          </div>
+        </article>
+        <article class="deploy-panel">
+          <span class="tag">Verkenning</span>
+          <h3>Meedenken over de pilot</h3>
+          <p class="muted">We verkennen dit thema met mensen uit zorginnovatie, onderwijs en praktijkervaring. Een eerste LinkedIn-contact heeft aangegeven graag op de hoogte te blijven. Namen of samenwerkingen noemen we pas publiek wanneer dat expliciet is afgesproken.</p>
+          <div class="flow-note" style="margin-top:18px"><strong>Voorbeeldmoment:</strong> “Ik weet even niet wat ik nu moest doen.” De assistent antwoordt rustig, haalt alleen relevante context op en stelt één veilige vervolgstap voor.</div>
+        </article>
       </div>
     </section>
 
@@ -287,6 +317,33 @@
         </article>
       </div>
       <div class="flow-note"><strong>Hoe het werkt:</strong> tijdens deployment kiezen we de primaire modelroute en minimaal één fallback. Sleutels of OAuth-tokens worden niet in de website gezet; ze horen in de private agent-workspace. Hermes gebruikt de gekozen provider voor het denkwerk, OpenClaw levert het Telegram/WhatsApp-kanaal, en gevoelige acties blijven wachten op menselijke goedkeuring.</div>
+    </section>
+
+    <section class="section" id="hosting">
+      <div class="eyebrow">Waar draait je agent?</div>
+      <h2>Eigen Mac, Mac mini of VPS</h2>
+      <p class="lead">Hermes en OpenClaw kunnen klein starten op bestaande hardware en later verhuizen naar een dedicated omgeving. De keuze hangt af van privacy, beschikbaarheid, beheer en budget.</p>
+      <div class="provider-grid">
+        <article class="provider-card">
+          <span class="tag">Start lokaal</span>
+          <strong>Op je eigen Mac</strong>
+          <p class="muted">Goed voor prototyping, demonstraties en eerste workflows. Je houdt de data dichtbij en kunt snel testen zonder extra serverkosten.</p>
+          <ul><li>Snel starten</li><li>Ideaal voor demo’s</li><li>Afhankelijk van je eigen apparaat</li></ul>
+        </article>
+        <article class="provider-card">
+          <span class="tag">Dedicated</span>
+          <strong>Op een Mac mini</strong>
+          <p class="muted">Een aparte Mac mini kan 24/7 draaien als private agent-server. Handig wanneer je je laptop vrij wilt houden en toch Apple/macOS-workflows nodig hebt.</p>
+          <ul><li>Eigen hardware</li><li>Altijd beschikbaar</li><li>Geschikt voor Hermes + OpenClaw samen</li></ul>
+        </article>
+        <article class="provider-card">
+          <span class="tag">Cloud</span>
+          <strong>Op een VPS zoals Hostinger</strong>
+          <p class="muted">Voor klanten die geen eigen hardware willen beheren. Een VPS maakt monitoring, updates en bereikbaarheid eenvoudiger, mits security en back-ups goed zijn ingericht.</p>
+          <ul><li>24/7 bereikbaar</li><li>Schaalbaar per klant</li><li>Actuele Hostinger-korting/referral checken bij aanvraag</li></ul>
+        </article>
+      </div>
+      <div class="flow-note"><strong>Hostinger-korting:</strong> Hostinger heeft officiële coupons en een referralprogramma. Ik vermeld daarom nog geen vaste “10% coupon” als harde belofte; op de site houden we het correct als “actuele Hostinger-korting of referral mogelijk”, totdat er een eigen affiliate/referral-link of coupon bevestigd is.</div>
     </section>
 
     <section class="section" id="security">

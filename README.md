@@ -11,6 +11,8 @@ Eerste lokale prototype voor `trustedagents.nl`.
 - Naast Hermes wordt OpenClaw als conversatie-/kanaallaag aangeboden voor Telegram en WhatsApp.
 - `Deploy je agent` is uitgewerkt als eerste commerciële flow: intake → private workspace → Telegram/WhatsApp koppeling → human approval.
 - Modeltoegang uitgelegd: Anthropic API-key, OpenRouter API-key en ChatGPT/OpenAI Codex OAuth als drie mogelijke routes; sleutels/tokens horen in de private agent-workspace, niet in de website.
+- Project Taxi wordt publiek veilig geframed als `Geheugensteun Pilot`: rustige hulp bij herinneren, ordenen en één volgende stap, zonder medische termen of projectgeheimen.
+- Deploymentopties toegevoegd: Hermes + OpenClaw op eigen Mac, dedicated Mac mini of VPS zoals Hostinger. Hostinger-korting alleen voorzichtig genoemd als actuele coupon/referral mogelijk, geen onbevestigde 10%-claim.
 - Elementen uit bernarddonners-ai.nl verwerkt:
   - AI als General Purpose Technology
   - waarde komt na de hype / reis geen sprint
