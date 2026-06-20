@@ -4,7 +4,7 @@
 project_name = "trusted-agents"
 environment  = "staging"
 location     = "fsn1"
-server_type  = "cx32"
+server_type  = "cx33"
 
 # Paste the public half of the admin SSH key here.
 ssh_public_key = "ssh-ed25519 REPLACE_WITH_PUBLIC_KEY_ONLY trusted-agents-admin"

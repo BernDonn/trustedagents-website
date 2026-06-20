@@ -54,7 +54,7 @@ Only run `tofu apply` after Bernard explicitly confirms the resulting monthly co
 
 ## Recommended MVP defaults
 
-- Start with the CX32-class managed node from the capacity model.
+- Start with the CX33-class managed node from the capacity model.
 - Cap the node at 10 paying bots until measured.
 - Keep staging/test separate from production.
 - Move heavy or privacy-sensitive customers to the Dedicated plan.

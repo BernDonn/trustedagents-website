@@ -23,9 +23,9 @@ variable "location" {
 }
 
 variable "server_type" {
-  description = "Managed node size. CX32 is the first production-like MVP default from the capacity model."
+  description = "Managed node size. CX33 is the first production-like MVP default from the capacity model."
   type        = string
-  default     = "cx32"
+  default     = "cx33"
 }
 
 variable "image" {
