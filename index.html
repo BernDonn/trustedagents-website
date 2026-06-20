@@ -6,6 +6,7 @@
   <title>Trusted Agents — Veilige AI-agents voor Europese organisaties</title>
   <meta name="description" content="Trusted Agents levert beheerde AI-agents op private Europese infrastructuur: veilig, controleerbaar en AVG-bewust." />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap');
     :root{
       --bg:#f6f2ea;
       --paper:#fffaf1;
@@ -25,7 +26,7 @@
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+      font-family: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       color:var(--ink);
       background:
         radial-gradient(circle at 8% 2%, rgba(215,242,104,.38), transparent 26rem),
@@ -44,17 +45,17 @@
     .brand-dot{width:12px;height:12px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 6px rgba(215,242,104,.23)}
     .nav-links{display:flex;gap:14px;align-items:center;font-size:13px;color:#303832}
     .nav .button{padding:11px 14px}
-    .button{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:13px 18px;font-weight:750;border:1px solid var(--green);background:var(--green);color:#fff;box-shadow:0 10px 26px rgba(22,63,43,.16)}
+    .button{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:13px 18px;font-weight:700;border:1px solid var(--green);background:var(--green);color:#fff;box-shadow:0 10px 26px rgba(22,63,43,.16)}
     .button.secondary{background:transparent;color:var(--green);box-shadow:none}
     .button.light{background:var(--lime);color:#17240f;border-color:var(--lime)}
     .section{max-width:var(--max);margin:0 auto;padding:86px 24px}
     .hero{display:grid;grid-template-columns:1.07fr .93fr;gap:54px;align-items:center;min-height:760px;padding-top:74px}
-    .eyebrow{display:inline-flex;gap:10px;align-items:center;border:1px solid var(--line);background:rgba(255,250,241,.72);padding:8px 12px;border-radius:999px;color:var(--green);font-size:13px;font-weight:760;text-transform:uppercase;letter-spacing:.08em}
+    .eyebrow{display:inline-flex;gap:10px;align-items:center;border:1px solid var(--line);background:rgba(255,250,241,.72);padding:8px 12px;border-radius:999px;color:var(--green);font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.09em}
     h1,h2,h3,p{margin:0}
-    h1{font-size:clamp(48px, 7vw, 92px);line-height:.92;letter-spacing:-.075em;margin:24px 0 24px;max-width:900px}
-    h2{font-size:clamp(36px, 5vw, 64px);line-height:1;letter-spacing:-.06em;margin:14px 0 18px}
-    h3{font-size:24px;letter-spacing:-.035em;margin-bottom:12px}
-    .lead{font-size:clamp(19px,2vw,24px);line-height:1.45;color:#323b34;max-width:760px}
+    h1{font-size:clamp(50px, 6.6vw, 86px);font-weight:800;line-height:.98;letter-spacing:-.04em;margin:24px 0 24px;max-width:900px}
+    h2{font-size:clamp(36px, 4.7vw, 58px);font-weight:700;line-height:1.04;letter-spacing:-.03em;margin:14px 0 18px}
+    h3{font-size:24px;font-weight:700;letter-spacing:-.025em;margin-bottom:12px}
+    .lead{font-size:clamp(18px,1.8vw,22px);line-height:1.55;letter-spacing:-.005em;color:#323b34;max-width:760px}
     .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin:34px 0 24px}
     .trust-row{display:flex;gap:10px;flex-wrap:wrap;color:#2b362e;font-size:14px}
     .pill{border:1px solid var(--line);background:rgba(255,250,241,.82);padding:9px 12px;border-radius:999px;font-weight:650}
@@ -70,8 +71,8 @@
     .logos{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:24px 0;color:#646b65;text-transform:uppercase;letter-spacing:.08em;font-size:13px;font-weight:760}
     .sector-row{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;color:#202720;text-transform:none;letter-spacing:0;font-size:16px;font-weight:650}
     .two-col{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:start}
-    .statement{font-size:clamp(28px,4vw,52px);line-height:1.08;letter-spacing:-.055em;font-weight:800}
-    .muted{color:var(--muted);line-height:1.65;font-size:17px}
+    .statement{font-size:clamp(28px,4vw,50px);line-height:1.08;letter-spacing:-.04em;font-weight:800}
+    .muted{color:var(--muted);line-height:1.65;font-size:17px;letter-spacing:-.003em}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
     .tile{background:rgba(255,250,241,.78);border:1px solid var(--line);border-radius:var(--radius);padding:24px;min-height:220px;box-shadow:0 12px 35px rgba(20,35,24,.05)}
     .tile .nr{color:var(--green);font-weight:850;font-size:13px;letter-spacing:.12em;margin-bottom:42px;display:block}
@@ -86,7 +87,7 @@
     .product.featured{background:#10291f;color:white;transform:translateY(-10px)}
     .product.featured .muted{color:#d6e5d9}.product.featured .tag{background:rgba(215,242,104,.15);color:var(--lime);border-color:rgba(215,242,104,.3)}
     .tag{align-self:flex-start;border:1px solid var(--line);border-radius:999px;padding:8px 10px;font-weight:800;font-size:12px;color:var(--green);text-transform:uppercase;letter-spacing:.08em}
-    ul{padding-left:19px;margin:0;line-height:1.75;color:inherit}.price{font-size:34px;font-weight:880;letter-spacing:-.05em;margin-top:auto}.price span{font-size:14px;color:inherit;font-weight:600;opacity:.75}
+    ul{padding-left:19px;margin:0;line-height:1.75;color:inherit}.price{font-size:34px;font-weight:800;letter-spacing:-.04em;margin-top:auto}.price span{font-size:14px;color:inherit;font-weight:600;opacity:.75}
     .deploy-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
     .deploy-panel{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:28px;box-shadow:0 12px 35px rgba(20,35,24,.05)}
     .deploy-steps{counter-reset:step;display:grid;gap:14px;margin-top:18px}
