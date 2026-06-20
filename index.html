@@ -98,6 +98,11 @@
     .provider-card{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:26px;display:flex;flex-direction:column;gap:16px;min-height:310px}
     .provider-card strong{font-size:21px;letter-spacing:-.035em}.provider-card code{background:#f0e6d6;border-radius:10px;padding:3px 7px;font-size:13px}
     .flow-note{margin-top:22px;background:#f0e6d6;border:1px solid var(--line);border-radius:24px;padding:20px;color:#304034;line-height:1.55}
+    .legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:32px}
+    .legal-card{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:26px;display:grid;gap:14px}
+    .legal-card h3{margin-bottom:0}.legal-card p,.legal-card li{color:var(--muted);line-height:1.62;font-size:16px}.legal-card ul{padding-left:20px}
+    .acceptance-box{background:#10291f;color:#fff;border-radius:26px;padding:24px;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}
+    .acceptance-box h3{color:#fff}.acceptance-box p,.acceptance-box li{color:#dce7dc}.checkline{display:flex;gap:12px;align-items:flex-start;margin-top:14px;font-weight:700;color:#fff}.checkline:before{content:"✓";display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--lime);color:#10291f;flex:0 0 26px;font-weight:900}
     .embargo-card{background:linear-gradient(135deg,#10291f,#173a2a);color:#fff;border-color:#10291f;position:relative;overflow:hidden}
     .embargo-card:after{content:"Onder embargo";position:absolute;right:18px;bottom:14px;font-weight:900;font-size:38px;letter-spacing:-.06em;color:rgba(255,255,255,.07)}
     .embargo-lines{display:grid;gap:10px;margin-top:18px}.embargo-lines span{display:block;height:13px;border-radius:999px;background:rgba(255,255,255,.16);filter:blur(2px)}
@@ -109,7 +114,7 @@
     footer{padding:34px 24px;color:#626961;border-top:1px solid var(--line)}
     .foot-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     @media(max-width:1100px){.nav-links{display:none}}
-    @media(max-width:900px){.hero,.two-col,.proof,.footer-cta{grid-template-columns:1fr}.products,.grid,.usecases,.deploy-grid,.provider-grid{grid-template-columns:1fr}.hero{min-height:auto}.product.featured{transform:none}}
+    @media(max-width:900px){.hero,.two-col,.proof,.footer-cta{grid-template-columns:1fr}.products,.grid,.usecases,.deploy-grid,.provider-grid,.legal-grid{grid-template-columns:1fr}.hero{min-height:auto}.product.featured{transform:none}}
   </style>
 </head>
 <body>
@@ -369,12 +374,57 @@
         </div>
       </div>
     </section>
+    <section class="section" id="juridisch">
+      <div class="eyebrow">Voorwaarden & privacy</div>
+      <h2>Duidelijke grenzen voordat een agent live gaat</h2>
+      <p class="lead">Deze teksten zijn conceptteksten voor de prototype-site en moeten voor live gebruik nog juridisch worden gecontroleerd. Ze zijn origineel opgesteld voor Trusted Agents en niet overgenomen van een andere aanbieder.</p>
+      <div class="legal-grid">
+        <article class="legal-card" id="voorwaarden">
+          <span class="tag">Concept</span>
+          <h3>Algemene voorwaarden</h3>
+          <p>Trusted Agents levert advies, configuratie en beheer van AI-agents voor zakelijke gebruikers. De klant blijft verantwoordelijk voor het gebruik van de agent, de ingevoerde gegevens, de beoordeling van output en de uiteindelijke zakelijke beslissingen.</p>
+          <ul>
+            <li>AI-output is ondersteunend en kan onjuist, onvolledig of verouderd zijn.</li>
+            <li>De agent mag geen juridisch, medisch, financieel of ander professioneel advies vervangen.</li>
+            <li>Gevoelige acties zoals verzending, publicatie, betalingen of externe communicatie vragen menselijke controle.</li>
+            <li>De klant zorgt dat aangeleverde data rechtmatig mag worden gebruikt.</li>
+            <li>Aansprakelijkheid is beperkt tot directe schade en maximaal het bedrag dat voor de betreffende dienst is betaald, tenzij dwingend recht anders bepaalt.</li>
+          </ul>
+        </article>
+        <article class="acceptance-box">
+          <span class="tag" style="color:var(--lime);border-color:rgba(215,242,104,.32);background:rgba(215,242,104,.12)">Belangrijk</span>
+          <h3>Verantwoord gebruik</h3>
+          <p>Deze bevestiging hoort zichtbaar te zijn bij intake, offerte of activatie van een agent.</p>
+          <div class="checkline">Ik begrijp dat ik verantwoordelijk ben voor het controleren van AI-output voordat ik die gebruik, verstuur, publiceer of omzet in een besluit.</div>
+          <div class="checkline">Ik begrijp dat een AI-agent fouten kan maken en dat Trusted Agents geen aansprakelijkheid aanvaardt voor beslissingen die zonder menselijke controle worden genomen.</div>
+          <div class="checkline">Ik begrijp dat ik geen gegevens mag aanleveren waarvoor ik geen rechtmatige grondslag of toestemming heb.</div>
+        </article>
+        <article class="legal-card" id="privacy">
+          <span class="tag">Concept</span>
+          <h3>Privacybeleid</h3>
+          <p>Trusted Agents verwerkt alleen gegevens die nodig zijn om de agent te configureren, te laten werken, te beveiligen en te verbeteren binnen de afgesproken zakelijke context.</p>
+          <ul>
+            <li>Voorbeelden zijn contactgegevens, bedrijfsinformatie, agent-instellingen, prompts, taakgeschiedenis en technische logs.</li>
+            <li>Gegevens worden niet verkocht aan derden.</li>
+            <li>Waar mogelijk werken we met minimale gegevens, toegangsbeperking en logging.</li>
+            <li>Bij inzet voor klanten worden afspraken over rollen, bewaartermijnen, hostinglocatie en verwerkersovereenkomst vooraf vastgelegd.</li>
+            <li>Betrokkenen kunnen verzoeken doen over inzage, correctie of verwijdering via het contactadres van Trusted Agents.</li>
+          </ul>
+        </article>
+        <article class="legal-card">
+          <span class="tag">Nog definitief maken</span>
+          <h3>Voor livegang nodig</h3>
+          <p>Voor publicatie moeten bedrijfsgegevens, KvK-nummer, contactadres, definitieve hostingpartij, bewaartermijnen, verwerkersrollen en aansprakelijkheidslimieten worden ingevuld en juridisch getoetst.</p>
+          <p>Tot die tijd is dit een commerciële en juridische conceptlaag, bedoeld om de juiste grenzen zichtbaar te maken voordat klanten een agent activeren.</p>
+        </article>
+      </div>
+    </section>
   </main>
 
   <footer>
     <div class="foot-inner">
       <div>© 2026 Trusted Agents — prototype</div>
-      <div>Gebouwd als eerste richting voor Nederlandse MKB-bedrijven + Bernards AI-visie.</div>
+      <div><a href="#voorwaarden">Voorwaarden</a> · <a href="#privacy">Privacybeleid</a> · Gebouwd voor Nederlandse MKB-bedrijven + Bernards AI-visie.</div>
     </div>
   </footer>
 </body>
