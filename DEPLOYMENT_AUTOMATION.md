@@ -1,0 +1,225 @@
+# Trusted Agents — deployment automation blueprint
+
+Status: research note for the next implementation phase.
+
+## What the Trustable flow appears to do
+
+From Bernard's screenshots, the onboarding pattern is:
+
+1. Customer enters email address.
+2. Customer chooses Hermes Agent or OpenClaw Bot.
+3. Customer pastes a Telegram Bot Token.
+4. Customer pastes an Anthropic / Claude API key.
+5. Customer accepts terms and a responsibility checkbox.
+6. Customer starts installation.
+7. Platform creates an order and redirects to payment.
+8. After subscription payment, platform provisions the bot/agent and connects Telegram + Claude.
+
+Important: uploaded screenshots showed live secrets. Treat the Telegram token and Anthropic key as temporary/test-only and rotate/revoke them before any real use.
+
+## Hetzner vs Hostinger for this product
+
+### Hetzner Cloud
+
+Best fit for automated AI-agent provisioning.
+
+Strengths:
+- Mature developer cloud: REST API, CLI, Terraform provider and cloud-init support.
+- Server creation can include `user_data` / cloud-init so a fresh VPS can be configured automatically on first boot.
+- Terraform provider is widely used and maintained under `hetznercloud/hcloud`.
+- Strong European positioning with Germany/Finland regions.
+- Very good price/performance for small Linux workloads.
+- Better suited to automated lifecycle operations: create server, attach firewall, attach SSH key, create DNS, snapshot, destroy.
+
+Risks / limits:
+- Price changes must be monitored.
+- Hetzner may be stricter about account validation and abuse handling.
+- We still need our own provisioning backend, secret storage, monitoring and support.
+
+### Hostinger VPS
+
+Usable, but less ideal for this product as the primary automation layer.
+
+Strengths:
+- Affiliate/referral angle may be commercially useful.
+- Beginner-friendly dashboard.
+- VPS API/Terraform provider exists, including VPS provisioning and post-install scripts.
+- Good for simple customer websites or manually managed VPS hosting.
+
+Risks / limits:
+- Terraform provider is newer/smaller than Hetzner's ecosystem.
+- Hostinger VPS is often positioned as easy unmanaged VPS rather than developer cloud infrastructure.
+- Automation can work, but lifecycle confidence is lower than Hetzner for a SaaS-like provisioning product.
+
+## Recommendation
+
+Use Hetzner Cloud as the default managed infrastructure for Trusted Agents.
+
+Keep Hostinger as:
+- optional affiliate/referral hosting recommendation,
+- a low-cost customer-hosted option,
+- or a non-critical alternative if a customer explicitly wants it.
+
+Do not make Hostinger the default automated backend unless tests prove the API, Terraform provider, post-install scripts, DNS and cancellation lifecycle are reliable enough.
+
+## Product architecture for €29/month
+
+### Important margin point
+
+At €29/month, avoid giving every customer a fully separate VPS by default unless the VPS cost, monitoring and support are tightly controlled.
+
+Recommended pricing model:
+
+1. **Starter — €29/month per bot**
+   - Runs in a managed shared Trusted Agents environment.
+   - Each customer gets isolated container/process, encrypted secrets and separate Telegram bot config.
+   - Best margin and easiest operations.
+
+2. **Dedicated — higher price, e.g. €59–€99/month**
+   - Customer gets a dedicated Hetzner VPS.
+   - Better isolation and easier story for privacy-sensitive clients.
+   - Includes VPS cost, maintenance, monitoring and backups.
+
+3. **Bring-your-own-cloud / own Mac**
+   - Setup fee + monthly support.
+   - For customers who want to own infrastructure.
+
+## End-to-end onboarding flow
+
+### Public website
+
+The static Trusted Agents website remains marketing and trust-building.
+
+Add a secure onboarding app behind a button like:
+
+`Deploy mijn agent`
+
+This app cannot be purely static GitHub Pages because it needs to:
+- create payments,
+- receive payment webhooks,
+- store secrets encrypted,
+- provision infrastructure,
+- start/stop bots.
+
+### Suggested customer flow
+
+1. Customer chooses plan: Starter €29/month or Dedicated.
+2. Customer enters email and company name.
+3. Customer creates Telegram bot via BotFather and pastes token.
+4. Customer pastes Anthropic/OpenRouter API key or chooses provider route.
+5. Customer accepts responsibility checkboxes:
+   - I am responsible for checking AI output.
+   - I understand the agent can make mistakes.
+   - I understand I may only provide lawful data.
+   - I approve sensitive actions before they happen.
+6. Customer pays subscription.
+7. Payment webhook marks subscription active.
+8. Provisioner starts customer bot/agent.
+9. Customer receives Telegram welcome message.
+10. Admin dashboard shows status: active, paused, payment failed, cancelled.
+
+## Payment flow
+
+### Best fit for Dutch customers
+
+Use Mollie or Stripe, but consider Mollie first for the Dutch market.
+
+Mollie advantages:
+- Strong iDEAL support.
+- SEPA Direct Debit recurring payments are natural for Dutch customers.
+- Customer can avoid card-based signup if desired.
+- Good fit for monthly B2B invoices/subscriptions.
+
+Stripe advantages:
+- Excellent subscriptions API, Checkout, webhooks and customer portal.
+- Good developer tooling.
+- Strong if we later want international cards and self-service portal.
+
+Recommended first version:
+- Use Mollie for iDEAL first payment + SEPA mandate / recurring collection, or manual monthly invoice if Bernard wants maximum control.
+- Use Stripe if faster implementation is preferred and card/SEPA visibility is acceptable.
+
+### What happens when customer pays €29/month
+
+1. Website creates a subscription checkout session.
+2. Customer pays first invoice/mandate.
+3. Payment provider sends webhook: `subscription active` or `invoice paid`.
+4. Our backend creates an internal tenant record:
+   - customer_id
+   - subscription_id
+   - plan
+   - bot_token_secret_ref
+   - model_key_secret_ref
+   - status=provisioning
+5. Provisioner deploys or starts agent.
+6. If payment later fails/cancels:
+   - status becomes `past_due` or `cancelled`
+   - bot is paused after grace period
+   - secrets remain encrypted or are deleted per policy
+
+## Provisioning design
+
+### Starter shared environment
+
+Run one or more Hetzner VPS instances managed by Trusted Agents:
+
+- Reverse proxy / API backend
+- Postgres or SQLite for early MVP
+- Encrypted secret storage
+- Per-customer bot workers
+- Systemd, Docker Compose or Nomad-like process supervisor
+- Logs per tenant with retention limits
+
+Each bot worker receives only its own token/key at runtime.
+
+### Dedicated VPS environment
+
+For higher-tier customers:
+
+1. Backend calls Hetzner API or Terraform.
+2. Creates VPS with SSH key, firewall and cloud-init.
+3. cloud-init installs Docker, Hermes/OpenClaw runtime, monitoring, updates and deploy agent bootstrap.
+4. Backend pushes encrypted customer config or the server pulls it from a one-time bootstrap token.
+5. Health check confirms Telegram bot is alive.
+6. Customer receives welcome message.
+
+## Secrets policy
+
+Do not store raw API keys in normal database columns.
+
+Minimum:
+- encrypt secrets at rest,
+- never log tokens,
+- mask tokens in admin UI,
+- support key rotation,
+- delete secrets on cancellation if not needed,
+- keep audit events without secret values.
+
+Better:
+- use a small secrets service or age/sops-encrypted files,
+- store only secret references in the app database.
+
+## MVP implementation steps
+
+1. Build small onboarding backend.
+2. Add a `Deploy mijn agent` page/form to trustedagents.nl.
+3. Add Mollie or Stripe test-mode subscription.
+4. Implement webhook handler.
+5. Store customer/bot records.
+6. Store secrets encrypted.
+7. Deploy first shared Hetzner VPS.
+8. Build bot worker template that connects Telegram to model provider.
+9. Test activation, cancellation and failed payment.
+10. Add admin dashboard for Bernard.
+
+## Immediate next decision
+
+Choose payment provider for MVP:
+
+- **Mollie** if Dutch iDEAL + SEPA recurring and less card-name exposure matter most.
+- **Stripe** if developer speed and hosted customer portal matter most.
+
+Infrastructure decision:
+
+- **Hetzner default** for managed automation.
+- **Hostinger optional** for affiliate/customer-hosted route.

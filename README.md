@@ -4,6 +4,7 @@ Eerste lokale prototype voor `trustedagents.nl`.
 
 ## Bestanden
 - `index.html` — self-contained HTML/CSS prototype
+- `DEPLOYMENT_AUTOMATION.md` — blauwdruk voor betaalde onboarding, Hetzner/Hostinger-keuze en provisioning
 
 ## Uitgangspunten
 - Originele positionering voor `trustedagents.nl`: hero, trust badges, sectoren, agent-uitleg, use cases, producten/prijzen, deploy-flow, security/data, CTA.
