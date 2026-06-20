@@ -14,7 +14,7 @@ Eerste lokale prototype voor `trustedagents.nl`.
 - Project Taxi wordt publiek alleen abstract geframed: onder Oplossingen blijft `Geheugensteun` als brede categorie staan; de detailsectie `In ontwikkeling` is onder embargo en bevat geen leesbare werkwijze, scenario’s, namen of projectgeheimen.
 - Deploymentopties toegevoegd: Hermes + OpenClaw op eigen Mac, dedicated Mac mini of VPS zoals Hostinger. Hostinger-partnerkorting wordt voorbereid; vaste 10%-claim pas live na bevestigde affiliate/referral-code.
 - Positionering aangescherpt naar Nederlandse MKB-bedrijven, met Bernard Donners geïntroduceerd als Lector AI aan TIO Business School in Amsterdam en Groningen en verwijzing naar bernarddonners-ai.nl.
-- Conceptsectie `Voorwaarden & privacy` toegevoegd met originele voorwaarden/privacytekst en een expliciete `Ik begrijp dat...` verantwoord-gebruik box; vóór livegang juridisch laten toetsen.
+- Sectie `Voorwaarden & privacy` toegevoegd met voorwaarden/privacytekst en een expliciete `Ik begrijp dat...` verantwoord-gebruik box.
   - AI als General Purpose Technology
   - waarde komt na de hype / reis geen sprint
   - kritisch denken i.p.v. alleen output produceren
