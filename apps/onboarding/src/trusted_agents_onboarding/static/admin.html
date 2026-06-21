@@ -26,13 +26,13 @@
       <div id="message" class="notice" style="margin:22px 0">Tenants laden...</div>
       <div style="overflow:auto">
         <table class="table" aria-label="Tenantoverzicht">
-          <thead><tr><th>Tenant</th><th>Klant</th><th>Plan</th><th>Status</th><th>Payment</th><th>Aangemaakt</th><th>Actie</th></tr></thead>
+          <thead><tr><th>Tenant</th><th>Klant</th><th>Plan</th><th>Status</th><th>Payment</th><th>Provider</th><th>Referentie</th><th>Aangemaakt</th><th>Actie</th></tr></thead>
           <tbody id="tenants"></tbody>
         </table>
       </div>
     </section>
 
-    <p class="footer">Demo-only: de knop “Markeer actief” simuleert later Mollie/Stripe webhookgedrag.</p>
+    <p class="footer">Demo-only: Mollie-webhook kan status bijwerken; “Markeer actief” blijft als handmatige fallback voor lokale demos.</p>
   </div>
 
   <script>
@@ -40,7 +40,8 @@
     const message = document.querySelector('#message');
     const refresh = document.querySelector('#refresh');
 
-    function shortTenant(id){ return id ? id.replace('tenant_', 'tenant_').slice(0, 18) + '…' : ''; }
+    function shortTenant(id){ return id ? id.slice(0, 18) + '…' : ''; }
+    function shortRef(id){ return id ? id.slice(0, 16) + '…' : '—'; }
     function fmtDate(value){ try { return new Date(value).toLocaleString('nl-NL'); } catch { return value || ''; } }
 
     async function loadTenants(){
@@ -51,6 +52,13 @@
       if (!response.ok) throw new Error(payload.message || payload.error || 'Kon tenants niet laden');
       tbody.innerHTML = '';
       for (const tenant of payload.tenants){
+        const actions = [];
+        if (tenant.payment_checkout_url && tenant.payment_status !== 'active') {
+          actions.push(`<a class="button secondary" target="_blank" rel="noreferrer" href="${tenant.payment_checkout_url}">Checkout</a>`);
+        }
+        if (tenant.payment_status !== 'active') {
+          actions.push(`<button type="button" data-active="${tenant.id}">Markeer actief</button>`);
+        }
         const tr = document.createElement('tr');
         tr.innerHTML = `
           <td><span class="pill">${shortTenant(tenant.id)}</span></td>
@@ -58,13 +66,15 @@
           <td>${tenant.plan}</td>
           <td><span class="pill">${tenant.status}</span></td>
           <td>${tenant.payment_status}</td>
+          <td>${tenant.payment_provider || '—'}</td>
+          <td><span class="muted">${shortRef(tenant.payment_reference)}</span></td>
           <td>${fmtDate(tenant.created_at)}</td>
-          <td>${tenant.payment_status === 'active' ? '—' : `<button type="button" data-active="${tenant.id}">Markeer actief</button>`}</td>
+          <td>${actions.length ? `<div style="display:flex;gap:8px;flex-wrap:wrap">${actions.join('')}</div>` : '—'}</td>
         `;
         tbody.appendChild(tr);
       }
       if (!payload.tenants.length){
-        tbody.innerHTML = '<tr><td colspan="7" class="muted">Nog geen tenants. Maak eerst een demo-tenant aan.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="9" class="muted">Nog geen tenants. Maak eerst een demo-tenant aan.</td></tr>';
       }
       message.className = 'notice good';
       message.textContent = `${payload.tenants.length} tenant(s) geladen.`;

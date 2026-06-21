@@ -8,7 +8,7 @@ It is intentionally small and dependency-light:
 - SQLite tenant/audit store for the MVP;
 - encrypted secret storage with `cryptography.Fernet`;
 - a worker template that loads only one tenant's secrets at runtime;
-- no payment provider integration yet.
+- first Mollie payment-session + webhook plumbing for test mode.
 
 ## Local setup
 
@@ -31,6 +31,9 @@ Create a local env file:
 cat > .env.local <<'EOF'
 export TRUSTED_AGENTS_MASTER_KEY='PASTE_GENERATED_KEY_HERE'
 export TRUSTED_AGENTS_DB='./data/onboarding.sqlite3'
+export TRUSTED_AGENTS_PAYMENT_PROVIDER='mollie'
+export TRUSTED_AGENTS_PUBLIC_BASE_URL='http://127.0.0.1:8088'
+export TRUSTED_AGENTS_MOLLIE_API_KEY='test_xxx'
 EOF
 chmod 600 .env.local
 ```
@@ -54,7 +57,7 @@ Health check:
 curl -s http://127.0.0.1:8088/health
 ```
 
-## Create a test onboarding intent
+## Create a test onboarding intent + Mollie checkout
 
 Use fake/test-only secrets locally:
 
@@ -74,7 +77,32 @@ curl -s -X POST http://127.0.0.1:8088/api/onboarding/intents \
   }'
 ```
 
-Then mark payment active manually for the MVP:
+Then create a Mollie checkout session for that tenant:
+
+```bash
+curl -s -X POST http://127.0.0.1:8088/api/payments/create-checkout \
+  -H 'Content-Type: application/json' \
+  -d '{"tenant_id":"tenant_xxx"}'
+```
+
+The response includes:
+
+- `checkout_url`
+- `payment_reference`
+- `payment_provider`
+- updated `payment_status`
+
+## Webhook flow
+
+Mollie will POST a payment `id` to the webhook. The backend then fetches the canonical payment status from Mollie and updates the tenant:
+
+```bash
+curl -s -X POST http://127.0.0.1:8088/api/payments/mollie/webhook \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d 'id=tr_xxx'
+```
+
+For local demo fallback you can still mark the payment active manually:
 
 ```bash
 curl -s -X POST http://127.0.0.1:8088/api/payments/manual-active \
@@ -94,7 +122,8 @@ The worker prints only booleans/status, never the loaded token values.
 
 Before this handles real customers:
 
-- replace the manual payment endpoint with Mollie/Stripe webhooks;
+- keep Mollie in **test mode** until the website/business profile is approval-ready;
+- replace one-off payment creation with the final subscription/recurring design you choose;
 - move the master key into a proper secret manager or SOPS/age workflow;
 - put the API behind HTTPS and an admin auth layer;
 - add rate limiting and CSRF/origin policy for browser forms;

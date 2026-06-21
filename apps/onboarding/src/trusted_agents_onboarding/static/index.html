@@ -23,11 +23,11 @@
       <section class="panel">
         <span class="eyebrow">Managed Agent demo</span>
         <h1>Deploy je eerste agent.</h1>
-        <p class="lead">Deze demo laat de kernflow zien: intakegegevens invullen, akkoord geven, tenant aanmaken en gevoelige tokens encrypted opslaan. Betaling en echte Telegram-reacties komen in de volgende stap.</p>
+        <p class="lead">Deze demo laat nu ook de eerste Mollie-stap zien: intakegegevens invullen, tenant aanmaken, gevoelige tokens encrypted opslaan en daarna een checkout-link genereren voor de testbetaling.</p>
         <div class="status-list">
           <div class="status-item"><span class="badge">1</span><p><strong>Intake</strong><br><span class="muted">Naam, e-mail, plan en technische tokens worden gecontroleerd.</span></p></div>
           <div class="status-item"><span class="badge">2</span><p><strong>Veilige opslag</strong><br><span class="muted">Secrets worden encrypted opgeslagen; de admin ziet geen tokenwaarden.</span></p></div>
-          <div class="status-item"><span class="badge">3</span><p><strong>Provisioning</strong><br><span class="muted">Na payment-active kan een worker per tenant worden gestart.</span></p></div>
+          <div class="status-item"><span class="badge">3</span><p><strong>Checkout</strong><br><span class="muted">De backend maakt een Mollie-checkout aan voor de gekozen planprijs.</span></p></div>
         </div>
       </section>
 
@@ -38,7 +38,7 @@
             <div class="field"><label for="customer_name">Naam</label><input id="customer_name" name="customer_name" autocomplete="name" required value="Demo Gebruiker"></div>
             <div class="field"><label for="company_name">Bedrijf</label><input id="company_name" name="company_name" autocomplete="organization" required value="Demo BV"></div>
             <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" required value="demo@example.nl"></div>
-            <div class="field"><label for="plan">Plan</label><select id="plan" name="plan"><option value="starter">Managed Agent — €29/mnd</option><option value="dedicated">Private Agent Server</option><option value="bring-your-own">Eigen cloud of Mac</option></select></div>
+            <div class="field"><label for="plan">Plan</label><select id="plan" name="plan"><option value="starter">Managed Agent — €29/mnd</option><option value="dedicated">Private Agent Server — vanaf €79/mnd</option><option value="bring-your-own">Bring your own — setup & beheer</option></select></div>
             <div class="field"><label for="model_provider">Modelprovider</label><select id="model_provider" name="model_provider"><option value="anthropic">Anthropic / Claude</option><option value="openrouter">OpenRouter</option><option value="openai-codex">OpenAI Codex OAuth</option><option value="other">Anders</option></select></div>
             <div class="field"><label for="telegram_bot_token">Telegram bot-token</label><input id="telegram_bot_token" name="telegram_bot_token" required value="DEMO_TELEGRAM_TOKEN"></div>
             <div class="field full"><label for="model_api_key">Model API-key</label><input id="model_api_key" name="model_api_key" value="DEMO_MODEL_KEY"></div>
@@ -51,12 +51,40 @@
       </section>
     </main>
 
-    <p class="footer">Demo-only: gebruik hier geen echte klanttokens. Voor echte onboarding voegen we payment webhooks, HTTPS en admin-auth toe.</p>
+    <p class="footer">Demo-only: gebruik hier geen echte klanttokens. Voor echte onboarding voegen we Mollie testmode, HTTPS en admin-auth toe.</p>
   </div>
 
   <script>
     const form = document.querySelector('#onboarding-form');
     const result = document.querySelector('#result');
+
+    function renderCheckoutResult(payload){
+      const checkoutAction = payload.checkout_url
+        ? `<a class="button secondary" target="_blank" rel="noreferrer" href="${payload.checkout_url}">Open Mollie test-checkout</a>`
+        : '';
+      return `
+        <strong>Tenant aangemaakt.</strong><br>
+        Status: ${payload.status}<br>
+        Payment: ${payload.payment_status}<br>
+        <span class="muted">Tenant-ID: ${payload.tenant_id}</span>
+        <div class="actions" style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px">
+          ${checkoutAction}
+          <a class="button secondary" href="/admin">Bekijk adminoverzicht</a>
+        </div>
+      `;
+    }
+
+    async function createCheckout(tenantId){
+      const response = await fetch('/api/payments/create-checkout', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({tenant_id: tenantId})
+      });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.message || payload.error || 'Kon checkout niet aanmaken');
+      return payload;
+    }
+
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
       result.hidden = false;
@@ -73,8 +101,11 @@
         });
         const payload = await response.json();
         if (!response.ok) throw new Error(payload.message || payload.error || 'Onbekende fout');
+        result.className = 'notice';
+        result.textContent = 'Tenant aangemaakt. Mollie-checkout wordt voorbereid...';
+        const checkoutPayload = await createCheckout(payload.tenant_id);
         result.className = 'notice good';
-        result.innerHTML = `<strong>Tenant aangemaakt.</strong><br>Status: ${payload.status}<br>Payment: ${payload.payment_status}<br><span class="muted">Tenant-ID: ${payload.tenant_id}</span><div class="actions"><a class="button secondary" href="/admin">Bekijk adminoverzicht</a></div>`;
+        result.innerHTML = renderCheckoutResult(checkoutPayload);
       } catch (error) {
         result.className = 'notice bad';
         result.textContent = `Niet gelukt: ${error.message}`;
