@@ -16,6 +16,9 @@ dev = [
 testpaths = ["tests"]
 pythonpath = ["src"]
 
+[tool.setuptools.packages.find]
+where = ["src"]
+
 [tool.setuptools.package-data]
 trusted_agents_onboarding = ["static/*.html", "static/*.css"]
 
