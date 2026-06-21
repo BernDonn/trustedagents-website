@@ -42,6 +42,12 @@ source .env.local
 python -m trusted_agents_onboarding.app
 ```
 
+Open the demo in a browser at the local backend root. The backend serves:
+
+- `/demo` — onboardingformulier
+- `/admin` — Bernard adminoverzicht
+- `/health` — health check
+
 Health check:
 
 ```bash

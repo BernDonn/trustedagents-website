@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import mimetypes
 import os
 from dataclasses import asdict
 from http import HTTPStatus
@@ -36,6 +37,28 @@ class OnboardingHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(body)
 
+    def _static_root(self) -> Path:
+        return Path(__file__).resolve().parent / "static"
+
+    def _send_static(self, relative_path: str) -> bool:
+        root = self._static_root()
+        requested = (root / relative_path).resolve()
+        try:
+            requested.relative_to(root.resolve())
+        except ValueError:
+            return False
+        if not requested.is_file():
+            return False
+        content_type = mimetypes.guess_type(requested.name)[0] or "application/octet-stream"
+        body = requested.read_bytes()
+        self.send_response(HTTPStatus.OK.value)
+        self.send_header("Content-Type", content_type)
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+        return True
+
     def _read_json(self) -> dict:
         length = int(self.headers.get("Content-Length", "0"))
         if length > 100_000:
@@ -51,6 +74,15 @@ class OnboardingHandler(BaseHTTPRequestHandler):
 
     def do_GET(self) -> None:  # noqa: N802
         path = urlparse(self.path).path
+        if path in {"/", "/demo"}:
+            if self._send_static("index.html"):
+                return
+        if path == "/admin":
+            if self._send_static("admin.html"):
+                return
+        if path.startswith("/static/"):
+            if self._send_static(path.removeprefix("/static/")):
+                return
         if path == "/health":
             self._json(HTTPStatus.OK, {"ok": True, "service": "trusted-agents-onboarding"})
             return

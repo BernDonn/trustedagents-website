@@ -8,6 +8,14 @@ from trusted_agents_onboarding.crypto import MASTER_KEY_ENV, SecretBox, generate
 from trusted_agents_onboarding.models import OnboardingRequest, ValidationError
 from trusted_agents_onboarding.store import OnboardingStore
 from trusted_agents_onboarding.worker import run_once
+from trusted_agents_onboarding.app import OnboardingHandler
+
+
+def test_static_pages_are_present():
+    root = OnboardingHandler._static_root.__get__(object(), OnboardingHandler)()
+    assert (root / "index.html").is_file()
+    assert (root / "admin.html").is_file()
+    assert (root / "styles.css").is_file()
 
 
 def test_onboarding_stores_encrypted_secrets(tmp_path, monkeypatch):
