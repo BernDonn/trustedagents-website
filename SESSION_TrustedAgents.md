@@ -145,6 +145,32 @@ Met onder andere:
 - staging en productie scheiden
 - zwaardere klanten later eventueel dedicated
 
+## Mollie-status (juni 2026)
+- In `apps/onboarding/` is de eerste echte Mollie-integratiebasis toegevoegd:
+  - payment module
+  - checkout endpoint
+  - Mollie webhook endpoint
+  - opslag van `payment_provider`, `payment_reference` en `payment_checkout_url`
+  - onboarding/admin UI aangepast voor checkout-status
+- Lokaal toegevoegd:
+  - `.env.local.example`
+  - bijgewerkte `run_demo.sh` met placeholders en waarschuwingen voor ontbrekende publieke URL/API-key
+- Testresultaat bevestigd:
+  - Mollie **Test API key** aangemaakt in het Mollie dashboard onder **Developers**
+  - lokale onboarding-app kon succesvol een checkout aanmaken
+  - gebruiker kwam daadwerkelijk op de **Mollie test iDEAL-pagina** terecht
+- Wat dit al bewijst:
+  - onboarding-app → Mollie API werkt
+  - checkout-creatie voor het gekozen plan werkt
+  - basis voor betaalflow staat
+- Wat bewust nog is uitgesteld:
+  - definitieve `TRUSTED_AGENTS_PUBLIC_BASE_URL`
+  - webhook end-to-end via publieke tunnel of definitief domein
+  - definitief Mollie websiteprofiel dat inhoudelijk matcht met Trusted Agents
+- Tijdelijke tussenoplossing tijdens test:
+  - in Mollie is voor account/profile setup tijdelijk `skyniceland.nl` gebruikt als website
+  - dat is acceptabel voor vroege test/setup, maar voor livegang moet het profiel/domein aansluiten op Trusted Agents
+
 ## Security- en werkafspraken
 - Secrets nooit in chat, repo, screenshots of logs laten terugkomen
 - Tokens altijd behandelen als geheim, ook als tijdelijk
