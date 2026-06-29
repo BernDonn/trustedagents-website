@@ -115,10 +115,36 @@
     .footer-cta{background:linear-gradient(135deg, #143f2b, #0c1d16);color:#fff;border-radius:48px;padding:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;overflow:hidden;position:relative}
     .footer-cta:after{content:"Trusted Agents";position:absolute;right:-18px;bottom:-22px;font-size:92px;font-weight:900;letter-spacing:-.09em;color:rgba(255,255,255,.05)}
     .footer-cta .muted{color:#d9e3dc}
+    .order-layout{display:grid;grid-template-columns:.42fr .58fr;gap:26px;margin-top:32px;align-items:start}
+    .order-steps{display:grid;gap:14px}
+    .order-step{display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start;color:#223127}
+    .order-step .badge{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:rgba(255,250,241,.88);font-weight:850;color:var(--green)}
+    .order-step strong{display:block;font-size:26px;letter-spacing:-.03em;margin-bottom:4px}
+    .order-price{margin-top:16px;background:#10291f;color:#fff;border-radius:30px;padding:28px;box-shadow:var(--shadow)}
+    .order-price .muted{color:#d9e3dc}
+    .order-card{background:rgba(255,250,241,.95);border:1px solid var(--line);border-radius:34px;padding:36px;box-shadow:0 14px 40px rgba(20,35,24,.06)}
+    .order-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .field{display:grid;gap:8px}
+    .field.full{grid-column:1/-1}
+    .field label{font-size:15px;font-weight:800;color:#243228}
+    .field input{width:100%;border:1px solid var(--line);border-radius:18px;padding:16px 18px;background:#fff;font:inherit;color:var(--ink)}
+    .field input:focus{outline:2px solid rgba(35,86,60,.18);border-color:var(--green2)}
+    .agent-choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .agent-option{border:2px solid var(--line);background:#fff;border-radius:24px;padding:18px;display:grid;gap:8px;cursor:pointer;text-align:left;font:inherit;color:var(--ink)}
+    .agent-option strong{font-size:18px;letter-spacing:-.025em}
+    .agent-option.active{border-color:#1db9d5;background:#eef9fc;box-shadow:0 8px 24px rgba(29,185,213,.12)}
+    .segment-switch{display:inline-flex;gap:6px;padding:6px;border:1px solid var(--line);background:#f3ebdd;border-radius:999px;flex-wrap:wrap}
+    .segment-switch button{border:0;background:transparent;padding:11px 16px;border-radius:999px;font:inherit;font-weight:800;color:#607067;cursor:pointer}
+    .segment-switch button.active{background:#fff;color:var(--ink);box-shadow:0 4px 12px rgba(16,21,18,.08)}
+    .segment-switch button.disabled{color:#8ea19a;cursor:not-allowed}
+    .check{display:flex;gap:12px;align-items:flex-start;color:var(--muted);font-size:15px;line-height:1.55}
+    .check input{margin-top:4px}
+    .notice{margin-top:18px;background:#f0e6d6;border:1px solid var(--line);border-radius:22px;padding:18px;color:#304034;line-height:1.6}
+    .notice strong{display:block;margin-bottom:8px;color:#17240f}
     footer{padding:34px 24px;color:#626961;border-top:1px solid var(--line)}
     .foot-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     @media(max-width:1100px){.nav-links{display:none}}
-    @media(max-width:900px){.hero,.two-col,.proof,.footer-cta{grid-template-columns:1fr}.products,.grid,.usecases,.deploy-grid,.provider-grid,.legal-grid{grid-template-columns:1fr}.hero{min-height:auto}.product.featured{transform:none}}
+    @media(max-width:900px){.hero,.two-col,.proof,.footer-cta,.order-layout{grid-template-columns:1fr}.products,.grid,.usecases,.deploy-grid,.provider-grid,.legal-grid,.order-grid,.agent-choice-grid{grid-template-columns:1fr}.hero{min-height:auto}.product.featured{transform:none}.order-card{padding:26px}}
   </style>
 </head>
 <body>
@@ -268,8 +294,8 @@
           <ul><li>E-mailadres, agentkeuze en kanaalselectie</li><li>Telegram bot-token + AI-sleutel of OAuth-route</li><li>iDEAL/kaart-checkout en automatische activatie</li><li>Eerste welkomstbericht + menselijke goedkeuringen ingesteld</li></ul>
           <div class="price">€29 <span>/ maand per bot</span></div>
           <div class="hero-actions" style="margin:4px 0 0">
-            <a class="button light" href="#activate-hermes">Deploy Hermes</a>
-            <a class="button secondary" href="#activate-openclaw">Deploy OpenClaw</a>
+            <a class="button light" href="#bestel-agent" data-onboarding-agent="hermes">Deploy Hermes</a>
+            <a class="button secondary" href="#bestel-agent" data-onboarding-agent="openclaw">Deploy OpenClaw</a>
           </div>
         </article>
         <article class="product">
@@ -312,10 +338,10 @@
           </div>
           <div class="flow-note" style="margin-top:18px"><strong>Nog bewust begeleid:</strong> use-case aanscherpen, guardrails instellen, prompts/skills finetunen en bepalen welke acties altijd menselijke goedkeuring nodig hebben.</div>
           <div class="hero-actions" style="margin-top:22px">
-            <a class="button light" id="activate-hermes" href="mailto:info@trustedagents.nl?subject=Deploy%20Hermes%20via%20Trusted%20Agents&body=Ik%20wil%20graag%20Hermes%20activeren%20via%20de%20%E2%82%AC29-flow.%0A%0A%5B%20%5D%20Telegram%0A%5B%20%5D%20WhatsApp%0A%0AGewenste%20workflow%3A">Deploy Hermes</a>
-            <a class="button secondary" id="activate-openclaw" href="mailto:info@trustedagents.nl?subject=Deploy%20OpenClaw%20via%20Trusted%20Agents&body=Ik%20wil%20graag%20OpenClaw%20activeren%20via%20de%20%E2%82%AC29-flow.%0A%0A%5B%20%5D%20Telegram%0A%5B%20%5D%20WhatsApp%0A%0AGewenste%20workflow%3A">Deploy OpenClaw</a>
+            <a class="button light" id="activate-hermes" href="#bestel-agent" data-onboarding-agent="hermes">Deploy Hermes</a>
+            <a class="button secondary" id="activate-openclaw" href="#bestel-agent" data-onboarding-agent="openclaw">Deploy OpenClaw</a>
           </div>
-          <p class="muted" style="margin-top:12px">Op dit moment starten deze knoppen de activatie via mail met vooringevulde keuze voor Hermes of OpenClaw. De self-service onboarding en checkout-flow is de volgende stap.</p>
+          <p class="muted" style="margin-top:12px">Deze knoppen openen hieronder direct het intakeformulier, met Hermes of OpenClaw alvast geselecteerd. Betaling en activatie volgen pas na het invullen van de gegevens.</p>
         </article>
         <article class="deploy-panel">
           <h3>Telegram + WhatsApp flow</h3>
@@ -425,14 +451,86 @@
     <section class="section" id="contact">
       <div class="footer-cta">
         <div>
-          <h2>Klaar om je eerste agent te deployen?</h2>
-          <p class="muted">We starten klein: één proces, één agent, één kanaal , Telegram of WhatsApp. Daarna meten we wat het oplevert en beslissen we of opschalen logisch is.</p>
+          <h2>Klaar om je eerste MKB-agent te starten?</h2>
+          <p class="muted">Begin niet met betalen, maar met invullen. Kies eerst Hermes of OpenClaw, vul je gegevens in en bepaal pas daarna hoe de activatie verdergaat.</p>
         </div>
         <div style="display:grid;gap:14px;justify-items:start;z-index:1">
-          <a class="button light" href="mailto:info@trustedagents.nl?subject=Deploy%20mijn%20Trusted%20Agent">Deploy je agent</a>
+          <a class="button light" href="#bestel-agent" data-onboarding-agent="hermes">Deploy Hermes</a>
+          <a class="button secondary" style="color:#fff;border-color:rgba(255,255,255,.5)" href="#bestel-agent" data-onboarding-agent="openclaw">Deploy OpenClaw</a>
           <a class="button secondary" style="color:#fff;border-color:rgba(255,255,255,.5)" href="https://www.bernarddonners-ai.nl">Lees Bernards AI-visie</a>
-          <p class="muted" style="font-size:14px">Altijd met menselijke goedkeuring, duidelijke datagrenzen en verantwoord gebruik.</p>
+          <p class="muted" style="font-size:14px">Altijd met menselijke goedkeuring, duidelijke datagrenzen en verantwoord gebruik. Eerst gegevens, dan pas bevestiging, betaling en activatie.</p>
         </div>
+      </div>
+    </section>
+    <section class="section" id="bestel-agent">
+      <div class="order-layout">
+        <div>
+          <div class="order-steps">
+            <div class="order-step"><span class="badge">1</span><div><strong>Vul je gegevens in</strong><p class="muted">Naam, e-mailadres en bedrijfsnaam voor de eerste intake.</p></div></div>
+            <div class="order-step"><span class="badge">2</span><div><strong>Kies Hermes of OpenClaw</strong><p class="muted">Bepaal welk type agent je wilt starten in de €29-route.</p></div></div>
+            <div class="order-step"><span class="badge">3</span><div><strong>Koppel je kanaal</strong><p class="muted">Telegram eerst, WhatsApp volgt later als aparte route.</p></div></div>
+            <div class="order-step"><span class="badge">4</span><div><strong>Voeg token en modeltoegang toe</strong><p class="muted">Bot-token en modelroute gaan pas daarna de activatieflow in.</p></div></div>
+            <div class="order-step"><span class="badge">5</span><div><strong>Daarna pas bevestiging en activatie</strong><p class="muted">Pas na deze intake volgen akkoord, betaling en eerste botinstallatie.</p></div></div>
+          </div>
+          <div class="order-price">
+            <div class="eyebrow" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:var(--lime)">€29 / maand per bot</div>
+            <div class="price" style="margin-top:18px">€29 <span>/ maand per agent</span></div>
+            <p class="muted" style="margin-top:14px">Geen grote startkosten, direct opzegbaar en eerst je gegevens verzamelen zoals in de Trustable-flow.</p>
+          </div>
+        </div>
+        <article class="order-card">
+          <div class="eyebrow">Bestel je agent</div>
+          <h2>Start met je intake, niet met afrekenen</h2>
+          <p class="lead">Kies hieronder Hermes of OpenClaw en vul de gegevens in die nodig zijn voor de eerste activatiestap. Daarna volgt pas bevestiging, betaling en installatie.</p>
+          <form id="order-form" style="display:grid;gap:18px;margin-top:28px">
+            <div class="field full">
+              <label for="order-email">E-mailadres</label>
+              <input id="order-email" name="email" type="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="order-name">Naam</label>
+              <input id="order-name" name="customer_name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="order-company">Bedrijf</label>
+              <input id="order-company" name="company_name" autocomplete="organization" required>
+            </div>
+            <div class="field full">
+              <label>Kies je AI Agent</label>
+              <input type="hidden" name="agent" id="order-agent" value="hermes">
+              <div class="agent-choice-grid">
+                <button type="button" class="agent-option active" data-agent-option="hermes"><strong>Hermes Agent</strong><span class="muted">Managed agent voor rustige, beheersbare workflowautomatisering.</span></button>
+                <button type="button" class="agent-option" data-agent-option="openclaw"><strong>OpenClaw Bot</strong><span class="muted">Open-source agentlaag voor Telegram-first intake en activering.</span></button>
+              </div>
+            </div>
+            <div class="field full">
+              <label>Telegram</label>
+              <input type="hidden" name="channel" id="order-channel" value="telegram">
+              <div class="segment-switch" aria-label="Kanaalkeuze">
+                <button type="button" class="active" data-channel-option="telegram">Telegram</button>
+                <button type="button" class="disabled" disabled>WhatsApp binnenkort</button>
+              </div>
+            </div>
+            <div class="field full">
+              <label for="order-telegram-token">Telegram Bot Token</label>
+              <input id="order-telegram-token" name="telegram_bot_token" required>
+            </div>
+            <div class="field full">
+              <label for="order-model-key">Anthropic API-sleutel</label>
+              <input id="order-model-key" name="model_api_key" required>
+            </div>
+            <div class="field full">
+              <label for="order-voucher">Vouchercode</label>
+              <input id="order-voucher" name="voucher_code">
+            </div>
+            <label class="check"><input type="checkbox" name="accepted_terms" required> <span>Ik heb de voorwaarden en het privacybeleid gelezen.</span></label>
+            <label class="check"><input type="checkbox" name="accepted_responsibility" required> <span>Ik begrijp dat ik verantwoordelijk blijf voor de configuratie en antwoorden van mijn bot en gevoelige acties eerst moet goedkeuren.</span></label>
+            <div class="hero-actions" style="margin:0">
+              <button type="submit" class="button light">Maak intake klaar</button>
+            </div>
+            <div id="order-result" class="notice" hidden></div>
+          </form>
+        </article>
       </div>
     </section>
     <section class="section" id="juridisch">
@@ -643,7 +741,6 @@
         "use-case aanscherpen, guardrails instellen, prompts/skills finetunen en bepalen welke acties altijd menselijke goedkeuring nodig hebben.": "sharpening the use case, setting guardrails, fine-tuning prompts/skills and deciding which actions always require human approval.",
         "Deploy Hermes": "Deploy Hermes",
         "Deploy OpenClaw": "Deploy OpenClaw",
-        "Op dit moment starten deze knoppen de activatie via mail met vooringevulde keuze voor Hermes of OpenClaw. De self-service onboarding en checkout-flow is de volgende stap.": "At this moment these buttons start activation by email with the choice for Hermes or OpenClaw prefilled. The self-service onboarding and checkout flow is the next step.",
         "Telegram + WhatsApp flow": "Telegram + WhatsApp flow",
         "De agent leeft in het kanaal waar de gebruiker al zit. Telegram is ideaal voor snelle start en interne teams; WhatsApp is handig voor gebruikers die geen nieuwe tool willen leren.": "The agent lives in the channel where the user already is. Telegram is ideal for quick starts and internal teams; WhatsApp is useful for users who do not want to learn a new tool.",
         "Jij · WhatsApp": "You · WhatsApp",
@@ -725,10 +822,50 @@
         "Wanneer AI met persoonlijke gegevens, kwetsbare context of gevoelige informatie werkt, moet het niet alleen handig zijn. Het moet uitlegbaar, beheersbaar en begrensd zijn.": "When AI works with personal data, vulnerable contexts or sensitive information, it must not only be useful. It must be explainable, controllable and bounded.",
         "“Niet alles wat technologisch kan is ook maatschappelijk gewenst.”": "“Not everything that is technologically possible is socially desirable.”",
         ", lijn vanuit bernarddonners-ai.nl, vertaald naar veilige zakelijke toepassing": ", line from bernarddonners-ai.nl, translated into safe business application",
-        "Klaar om je eerste agent te deployen?": "Ready to deploy your first agent?",
-        "We starten klein: één proces, één agent, één kanaal , Telegram of WhatsApp. Daarna meten we wat het oplevert en beslissen we of opschalen logisch is.": "We start small: one process, one agent, one channel , Telegram or WhatsApp. Then we measure the value and decide whether scaling makes sense.",
+        "Klaar om je eerste MKB-agent te starten?": "Ready to start your first SMB agent?",
+        "Begin niet met betalen, maar met invullen. Kies eerst Hermes of OpenClaw, vul je gegevens in en bepaal pas daarna hoe de activatie verdergaat.": "Do not start with payment, start with filling in the details. Choose Hermes or OpenClaw first, enter your information and only then decide how activation continues.",
         "Lees Bernards AI-visie": "Read Bernard's AI vision",
-        "Altijd met menselijke goedkeuring, duidelijke datagrenzen en verantwoord gebruik.": "Always with human approval, clear data boundaries and responsible use.",
+        "Altijd met menselijke goedkeuring, duidelijke datagrenzen en verantwoord gebruik. Eerst gegevens, dan pas bevestiging, betaling en activatie.": "Always with human approval, clear data boundaries and responsible use. First the details, then confirmation, payment and activation.",
+        "Deze knoppen openen hieronder direct het intakeformulier, met Hermes of OpenClaw alvast geselecteerd. Betaling en activatie volgen pas na het invullen van de gegevens.": "These buttons open the intake form directly below, with Hermes or OpenClaw already selected. Payment and activation only follow after the details are filled in.",
+        "Vul je gegevens in": "Enter your details",
+        "Naam, e-mailadres en bedrijfsnaam voor de eerste intake.": "Name, email address and company name for the first intake.",
+        "Kies Hermes of OpenClaw": "Choose Hermes or OpenClaw",
+        "Bepaal welk type agent je wilt starten in de €29-route.": "Decide which type of agent you want to start in the €29 route.",
+        "Koppel je kanaal": "Connect your channel",
+        "Telegram eerst, WhatsApp volgt later als aparte route.": "Telegram first, WhatsApp will follow later as a separate route.",
+        "Voeg token en modeltoegang toe": "Add token and model access",
+        "Bot-token en modelroute gaan pas daarna de activatieflow in.": "Bot token and model route only enter the activation flow after that.",
+        "Daarna pas bevestiging en activatie": "Only then confirmation and activation",
+        "Pas na deze intake volgen akkoord, betaling en eerste botinstallatie.": "Only after this intake do approval, payment and first bot installation follow.",
+        "€29 / maand per bot": "€29 / month per bot",
+        "€29 / maand per agent": "€29 / month per agent",
+        "Geen grote startkosten, direct opzegbaar en eerst je gegevens verzamelen zoals in de Trustable-flow.": "No large upfront costs, cancellable right away, and first collect your details like in the Trustable flow.",
+        "Bestel je agent": "Order your agent",
+        "Start met je intake, niet met afrekenen": "Start with your intake, not with checkout",
+        "Kies hieronder Hermes of OpenClaw en vul de gegevens in die nodig zijn voor de eerste activatiestap. Daarna volgt pas bevestiging, betaling en installatie.": "Choose Hermes or OpenClaw below and enter the details needed for the first activation step. Only after that do confirmation, payment and installation follow.",
+        "E-mailadres": "Email address",
+        "Naam": "Name",
+        "Bedrijf": "Company",
+        "Kies je AI Agent": "Choose your AI Agent",
+        "Managed agent voor rustige, beheersbare workflowautomatisering.": "Managed agent for calm, controllable workflow automation.",
+        "Open-source agentlaag voor Telegram-first intake en activering.": "Open-source agent layer for Telegram-first intake and activation.",
+        "Telegram": "Telegram",
+        "WhatsApp binnenkort": "WhatsApp coming soon",
+        "Telegram Bot Token": "Telegram Bot Token",
+        "Anthropic API-sleutel": "Anthropic API key",
+        "Vouchercode": "Voucher code",
+        "Ik heb de voorwaarden en het privacybeleid gelezen.": "I have read the terms and the privacy policy.",
+        "Ik begrijp dat ik verantwoordelijk blijf voor de configuratie en antwoorden van mijn bot en gevoelige acties eerst moet goedkeuren.": "I understand that I remain responsible for my bot's configuration and answers and that I must approve sensitive actions first.",
+        "Maak intake klaar": "Prepare intake",
+        "Hermes Agent": "Hermes Agent",
+        "OpenClaw Bot": "OpenClaw Bot",
+        "Gegevens klaar voor activatie.": "Details ready for activation.",
+        "Controleer de samenvatting hieronder en open daarna de intake-mail met alle ingevulde gegevens.": "Check the summary below and then open the intake email with all completed details.",
+        "Open intake-mail": "Open intake email",
+        "Gekozen agent": "Selected agent",
+        "Kanaal": "Channel",
+        "Modelroute": "Model route",
+        "Eerst invullen, dan pas bevestiging en betaling.": "First fill in the details, then confirmation and payment.",
         "Voorwaarden & privacy": "Terms & privacy",
         "Duidelijke afspraken voor verantwoord gebruik": "Clear agreements for responsible use",
         "Trusted Agents werkt met heldere grenzen: AI ondersteunt, de gebruiker houdt controle en gevoelige acties vragen expliciete menselijke goedkeuring.": "Trusted Agents works with clear boundaries: AI supports, the user remains in control and sensitive actions require explicit human approval.",
@@ -806,6 +943,74 @@
     document.querySelectorAll('[data-lang-button]').forEach(button => {
       button.addEventListener('click', () => setLanguage(button.dataset.langButton));
     });
+
+    const orderForm = document.querySelector('#order-form');
+    const orderResult = document.querySelector('#order-result');
+    const orderAgentInput = document.querySelector('#order-agent');
+    const orderChannelInput = document.querySelector('#order-channel');
+
+    function setSelectedAgent(agent){
+      if(!orderAgentInput) return;
+      orderAgentInput.value = agent;
+      document.querySelectorAll('[data-agent-option]').forEach(button => {
+        button.classList.toggle('active', button.dataset.agentOption === agent);
+      });
+    }
+
+    function setSelectedChannel(channel){
+      if(!orderChannelInput) return;
+      orderChannelInput.value = channel;
+      document.querySelectorAll('[data-channel-option]').forEach(button => {
+        button.classList.toggle('active', button.dataset.channelOption === channel);
+      });
+    }
+
+    document.querySelectorAll('[data-onboarding-agent]').forEach(link => {
+      link.addEventListener('click', () => setSelectedAgent(link.dataset.onboardingAgent || 'hermes'));
+    });
+
+    document.querySelectorAll('[data-agent-option]').forEach(button => {
+      button.addEventListener('click', () => setSelectedAgent(button.dataset.agentOption || 'hermes'));
+    });
+
+    document.querySelectorAll('[data-channel-option]').forEach(button => {
+      button.addEventListener('click', () => setSelectedChannel(button.dataset.channelOption || 'telegram'));
+    });
+
+    if(orderForm){
+      orderForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const data = Object.fromEntries(new FormData(orderForm).entries());
+        const agentLabel = data.agent === 'openclaw' ? 'OpenClaw Bot' : 'Hermes Agent';
+        const lines = [
+          'Ik wil graag een agent starten via de €29-route.',
+          '',
+          `Agent: ${agentLabel}`,
+          `Kanaal: ${data.channel || 'telegram'}`,
+          `Naam: ${data.customer_name || ''}`,
+          `Bedrijf: ${data.company_name || ''}`,
+          `E-mail: ${data.email || ''}`,
+          `Telegram Bot Token: ${data.telegram_bot_token || ''}`,
+          `Anthropic API-sleutel: ${data.model_api_key || ''}`,
+          `Vouchercode: ${data.voucher_code || '-'}`,
+          '',
+          'Ik heb de voorwaarden gelezen en begrijp dat gevoelige acties eerst akkoord nodig hebben.'
+        ];
+        const subject = encodeURIComponent(`${agentLabel} intake via Trusted Agents`);
+        const body = encodeURIComponent(lines.join('\n'));
+        const href = `mailto:info@trustedagents.nl?subject=${subject}&body=${body}`;
+        orderResult.hidden = false;
+        orderResult.innerHTML = `
+          <strong>Gegevens klaar voor activatie.</strong>
+          Controleer de samenvatting hieronder en open daarna de intake-mail met alle ingevulde gegevens.<br><br>
+          <span><strong>Gekozen agent:</strong> ${agentLabel}</span><br>
+          <span><strong>Kanaal:</strong> ${data.channel || 'telegram'}</span><br>
+          <span><strong>Modelroute:</strong> Anthropic</span><br><br>
+          <a class="button secondary" href="${href}">Open intake-mail</a>
+          <div style="margin-top:12px">Eerst invullen, dan pas bevestiging en betaling.</div>
+        `;
+      });
+    }
 
     setLanguage(localStorage.getItem('trustedAgentsLang') || 'nl');
   </script>
