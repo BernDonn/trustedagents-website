@@ -114,7 +114,13 @@
     .proof h2{color:#fff}.proof .muted{color:#dce7dc}.quote{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:22px;border-radius:26px;font-size:22px;line-height:1.35;letter-spacing:-.03em}
     .footer-cta{background:linear-gradient(135deg, #143f2b, #0c1d16);color:#fff;border-radius:48px;padding:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;overflow:hidden;position:relative}
     .footer-cta:after{content:"Trusted Agents";position:absolute;right:-18px;bottom:-22px;font-size:92px;font-weight:900;letter-spacing:-.09em;color:rgba(255,255,255,.05)}
+    .footer-cta > *{position:relative;z-index:2}
     .footer-cta .muted{color:#d9e3dc}
+    .footer-cta-actions{display:grid;gap:14px;justify-items:start;z-index:2}
+    .footer-cta-actions .button{width:100%;justify-content:center;min-height:54px;padding-inline:26px;border-width:1.5px;box-shadow:0 10px 26px rgba(0,0,0,.16)}
+    .footer-cta-actions .button.light{background:#d7f268;color:#14211a;border-color:#d7f268}
+    .footer-cta-actions .button.secondary{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.55)}
+    .footer-cta-actions .button.secondary:hover{background:rgba(255,255,255,.22)}
     .order-layout{display:grid;grid-template-columns:.42fr .58fr;gap:26px;margin-top:32px;align-items:start}
     .order-steps{display:grid;gap:14px}
     .order-step{display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start;color:#223127}
@@ -144,7 +150,7 @@
     footer{padding:34px 24px;color:#626961;border-top:1px solid var(--line)}
     .foot-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     @media(max-width:1100px){.nav-links{display:none}}
-    @media(max-width:900px){.hero,.two-col,.proof,.footer-cta,.order-layout{grid-template-columns:1fr}.products,.grid,.usecases,.deploy-grid,.provider-grid,.legal-grid,.order-grid,.agent-choice-grid{grid-template-columns:1fr}.hero{min-height:auto}.product.featured{transform:none}.order-card{padding:26px}}
+    @media(max-width:900px){.hero,.two-col,.proof,.footer-cta,.order-layout{grid-template-columns:1fr}.products,.grid,.usecases,.deploy-grid,.provider-grid,.legal-grid,.order-grid,.agent-choice-grid{grid-template-columns:1fr}.hero{min-height:auto}.product.featured{transform:none}.order-card{padding:26px}.footer-cta-actions{justify-items:stretch}.footer-cta:after{font-size:54px;right:-10px;bottom:-12px}}
   </style>
 </head>
 <body>
@@ -454,10 +460,10 @@
           <h2>Klaar om je eerste MKB-agent te starten?</h2>
           <p class="muted">Begin niet met betalen, maar met invullen. Kies eerst Hermes of OpenClaw, vul je gegevens in en bepaal pas daarna hoe de activatie verdergaat.</p>
         </div>
-        <div style="display:grid;gap:14px;justify-items:start;z-index:1">
+        <div class="footer-cta-actions">
           <a class="button light" href="#bestel-agent" data-onboarding-agent="hermes">Deploy Hermes</a>
-          <a class="button secondary" style="color:#fff;border-color:rgba(255,255,255,.5)" href="#bestel-agent" data-onboarding-agent="openclaw">Deploy OpenClaw</a>
-          <a class="button secondary" style="color:#fff;border-color:rgba(255,255,255,.5)" href="https://www.bernarddonners-ai.nl">Lees Bernards AI-visie</a>
+          <a class="button secondary" href="#bestel-agent" data-onboarding-agent="openclaw">Deploy OpenClaw</a>
+          <a class="button secondary" href="https://www.bernarddonners-ai.nl">Lees Bernards AI-visie</a>
           <p class="muted" style="font-size:14px">Altijd met menselijke goedkeuring, duidelijke datagrenzen en verantwoord gebruik. Eerst gegevens, dan pas bevestiging, betaling en activatie.</p>
         </div>
       </div>
