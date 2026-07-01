@@ -78,6 +78,27 @@
     .statement{font-size:clamp(28px,4vw,50px);line-height:1.08;letter-spacing:-.04em;font-weight:800}
     .muted{color:var(--muted);line-height:1.65;font-size:17px;letter-spacing:-.003em}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:32px}
+    .trust-stack{background:linear-gradient(180deg,#163f2b 0%, #10291f 100%);color:#eef2e8;border-radius:38px;padding:38px 36px;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow);margin-top:18px}
+    .trust-stack .eyebrow{background:transparent;border:0;padding:0;color:var(--lime);letter-spacing:.14em}
+    .trust-stack h2{color:#fffaf1;font-size:clamp(30px,3.8vw,46px);font-weight:700;line-height:1.05;letter-spacing:-.03em;max-width:560px;margin:10px 0 14px}
+    .trust-stack .lead{color:#dce7dc;max-width:540px;margin-top:0;font-size:17px;line-height:1.55;letter-spacing:-.003em}
+    .trust-layout{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;margin-top:24px;align-items:start}
+    .trust-list{display:grid;gap:14px}
+    .trust-item{display:grid;grid-template-columns:56px 1fr 34px;gap:14px;align-items:start;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:16px 18px;color:#e4ede3}
+    .trust-icon{width:40px;height:40px;border-radius:14px;display:grid;place-items:center;background:rgba(215,242,104,.14);color:var(--lime);font-size:20px;font-weight:800}
+    .trust-icon.muted{background:rgba(255,255,255,.07);color:#dce7dc}
+    .trust-copy h3{margin:0 0 6px;color:#fffaf1;font-size:19px}
+    .trust-copy p{margin:0;color:#d0dbd0;line-height:1.45;font-size:14px}
+    .trust-no{font-weight:800;color:#c4d1c3;font-size:14px;align-self:start;margin-top:2px}
+    .trust-visual{position:relative;overflow:hidden;background:linear-gradient(180deg, rgba(19,46,33,.96), rgba(13,31,22,.98));border:1px solid rgba(255,255,255,.1);border-radius:28px;padding:24px}
+    .trust-visual:after{content:"";position:absolute;right:-90px;top:-70px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle, rgba(215,242,104,.14) 0%, rgba(215,242,104,0) 68%)}
+    .trust-visual > *{position:relative;z-index:1}
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+    .compare-card{background:rgba(255,250,241,.82);border:1px solid var(--line);border-radius:28px;padding:26px;box-shadow:0 12px 35px rgba(20,35,24,.05);display:grid;gap:14px}
+    .compare-card h3{margin:0;font-size:30px}
+    .compare-card.proprietary .tag{background:rgba(255,255,255,.82)}
+    .compare-card.opensource .tag{background:rgba(215,242,104,.16);color:var(--green);border-color:rgba(215,242,104,.3)}
+    .compare-aside{margin-top:16px;max-width:860px;padding:14px 16px;border:1px solid rgba(20,63,43,.12);border-radius:18px;background:rgba(255,250,241,.72);color:#546259;font-size:13px;line-height:1.55;box-shadow:0 8px 24px rgba(20,35,24,.04)}
     .tile{background:rgba(255,250,241,.78);border:1px solid var(--line);border-radius:var(--radius);padding:24px;min-height:220px;box-shadow:0 12px 35px rgba(20,35,24,.05)}
     .tile .nr{color:var(--green);font-weight:850;font-size:13px;letter-spacing:.12em;margin-bottom:42px;display:block}
     .tile.dark{background:var(--green);color:#fff;border-color:var(--green)}
@@ -151,7 +172,7 @@
     footer{padding:34px 24px;color:#626961;border-top:1px solid var(--line)}
     .foot-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     @media(max-width:1100px){.nav-links{display:none}}
-    @media(max-width:900px){.hero,.two-col,.proof,.footer-cta,.order-layout{grid-template-columns:1fr}.products,.grid,.usecases,.deploy-grid,.provider-grid,.legal-grid,.order-grid,.agent-choice-grid{grid-template-columns:1fr}.hero{min-height:auto}.product.featured{transform:none}.order-card{padding:26px}.footer-cta-actions{justify-items:stretch}.footer-cta:after{font-size:54px;right:-10px;bottom:-12px}}
+    @media(max-width:900px){.hero,.two-col,.proof,.footer-cta,.order-layout,.trust-layout,.compare-grid{grid-template-columns:1fr}.products,.grid,.usecases,.deploy-grid,.provider-grid,.legal-grid,.order-grid,.agent-choice-grid{grid-template-columns:1fr}.hero{min-height:auto}.product.featured{transform:none}.order-card{padding:26px}.footer-cta-actions{justify-items:stretch}.footer-cta:after{font-size:54px;right:-10px;bottom:-12px}.trust-stack,.trust-visual,.compare-card{padding:22px;border-radius:28px}.trust-item{grid-template-columns:42px 1fr 24px;padding:14px}.trust-icon{width:36px;height:36px;font-size:18px}.compare-card h3{font-size:24px}}
   </style>
 </head>
 <body>
@@ -178,18 +199,18 @@
   <main>
     <section class="section hero">
       <div>
-        <div class="eyebrow">Hermes + OpenClaw · Managed AI agents · Individuen & mensgerichte ondersteuning</div>
+        <div class="eyebrow">Mensgerichte AI-agents · Hermes of OpenClaw · Trusted Agents</div>
         <h1>Veilige AI-agents. Data onder controle.</h1>
         <p class="lead">Initiatiefnemer Bernard Donners, Lector AI aan TIO Business School in Amsterdam en Groningen, werkt met een team van experts aan agent-oplossingen op basis van Hermes en OpenClaw die rust, overzicht en menselijke regie terugbrengen in persoonlijke contexten , via Telegram, WhatsApp en andere vertrouwde kanalen.</p>
         <div class="hero-actions">
-          <a class="button light" href="#deploy">Deploy je agent</a>
+          <a class="button light" href="#deploy">Start een pilot</a>
           <a class="button secondary" href="#security">Bekijk security-aanpak</a>
         </div>
         <div class="trust-row">
           <span class="pill">Private EU-server</span>
           <span class="pill">AVG/GDPR-bewust</span>
           <span class="pill">Human approval</span>
-          <span class="pill">Hermes + OpenClaw</span>
+          <span class="pill">Hermes of OpenClaw</span>
         </div>
       </div>
       <aside class="agent-card" aria-label="AI agent demo kaart">
@@ -213,32 +234,84 @@
       </div>
     </section>
 
-    <section class="section two-col" id="second-brain">
-      <div>
-        <div class="eyebrow">Your AI Second Brain</div>
-        <p class="statement">Bouw een AI second brain dat context vasthoudt, kennis stapelt en niet na elke sessie opnieuw begint.</p>
-      </div>
-      <div>
-        <p class="muted">Gewone AI-chatgesprekken resetten te vaak. Trusted Agents koppelt Hermes aan een kennislaag die afspraken, notities, eerdere keuzes en terugkerende context bruikbaar houdt , zodat ondersteuning zich opbouwt in plaats van verdwijnt.</p>
-        <br>
-        <p class="muted">Dat maakt het verschil tussen losse output en een systeem dat echt meeleert: niet alleen antwoorden genereren, maar overzicht bewaren, verbanden terughalen en op een verantwoord moment de juiste context weer naar voren brengen.</p>
+    <section class="section" id="second-brain" style="padding-top:10px;padding-bottom:18px">
+      <div class="eyebrow">Waarom Trusted Agents?</div>
+      <h2>Niet nog een losse chat, maar een geheugen dat zich opbouwt.</h2>
+      <p class="lead">Gewone AI-chatgesprekken resetten te vaak. Trusted Agents koppelt Hermes aan een kennislaag die afspraken, notities, eerdere keuzes en terugkerende context bruikbaar houdt , zodat ondersteuning zich opbouwt in plaats van verdwijnt.</p>
+      <div class="compare-aside">Dat maakt het verschil tussen losse output en een systeem dat echt meeleert: niet alleen antwoorden genereren, maar overzicht bewaren, verbanden terughalen en op een verantwoord moment de juiste context weer naar voren brengen. Voor mensgerichte ondersteuning is dat geen luxe, maar de basis voor rust, overzicht en regie.</div>
+      <div class="compare-grid">
+        <article class="compare-card proprietary">
+          <span class="tag">Losse AI-chat</span>
+          <h3>Snel antwoord, maar weinig blijvend houvast</h3>
+          <p class="muted">Veel AI-tools reageren slim op het moment zelf, maar vergeten eerdere afspraken, voorkeuren en context zodra het gesprek voorbij is.</p>
+          <ul><li>Context moet vaak opnieuw worden uitgelegd</li><li>Moeilijker om rustig voort te bouwen</li><li>Minder geschikt voor gevoelige of langdurige ondersteuning</li></ul>
+        </article>
+        <article class="compare-card opensource">
+          <span class="tag">Trusted Agent</span>
+          <h3>Rustiger, consistenter en beter begrensd</h3>
+          <p class="muted">Trusted Agents zet een beheersbare agentlaag om het model heen, met geheugen, tooling en duidelijke afspraken over wanneer wel en niet gehandeld wordt.</p>
+          <ul><li>Blijvende context over sessies heen</li><li>Meer menselijke regie en heldere grenzen</li><li>Beter passend bij persoonlijke en mensgerichte workflows</li></ul>
+        </article>
       </div>
     </section>
 
-    <section class="section two-col" id="agents">
-      <div>
-        <div class="eyebrow">De stelling</div>
-        <p class="statement">Ruis ontneemt mensen overzicht. Vertrouwde AI-agents geven rust en regie terug.</p>
-      </div>
-      <div>
-        <p class="muted">Veel AI-projecten blijven hangen in losse prompts en experimenten. Trusted Agents draait het om: we beginnen bij terugkerende ondersteuning, afspraken over data, duidelijke grenzen en een agent die pas handelt wanneer dat verantwoord is.</p>
-        <br>
-        <p class="muted">Bernard Donners is Lector AI aan TIO Business School in Amsterdam en Groningen. Op <a href="https://www.bernarddonners-ai.nl" style="color:var(--green);font-weight:700;text-decoration:underline;text-underline-offset:3px">bernarddonners-ai.nl</a> werkt hij zijn visie uit: generatieve AI is een General Purpose Technology, maar de waarde ontstaat pas na de hype , als mensen beter leren denken, beslissen en organiseren.</p>
+    <section class="section" id="agents">
+      <div class="eyebrow">Hoe werkt het</div>
+      <div class="trust-stack">
+        <div class="trust-layout">
+          <div>
+            <div class="eyebrow">Vertrouwde agentlaag</div>
+            <h2>Niet alleen slim. Ook begrensd en beheersbaar.</h2>
+            <p class="lead">Veel AI-projecten blijven hangen in losse prompts en experimenten. Trusted Agents draait het om: we beginnen bij terugkerende ondersteuning, afspraken over data, duidelijke grenzen en een agent die pas handelt wanneer dat verantwoord is.</p>
+            <p class="muted">Bernard Donners is Lector AI aan TIO Business School in Amsterdam en Groningen. Op <a href="https://www.bernarddonners-ai.nl" style="color:#d7f268;font-weight:700;text-decoration:underline;text-underline-offset:3px">bernarddonners-ai.nl</a> werkt hij zijn visie uit: generatieve AI is een General Purpose Technology, maar de waarde ontstaat pas na de hype , als mensen beter leren denken, beslissen en organiseren.</p>
+            <div class="trust-list">
+              <article class="trust-item">
+                <div class="trust-icon">◉</div>
+                <div class="trust-copy">
+                  <h3>Blijvend geheugen</h3>
+                  <p>De agent onthoudt afspraken, voorkeuren en eerdere sessies, zodat context niet telkens opnieuw hoeft.</p>
+                </div>
+                <div class="trust-no">01</div>
+              </article>
+              <article class="trust-item">
+                <div class="trust-icon muted">✦</div>
+                <div class="trust-copy">
+                  <h3>Menselijke controle</h3>
+                  <p>Mail, publicaties en gevoelige acties worden klaargezet voor akkoord. Jij blijft eigenaar van de beslissing.</p>
+                </div>
+                <div class="trust-no">02</div>
+              </article>
+              <article class="trust-item">
+                <div class="trust-icon muted">↯</div>
+                <div class="trust-copy">
+                  <h3>Gepland & proactief</h3>
+                  <p>Dagelijkse briefings, controles, monitoring en opvolging draaien op schema , zonder dat iemand eraan hoeft te denken.</p>
+                </div>
+                <div class="trust-no">03</div>
+              </article>
+              <article class="trust-item">
+                <div class="trust-icon muted">▢</div>
+                <div class="trust-copy">
+                  <h3>Waar je al werkt</h3>
+                  <p>Gebruik via mail, Telegram, WhatsApp of browser. Geen extra portaal als dat niet nodig is.</p>
+                </div>
+                <div class="trust-no">04</div>
+              </article>
+            </div>
+          </div>
+          <article class="trust-visual">
+            <div class="eyebrow">Mensgerichte ondersteuning</div>
+            <h3>Een agent die helpt onthouden, voorbereiden en begrenzen</h3>
+            <p class="muted" style="color:#dce7dc">Trusted Agents is bedoeld voor situaties waarin rust, privacy en herkenbare ondersteuning belangrijker zijn dan maximale automatisering. Daarom draait het publieke verhaal niet om “meer autonomie”, maar om betere afstemming, veilige geheugensteun en duidelijke menselijke controle.</p>
+            <div class="flow-note" style="margin-top:18px;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);color:#eef2e8"><strong>Publieke belofte:</strong> rust, overzicht en regie in persoonlijke contexten, met privacy en menselijke goedkeuring als grens.</div>
+            <div class="flow-note" style="margin-top:14px;background:rgba(215,242,104,.10);border-color:rgba(215,242,104,.2);color:#eef2e8"><strong>Onder embargo:</strong> concrete scenario’s, namen, partners en inhoudelijke pilotdetails blijven bewust buiten de publieke site.</div>
+          </article>
+        </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="eyebrow">Wat maakt een agent vertrouwd?</div>
+      <div class="eyebrow">Vertrouwen in de praktijk</div>
       <h2>Niet alleen slim. Ook beheersbaar.</h2>
       <div class="grid">
         <article class="tile"><span class="nr">01</span><h3>Blijvend geheugen</h3><p class="muted">De agent onthoudt afspraken, voorkeuren en eerdere sessies, zodat context niet telkens opnieuw hoeft.</p></article>
@@ -360,8 +433,8 @@
 
     <section class="section" id="providers">
       <div class="eyebrow">Modelkeuze & toegang</div>
-      <h2>Kies de slimste route per taak</h2>
-      <p class="lead">Trusted Agents kan werken met meerdere modelroutes. Zo zit je niet vast aan één leverancier en kun je per workflow kiezen voor betrouwbaarheid, prijs, snelheid of maximale redeneerkracht.</p>
+      <h2>Wijs per taak het juiste model toe</h2>
+      <p class="lead">Trusted Agents kan werken met meerdere modelroutes. Zo zit je niet vast aan één leverancier en kun je per workflow kiezen welke route het best past, van betrouwbaarheid en prijs tot snelheid en redeneerkracht.</p>
       <div class="provider-grid">
         <article class="provider-card">
           <span class="tag">Directe API</span>
@@ -607,8 +680,28 @@
         "Modelkeuze": "Model choice",
         "Hosting": "Hosting",
         "Plan pilot": "Book pilot",
-        "Hermes + OpenClaw · Managed AI agents · Individuen & mensgerichte ondersteuning": "Hermes + OpenClaw · Managed AI agents · Individuals & human-centered support",
+        "Mensgerichte AI-agents · Hermes of OpenClaw · Trusted Agents": "Human-centered AI agents · Hermes or OpenClaw · Trusted Agents",
         "Veilige AI-agents. Data onder controle.": "Secure AI agents. Data under control.",
+        "Start een pilot": "Start a pilot",
+        "Waarom Trusted Agents?": "Why Trusted Agents?",
+        "Niet nog een losse chat, maar een geheugen dat zich opbouwt.": "Not another isolated chat, but a memory that compounds.",
+        "Dat maakt het verschil tussen losse output en een systeem dat echt meeleert: niet alleen antwoorden genereren, maar overzicht bewaren, verbanden terughalen en op een verantwoord moment de juiste context weer naar voren brengen. Voor mensgerichte ondersteuning is dat geen luxe, maar de basis voor rust, overzicht en regie.": "That is the difference between isolated output and a system that truly learns along the way: not just generating answers, but preserving overview, retrieving connections and bringing back the right context at the right responsible moment. For human-centered support, that is not a luxury but the basis for calm, overview and control.",
+        "Losse AI-chat": "Standalone AI chat",
+        "Snel antwoord, maar weinig blijvend houvast": "Fast answers, but little lasting support",
+        "Veel AI-tools reageren slim op het moment zelf, maar vergeten eerdere afspraken, voorkeuren en context zodra het gesprek voorbij is.": "Many AI tools respond cleverly in the moment, but forget earlier agreements, preferences and context as soon as the conversation ends.",
+        "Context moet vaak opnieuw worden uitgelegd": "Context often has to be explained again",
+        "Moeilijker om rustig voort te bouwen": "Harder to build forward calmly",
+        "Minder geschikt voor gevoelige of langdurige ondersteuning": "Less suitable for sensitive or long-running support",
+        "Trusted Agent": "Trusted Agent",
+        "Rustiger, consistenter en beter begrensd": "Calmer, more consistent and better bounded",
+        "Trusted Agents zet een beheersbare agentlaag om het model heen, met geheugen, tooling en duidelijke afspraken over wanneer wel en niet gehandeld wordt.": "Trusted Agents adds a controllable agent layer around the model, with memory, tooling and clear agreements about when action is and is not taken.",
+        "Blijvende context over sessies heen": "Persistent context across sessions",
+        "Meer menselijke regie en heldere grenzen": "More human control and clearer boundaries",
+        "Beter passend bij persoonlijke en mensgerichte workflows": "Better suited to personal and human-centered workflows",
+        "Hoe werkt het": "How it works",
+        "Vertrouwde agentlaag": "Trusted agent layer",
+        "Niet alleen slim. Ook begrensd en beheersbaar.": "Not only smart. Also bounded and controllable.",
+        "Vertrouwen in de praktijk": "Trust in practice",
         "Initiatiefnemer Bernard Donners, Lector AI aan TIO Business School in Amsterdam en Groningen, werkt met een team van experts aan agent-oplossingen op basis van Hermes en OpenClaw die rust, overzicht en menselijke regie terugbrengen in persoonlijke contexten , via Telegram, WhatsApp en andere vertrouwde kanalen.": "Founder Bernard Donners, Professor of Applied AI at TIO Business School in Amsterdam and Groningen, works with a team of experts on agent solutions based on Hermes and OpenClaw that restore calm, overview and human control in personal contexts , through Telegram, WhatsApp and other familiar channels.",
         "Bekijk security-aanpak": "View security approach",
         "Private EU-server": "Private EU server",
@@ -621,18 +714,13 @@
         "Ik heb drie dossiers gevonden. Twee kunnen direct worden voorbereid; één wacht op akkoord. Ik zet de conceptmail klaar, maar verstuur niets zonder jouw bevestiging.": "I found three files. Two can be prepared immediately; one is waiting for approval. I will draft the email, but send nothing without your confirmation.",
         "Actie vereist menselijke goedkeuring · gegevens blijven binnen EU-workspace.": "Action requires human approval · data remains inside the EU workspace.",
         "Voor mensen en mensgerichte contexten waar details, vertrouwen en privacy tellen": "For people and human-centered contexts where detail, trust and privacy matter",
-        "Your AI Second Brain": "Your AI Second Brain",
-        "Bouw een AI second brain dat context vasthoudt, kennis stapelt en niet na elke sessie opnieuw begint.": "Build an AI second brain that holds context, compounds knowledge and does not restart from scratch every session.",
         "Gewone AI-chatgesprekken resetten te vaak. Trusted Agents koppelt Hermes aan een kennislaag die afspraken, notities, eerdere keuzes en terugkerende context bruikbaar houdt , zodat ondersteuning zich opbouwt in plaats van verdwijnt.": "Ordinary AI chat sessions reset too often. Trusted Agents connects Hermes to a knowledge layer that keeps agreements, notes, earlier decisions and recurring context usable , so support compounds instead of disappearing.",
-        "Dat maakt het verschil tussen losse output en een systeem dat echt meeleert: niet alleen antwoorden genereren, maar overzicht bewaren, verbanden terughalen en op een verantwoord moment de juiste context weer naar voren brengen.": "That is the difference between isolated output and a system that truly learns along with you: not just generating answers, but preserving overview, retrieving connections and surfacing the right context at the right responsible moment.",
         "Persoonlijke assistentie": "Personal assistance",
         "Zorg & welzijn": "Care & wellbeing",
         "Geheugensteun": "Memory support",
         "Familie & netwerk": "Family & network",
         "Onderwijs": "Education",
         "Onder embargo": "Under embargo",
-        "De stelling": "The point",
-        "Ruis ontneemt mensen overzicht. Vertrouwde AI-agents geven rust en regie terug.": "Noise takes away people's overview. Trusted AI agents bring calm and control back.",
         "Veel AI-projecten blijven hangen in losse prompts en experimenten. Trusted Agents draait het om: we beginnen bij terugkerende ondersteuning, afspraken over data, duidelijke grenzen en een agent die pas handelt wanneer dat verantwoord is.": "Many AI projects get stuck in loose prompts and experiments. Trusted Agents reverses that: we start with recurring support, data agreements, clear boundaries and an agent that only acts when it is responsible to do so.",
         "Bernard Donners is Lector AI aan TIO Business School in Amsterdam en Groningen. Op": "Bernard Donners is Professor of Applied AI at TIO Business School in Amsterdam and Groningen. On",
         "werkt hij zijn visie uit: generatieve AI is een General Purpose Technology, maar de waarde ontstaat pas na de hype , als mensen beter leren denken, beslissen en organiseren.": "he develops his vision: generative AI is a General Purpose Technology, but value only emerges after the hype , when people learn to think, decide and organize better.",
@@ -748,8 +836,6 @@
         "Akkoord met mail 1 en 2. Mail 3 eerst aanpassen: korter en zakelijker.": "Approved for emails 1 and 2. First adjust email 3: shorter and more businesslike.",
         "Voor de eerste commerciële versie houden we de belofte scherp: deploy één agent, één workflow, één kanaal. Daarna pas uitbreiden.": "For the first commercial version we keep the promise sharp: deploy one agent, one workflow, one channel. Only then expand.",
         "Modelkeuze & toegang": "Model choice & access",
-        "Kies de slimste route per taak": "Choose the smartest route per task",
-        "Trusted Agents kan werken met meerdere modelroutes. Zo zit je niet vast aan één leverancier en kun je per workflow kiezen voor betrouwbaarheid, prijs, snelheid of maximale redeneerkracht.": "Trusted Agents can work with multiple model routes. That way you are not locked into one provider and can choose reliability, price, speed or maximum reasoning power per workflow.",
         "Directe API": "Direct API",
         "Anthropic API-sleutel": "Anthropic API key",
         "Voor Claude-modellen via een eigen Anthropic API-key. Geschikt voor zorgvuldige analyse, schrijven, samenvatten en workflows waar consistentie belangrijk is.": "For Claude models through your own Anthropic API key. Suitable for careful analysis, writing, summarizing and workflows where consistency matters.",
