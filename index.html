@@ -41,9 +41,10 @@
       border-bottom:1px solid rgba(222,213,196,.7);
     }
     .nav-inner{max-width:var(--max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:18px 24px;gap:20px}
+    .nav-left{display:flex;align-items:center;gap:14px;min-width:0;flex-shrink:0}
     .brand{font-weight:800;letter-spacing:-.04em;font-size:22px;display:flex;align-items:center;gap:10px;white-space:nowrap;flex-shrink:0}
     .brand-dot{width:12px;height:12px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 6px rgba(215,242,104,.23)}
-    .nav-links{display:flex;gap:14px;align-items:center;font-size:13px;color:#303832}
+    .nav-links{display:flex;gap:14px;align-items:center;font-size:13px;color:#303832;margin-left:auto}
     .nav .button{padding:11px 14px}
     .language-toggle{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:rgba(255,250,241,.9);border-radius:999px;padding:5px;color:var(--green);font-size:12px;font-weight:850;box-shadow:0 8px 22px rgba(22,63,43,.08);white-space:nowrap}
     .language-toggle button{border:0;background:transparent;color:var(--green);border-radius:999px;padding:7px 9px;font:inherit;cursor:pointer;opacity:.55}
@@ -156,25 +157,20 @@
 <body>
   <nav class="nav">
     <div class="nav-inner">
-      <a class="brand" href="#"><span class="brand-dot"></span>Trusted Agents<span style="color:var(--green)">.</span></a>
-      <div class="language-toggle" aria-label="Language selector">
-        <button type="button" class="active" data-lang-button="nl">NL</button>
-        <button type="button" data-lang-button="en">EN</button>
+      <div class="nav-left">
+        <a class="brand" href="#"><span class="brand-dot"></span>Trusted Agents<span style="color:var(--green)">.</span></a>
+        <div class="language-toggle" aria-label="Language selector">
+          <button type="button" class="active" data-lang-button="nl">NL</button>
+          <button type="button" data-lang-button="en">EN</button>
+        </div>
       </div>
       <div class="nav-links">
-        <a href="#agents">AI-agents</a>
-        <a href="#second-brain">Second Brain</a>
         <a href="#oplossingen">Oplossingen</a>
         <a href="#security">Security</a>
-        <a href="#prijzen">Prijzen</a>
-        <a href="#deploy">Deploy je agent</a>
         <a href="#providers">Modelkeuze</a>
         <a href="#hosting">Hosting</a>
-        <a href="#macmini">Mac mini setup</a>
-        <a href="#pilots">Pilots</a>
-        <a href="#juridisch">Voorwaarden</a>
         <a class="button secondary" href="https://www.bernarddonners-ai.nl">Bernard Donners</a>
-        <a class="button" href="#contact">Plan demo</a>
+        <a class="button" href="#contact">Plan pilot</a>
       </div>
     </div>
   </nav>
@@ -607,14 +603,10 @@
       en: {
         "Trusted Agents , Veilige AI-agents voor individuen en mensgerichte ondersteuning": "Trusted Agents , Secure AI agents for individuals and human-centered support",
         "Trusted Agents levert beheerde AI-agents voor individuen en mensgerichte ondersteuning: veilig, controleerbaar en AVG-bewust.": "Trusted Agents delivers managed AI agents for individuals and human-centered support: secure, controllable and GDPR-aware.",
-        "AI-agents": "AI agents",
         "Oplossingen": "Solutions",
-        "Prijzen": "Pricing",
-        "Deploy je agent": "Deploy your agent",
         "Modelkeuze": "Model choice",
-        "Mac mini setup": "Mac mini setup",
-        "Voorwaarden": "Terms",
-        "Plan demo": "Book demo",
+        "Hosting": "Hosting",
+        "Plan pilot": "Book pilot",
         "Hermes + OpenClaw · Managed AI agents · Individuen & mensgerichte ondersteuning": "Hermes + OpenClaw · Managed AI agents · Individuals & human-centered support",
         "Veilige AI-agents. Data onder controle.": "Secure AI agents. Data under control.",
         "Initiatiefnemer Bernard Donners, Lector AI aan TIO Business School in Amsterdam en Groningen, werkt met een team van experts aan agent-oplossingen op basis van Hermes en OpenClaw die rust, overzicht en menselijke regie terugbrengen in persoonlijke contexten , via Telegram, WhatsApp en andere vertrouwde kanalen.": "Founder Bernard Donners, Professor of Applied AI at TIO Business School in Amsterdam and Groningen, works with a team of experts on agent solutions based on Hermes and OpenClaw that restore calm, overview and human control in personal contexts , through Telegram, WhatsApp and other familiar channels.",
