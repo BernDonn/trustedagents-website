@@ -129,3 +129,7 @@ Before this handles real customers:
 - add rate limiting and CSRF/origin policy for browser forms;
 - replace SQLite with Postgres if multiple app instances are needed;
 - run one worker process/container per active tenant.
+
+See also:
+- `PRODUCTION_CHECKLIST.md` — recommended first live deployment sequence;
+- `.env.production.example` — server-side runtime variable template.
