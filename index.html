@@ -199,9 +199,9 @@
   <main>
     <section class="section hero">
       <div>
-        <div class="eyebrow">Mensgerichte AI-agents · Hermes of OpenClaw · Trusted Agents</div>
+        <div class="eyebrow">Mensgerichte AI-agents · Hermes · Trusted Agents</div>
         <h1>Veilige AI-agents. Data onder controle.</h1>
-        <p class="lead">Initiatiefnemer Bernard Donners, Lector AI aan TIO Business School in Amsterdam en Groningen, werkt met een team van experts aan agent-oplossingen op basis van Hermes en OpenClaw die rust, overzicht en menselijke regie terugbrengen in persoonlijke contexten , via Telegram, WhatsApp en andere vertrouwde kanalen.</p>
+        <p class="lead">Initiatiefnemer Bernard Donners, Lector AI aan TIO Business School in Amsterdam en Groningen, werkt met een team van experts aan agent-oplossingen op basis van Hermes die rust, overzicht en menselijke regie terugbrengen in persoonlijke contexten , via Telegram, WhatsApp en andere vertrouwde kanalen.</p>
         <div class="hero-actions">
           <a class="button light" href="#deploy">Start een pilot</a>
           <a class="button secondary" href="#security">Bekijk security-aanpak</a>
@@ -210,7 +210,7 @@
           <span class="pill">Private EU-server</span>
           <span class="pill">AVG/GDPR-bewust</span>
           <span class="pill">Human approval</span>
-          <span class="pill">Hermes of OpenClaw</span>
+          <span class="pill">Hermes</span>
         </div>
       </div>
       <aside class="agent-card" aria-label="AI agent demo kaart">
@@ -220,7 +220,7 @@
         </div>
         <div class="chat">
           <div class="bubble"><div class="mini">Operations · 09:41</div>Welke dossiers missen nog informatie voordat we ze kunnen afhandelen?</div>
-          <div class="bubble agent"><div class="mini">Trusted Agent via OpenClaw · 09:42</div>Ik heb drie dossiers gevonden. Twee kunnen direct worden voorbereid; één wacht op akkoord. Ik zet de conceptmail klaar, maar verstuur niets zonder jouw bevestiging.</div>
+          <div class="bubble agent"><div class="mini">Trusted Agent via Hermes · 09:42</div>Ik heb drie dossiers gevonden. Twee kunnen direct worden voorbereid; één wacht op akkoord. Ik zet de conceptmail klaar, maar verstuur niets zonder jouw bevestiging.</div>
           <div class="bubble"><div class="mini">Security policy</div>Actie vereist menselijke goedkeuring · gegevens blijven binnen EU-workspace.</div>
         </div>
       </aside>
@@ -365,12 +365,11 @@
         <article class="product featured">
           <span class="tag">1 · Starter</span>
           <h3>Managed Agent</h3>
-          <p class="muted">Voor individuen en kleinschalige mensgerichte trajecten die snel willen starten: de €29-route kan grotendeels self-service verlopen, van intake en kanaalkeuze tot botinstallatie en eerste activatie, terwijl je agent draait in de beheerde Trusted Agents-omgeving met gescheiden configuratie.</p>
-          <ul><li>E-mailadres, agentkeuze en kanaalselectie</li><li>Telegram bot-token + AI-sleutel of OAuth-route</li><li>iDEAL/kaart-checkout en automatische activatie</li><li>Eerste welkomstbericht + menselijke goedkeuringen ingesteld</li></ul>
+          <p class="muted">Voor individuen en kleinschalige mensgerichte trajecten die snel willen starten: de €29-route kan grotendeels self-service verlopen, van intake en kanaalkeuze tot Hermes-activatie, terwijl je agent draait in de beheerde Trusted Agents-omgeving met gescheiden configuratie.</p>
+          <ul><li>E-mailadres, kanaalkeuze en intakegegevens</li><li>Telegram bot-token + modeltoegang</li><li>Mollie-checkout via iDEAL of kaart</li><li>Eerste welkomstbericht + menselijke goedkeuringen ingesteld</li></ul>
           <div class="price">€29 <span>/ maand per bot</span></div>
           <div class="hero-actions" style="margin:4px 0 0">
-            <a class="button light" href="#bestel-agent" data-onboarding-agent="hermes">Deploy Hermes</a>
-            <a class="button secondary" href="#bestel-agent" data-onboarding-agent="openclaw">Deploy OpenClaw</a>
+            <a class="button light" href="#bestel-agent">Start Hermes intake</a>
           </div>
         </article>
         <article class="product">
@@ -391,13 +390,13 @@
     </section>
 
     <section class="section" id="deploy">
-      <div class="eyebrow">Deploy je agent</div>
-      <h2>Van eerste gesprek naar werkende agent</h2>
-      <p class="lead">We maken deployment concreet: niet “we doen iets met AI”, maar een beheerde agent die veilig draait en via Telegram of WhatsApp bereikbaar is.</p>
+      <div class="eyebrow">Start een pilot</div>
+      <h2>Van eerste gesprek naar werkende Hermes-agentflow</h2>
+      <p class="lead">We maken inzet concreet: niet “we doen iets met AI”, maar een beheerde Hermes-agentflow die veilig draait en aansluit op de kanalen die je al gebruikt.</p>
       <div class="deploy-grid">
         <article class="deploy-panel">
           <h3>Wat je krijgt</h3>
-          <p class="muted">Een werkende Trusted Agent met Hermes als motor en OpenClaw als communicatiekanaal. Voor de €29-starter is de activatieflow al grotendeels te automatiseren.</p>
+          <p class="muted">Een werkende Trusted Agent op Hermes. Voor de €29-starter is de activatieflow grotendeels te automatiseren: intake invullen, Telegram bot koppelen, secrets veilig opslaan en daarna Mollie-checkout starten.</p>
           <div class="channel-row">
             <span class="channel">Telegram</span>
             <span class="channel">WhatsApp</span>
@@ -405,25 +404,24 @@
             <span class="channel">Browser / desktop</span>
           </div>
           <div class="deploy-steps">
-            <div class="deploy-step"><div><strong>Gegevens & agentkeuze</strong><br><span class="muted">E-mailadres invullen, Hermes of OpenClaw kiezen en aangeven via welk kanaal de agent moet starten.</span></div></div>
+            <div class="deploy-step"><div><strong>Intake & kanaalkeuze</strong><br><span class="muted">We verzamelen naam, e-mailadres en use-case en kiezen Telegram als eerste kanaal voor de Hermes-agent.</span></div></div>
             <div class="deploy-step"><div><strong>E-mailadres bevestigen</strong><br><span class="muted">De eigenaar bevestigt het adres voordat de bot live gaat en de omgeving aan het account wordt gekoppeld.</span></div></div>
-            <div class="deploy-step"><div><strong>Betaling starten</strong><br><span class="muted">Voorwaarden akkoord, daarna checkout via iDEAL of kaart voor de €29-route.</span></div></div>
-            <div class="deploy-step"><div><strong>Botinstallatie (~3–5 min)</strong><br><span class="muted">Telegram bot-token en modelroute encrypted opslaan, tenant aanmaken en de eerste worker automatisch activeren.</span></div></div>
+            <div class="deploy-step"><div><strong>Mollie-checkout starten</strong><br><span class="muted">Na akkoord maakt de backend een Mollie-checkout aan voor iDEAL of kaartbetaling van de gekozen route.</span></div></div>
+            <div class="deploy-step"><div><strong>Hermes activeren (~3–5 min)</strong><br><span class="muted">Telegram bot-token en modelroute encrypted opslaan, tenant aanmaken en de eerste Hermes-worker automatisch activeren.</span></div></div>
             <div class="deploy-step"><div><strong>Welkomstbericht & eerste test</strong><br><span class="muted">De agent stuurt een eerste bericht; daarna lopen we alleen nog workflowgrenzen en menselijke goedkeuringen na.</span></div></div>
           </div>
           <div class="flow-note" style="margin-top:18px"><strong>Nog bewust begeleid:</strong> use-case aanscherpen, guardrails instellen, prompts/skills finetunen en bepalen welke acties altijd menselijke goedkeuring nodig hebben.</div>
           <div class="hero-actions" style="margin-top:22px">
-            <a class="button light" id="activate-hermes" href="#bestel-agent" data-onboarding-agent="hermes">Deploy Hermes</a>
-            <a class="button secondary" id="activate-openclaw" href="#bestel-agent" data-onboarding-agent="openclaw">Deploy OpenClaw</a>
+            <a class="button light" id="activate-hermes" href="#bestel-agent">Start Hermes intake</a>
           </div>
-          <p class="muted" style="margin-top:12px">Deze knoppen openen hieronder direct het intakeformulier, met Hermes of OpenClaw alvast geselecteerd. Betaling en activatie volgen pas na het invullen van de gegevens.</p>
+          <p class="muted" style="margin-top:12px">Hieronder open je direct het intakeformulier voor Hermes. Betaling en activatie volgen pas na het invullen van de gegevens.</p>
         </article>
         <article class="deploy-panel">
           <h3>Telegram + WhatsApp flow</h3>
           <p class="muted">De agent leeft in het kanaal waar de gebruiker al zit. Telegram is ideaal voor snelle start en interne teams; WhatsApp is handig voor gebruikers die geen nieuwe tool willen leren.</p>
           <div class="chat" style="background:#13291f;border-radius:24px;padding:18px">
             <div class="bubble"><div class="mini">Jij · WhatsApp</div>Vat mijn inbox samen en zet de drie belangrijkste antwoorden klaar.</div>
-            <div class="bubble agent"><div class="mini">OpenClaw → Hermes</div>Ik heb 18 mails bekeken. Drie vragen actie. Ik heb conceptantwoorden opgesteld en één reminder gezet. Wil je ze controleren?</div>
+            <div class="bubble agent"><div class="mini">Hermes · update</div>Ik heb 18 mails bekeken. Drie vragen actie. Ik heb conceptantwoorden opgesteld en één reminder gezet. Wil je ze controleren?</div>
             <div class="bubble"><div class="mini">Jij · Telegram</div>Akkoord met mail 1 en 2. Mail 3 eerst aanpassen: korter en zakelijker.</div>
           </div>
           <p class="muted" style="margin-top:18px">Voor de eerste commerciële versie houden we de belofte scherp: deploy één agent, één workflow, één kanaal. Daarna pas uitbreiden.</p>
@@ -455,7 +453,7 @@
           <ul><li>Geen API-key kopiëren</li><li>Handig voor Codex/ChatGPT-workflows</li><li>Toegang kan later worden ingetrokken</li></ul>
         </article>
       </div>
-      <div class="flow-note"><strong>Hoe het werkt:</strong> tijdens deployment kiezen we de primaire modelroute en minimaal één fallback. Sleutels of OAuth-tokens worden niet in de website gezet; ze horen in de private agent-workspace. Hermes gebruikt de gekozen provider voor het denkwerk, OpenClaw levert het Telegram/WhatsApp-kanaal, en gevoelige acties blijven wachten op menselijke goedkeuring.</div>
+      <div class="flow-note"><strong>Hoe het werkt:</strong> tijdens deployment kiezen we de primaire modelroute en minimaal één fallback. Sleutels of OAuth-tokens worden niet in de website gezet; ze horen in de private agent-workspace. Hermes gebruikt de gekozen provider voor het denkwerk, werkt via Telegram, WhatsApp of browser, en gevoelige acties blijven wachten op menselijke goedkeuring.</div>
     </section>
 
     <section class="section" id="hosting">
@@ -488,13 +486,13 @@
     <section class="section" id="macmini">
       <div class="eyebrow">Mac mini AI-workstation</div>
       <h2>Je eigen Mac mini als private AI-basis</h2>
-      <p class="lead">Voor wie liever op eigen Apple-hardware werkt, richt Trusted Agents een Mac mini M4 of bestaande Mac in als private AI-workstation. Afhankelijk van je workflow kiezen we Hermes, OpenClaw of een heldere combinatie van beide , met Telegram, WhatsApp of browser als dagelijkse ingang.</p>
+      <p class="lead">Voor wie liever op eigen Apple-hardware werkt, richt Trusted Agents een Mac mini M4 of bestaande Mac in als private AI-workstation. Afhankelijk van je workflow richten we Hermes in met Telegram, WhatsApp of browser als dagelijkse ingang.</p>
       <div class="provider-grid">
         <article class="provider-card">
           <span class="tag">Installatie</span>
           <strong>Wat we inrichten</strong>
           <p class="muted">Geen losse demo, maar een werkende basisconfiguratie die past bij jouw dagelijkse vragen en terugkerende taken.</p>
-          <ul><li>Installatie en configuratie van Hermes of OpenClaw</li><li>Koppeling met Telegram, WhatsApp of browser</li><li>Eén of meer passende modelroutes via je eigen accounts</li><li>Eerste eenvoudige automatiseringen en duidelijke overdracht</li></ul>
+          <ul><li>Installatie en configuratie van Hermes</li><li>Koppeling met Telegram, WhatsApp of browser</li><li>Eén of meer passende modelroutes via je eigen accounts</li><li>Eerste eenvoudige automatiseringen en duidelijke overdracht</li></ul>
         </article>
         <article class="provider-card">
           <span class="tag">Privacy</span>
@@ -526,12 +524,11 @@
     <section class="section" id="contact">
       <div class="footer-cta">
         <div>
-          <h2>Klaar om je eerste MKB-agent te starten?</h2>
-          <p class="muted">Begin niet met betalen, maar met invullen. Kies eerst Hermes of OpenClaw, vul je gegevens in en bepaal pas daarna hoe de activatie verdergaat.</p>
+          <h2>Klaar om je eerste Trusted Agent te starten?</h2>
+          <p class="muted">Begin niet met betalen, maar met invullen. We starten met Hermes, verzamelen eerst de intakegegevens en bepalen pas daarna hoe activatie en betaling verdergaan.</p>
         </div>
         <div class="footer-cta-actions">
-          <a class="button light" href="#bestel-agent" data-onboarding-agent="hermes">Deploy Hermes</a>
-          <a class="button secondary" href="#bestel-agent" data-onboarding-agent="openclaw">Deploy OpenClaw</a>
+          <a class="button light" href="#bestel-agent">Start Hermes intake</a>
           <a class="button secondary" href="https://www.bernarddonners-ai.nl">Lees Bernards AI-visie</a>
           <p class="muted" style="font-size:14px">Altijd met menselijke goedkeuring, duidelijke datagrenzen en verantwoord gebruik. Eerst gegevens, dan pas bevestiging, betaling en activatie.</p>
         </div>
@@ -542,21 +539,21 @@
         <div>
           <div class="order-steps">
             <div class="order-step"><span class="badge">1</span><div><strong>Vul je gegevens in</strong><p class="muted">Naam, e-mailadres en bedrijfsnaam voor de eerste intake.</p></div></div>
-            <div class="order-step"><span class="badge">2</span><div><strong>Kies Hermes of OpenClaw</strong><p class="muted">Bepaal welk type agent je wilt starten in de €29-route.</p></div></div>
+            <div class="order-step"><span class="badge">2</span><div><strong>Hermes-route bevestigen</strong><p class="muted">Trusted Agents werkt publiek met één heldere route: Hermes als agentlaag.</p></div></div>
             <div class="order-step"><span class="badge">3</span><div><strong>Koppel je kanaal</strong><p class="muted">Telegram eerst, WhatsApp volgt later als aparte route.</p></div></div>
-            <div class="order-step"><span class="badge">4</span><div><strong>Voeg token en modeltoegang toe</strong><p class="muted">Bot-token en modelroute gaan pas daarna de activatieflow in.</p></div></div>
-            <div class="order-step"><span class="badge">5</span><div><strong>Daarna pas bevestiging en activatie</strong><p class="muted">Pas na deze intake volgen akkoord, betaling en eerste botinstallatie.</p></div></div>
+            <div class="order-step"><span class="badge">4</span><div><strong>Voeg token en modeltoegang toe</strong><p class="muted">Bot-token en modelroute gaan daarna veilig de activatieflow in.</p></div></div>
+            <div class="order-step"><span class="badge">5</span><div><strong>Daarna pas Mollie en activatie</strong><p class="muted">Pas na deze intake volgen akkoord, checkout en eerste botinstallatie.</p></div></div>
           </div>
           <div class="order-price">
             <div class="eyebrow" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:var(--lime)">€29 / maand per bot</div>
             <div class="price" style="margin-top:18px">€29 <span>/ maand per agent</span></div>
-            <p class="muted" style="margin-top:14px">Geen grote startkosten, direct opzegbaar en eerst je gegevens verzamelen zoals in de Trustable-flow.</p>
+            <p class="muted" style="margin-top:14px">Geen grote startkosten, direct opzegbaar en eerst je gegevens verzamelen. Daarna volgen tenant-aanmaak, veilige opslag en Mollie-checkout.</p>
           </div>
         </div>
         <article class="order-card">
           <div class="eyebrow">Bestel je agent</div>
           <h2>Start met je intake, niet met afrekenen</h2>
-          <p class="lead">Kies hieronder Hermes of OpenClaw en vul de gegevens in die nodig zijn voor de eerste activatiestap. Daarna volgt pas bevestiging, betaling en installatie.</p>
+          <p class="lead">Vul hieronder de gegevens in die nodig zijn voor de eerste Hermes-activatiestap. Daarna volgen pas bevestiging, Mollie-betaling en installatie.</p>
           <form id="order-form" style="display:grid;gap:18px;margin-top:28px">
             <div class="field full">
               <label for="order-email">E-mailadres</label>
@@ -570,12 +567,11 @@
               <label for="order-company">Bedrijf</label>
               <input id="order-company" name="company_name" autocomplete="organization" required>
             </div>
+            <input type="hidden" name="agent" id="order-agent" value="hermes">
             <div class="field full">
-              <label>Kies je AI Agent</label>
-              <input type="hidden" name="agent" id="order-agent" value="hermes">
-              <div class="agent-choice-grid">
-                <button type="button" class="agent-option active" data-agent-option="hermes"><strong>Hermes Agent</strong><span class="muted">Managed agent voor rustige, beheersbare workflowautomatisering.</span></button>
-                <button type="button" class="agent-option" data-agent-option="openclaw"><strong>OpenClaw Bot</strong><span class="muted">Open-source agentlaag voor Telegram-first intake en activering.</span></button>
+              <label>Je agentlaag</label>
+              <div class="agent-choice-grid" style="grid-template-columns:1fr">
+                <div class="agent-option active"><strong>Hermes Agent</strong><span class="muted">Managed agent voor rustige, beheersbare workflowautomatisering via Trusted Agents.</span></div>
               </div>
             </div>
             <div class="field full">
@@ -680,7 +676,7 @@
         "Modelkeuze": "Model choice",
         "Hosting": "Hosting",
         "Plan pilot": "Book pilot",
-        "Mensgerichte AI-agents · Hermes of OpenClaw · Trusted Agents": "Human-centered AI agents · Hermes or OpenClaw · Trusted Agents",
+        "Mensgerichte AI-agents · Hermes · Trusted Agents": "Human-centered AI agents · Hermes · Trusted Agents",
         "Veilige AI-agents. Data onder controle.": "Secure AI agents. Data under control.",
         "Start een pilot": "Start a pilot",
         "Waarom Trusted Agents?": "Why Trusted Agents?",
@@ -702,7 +698,7 @@
         "Vertrouwde agentlaag": "Trusted agent layer",
         "Niet alleen slim. Ook begrensd en beheersbaar.": "Not only smart. Also bounded and controllable.",
         "Vertrouwen in de praktijk": "Trust in practice",
-        "Initiatiefnemer Bernard Donners, Lector AI aan TIO Business School in Amsterdam en Groningen, werkt met een team van experts aan agent-oplossingen op basis van Hermes en OpenClaw die rust, overzicht en menselijke regie terugbrengen in persoonlijke contexten , via Telegram, WhatsApp en andere vertrouwde kanalen.": "Founder Bernard Donners, Professor of Applied AI at TIO Business School in Amsterdam and Groningen, works with a team of experts on agent solutions based on Hermes and OpenClaw that restore calm, overview and human control in personal contexts , through Telegram, WhatsApp and other familiar channels.",
+        "Initiatiefnemer Bernard Donners, Lector AI aan TIO Business School in Amsterdam en Groningen, werkt met een team van experts aan agent-oplossingen op basis van Hermes die rust, overzicht en menselijke regie terugbrengen in persoonlijke contexten , via Telegram, WhatsApp en andere vertrouwde kanalen.": "Founder Bernard Donners, Professor of Applied AI at TIO Business School in Amsterdam and Groningen, works with a team of experts on agent solutions based on Hermes that restore calm, overview and human control in personal contexts , through Telegram, WhatsApp and other familiar channels.",
         "Bekijk security-aanpak": "View security approach",
         "Private EU-server": "Private EU server",
         "AVG/GDPR-bewust": "GDPR-aware",
@@ -783,10 +779,10 @@
         "Drie manieren om je agent te draaien": "Three ways to run your agent",
         "1 · Starter": "1 · Starter",
         "Managed Agent": "Managed Agent",
-        "Voor individuen en kleinschalige mensgerichte trajecten die snel willen starten: de €29-route kan grotendeels self-service verlopen, van intake en kanaalkeuze tot botinstallatie en eerste activatie, terwijl je agent draait in de beheerde Trusted Agents-omgeving met gescheiden configuratie.": "For individuals and small-scale human-centered trajectories that want to start quickly: the €29 route can run largely self-service, from intake and channel selection to bot installation and first activation, while your agent runs in the managed Trusted Agents environment with separated configuration.",
-        "E-mailadres, agentkeuze en kanaalselectie": "Email address, agent choice and channel selection",
-        "Telegram bot-token + AI-sleutel of OAuth-route": "Telegram bot token + AI key or OAuth route",
-        "iDEAL/kaart-checkout en automatische activatie": "iDEAL/card checkout and automatic activation",
+        "Voor individuen en kleinschalige mensgerichte trajecten die snel willen starten: de €29-route kan grotendeels self-service verlopen, van intake en kanaalkeuze tot Hermes-activatie, terwijl je agent draait in de beheerde Trusted Agents-omgeving met gescheiden configuratie.": "For individuals and small-scale human-centered trajectories that want to start quickly: the €29 route can run largely self-service, from intake and channel selection to Hermes activation, while your agent runs in the managed Trusted Agents environment with separated configuration.",
+        "E-mailadres, kanaalkeuze en intakegegevens": "Email address, channel selection and intake details",
+        "Telegram bot-token + modeltoegang": "Telegram bot token + model access",
+        "Mollie-checkout via iDEAL of kaart": "Mollie checkout via iDEAL or card",
         "Eerste welkomstbericht + menselijke goedkeuringen ingesteld": "First welcome message + human approvals configured",
         "/ maand per bot": "/ month per bot",
         "2 · Dedicated": "2 · Dedicated",
@@ -806,27 +802,25 @@
         "Maandelijkse support mogelijk": "Monthly support possible",
         "Jij houdt de infrastructuurrelatie": "You keep the infrastructure relationship",
         "Setup + beheer": "Setup + management",
-        "Deploy je agent": "Deploy your agent",
-        "Van eerste gesprek naar werkende agent": "From first conversation to working agent",
-        "We maken deployment concreet: niet “we doen iets met AI”, maar een beheerde agent die veilig draait en via Telegram of WhatsApp bereikbaar is.": "We make deployment concrete: not “we do something with AI”, but a managed agent that runs safely and is reachable via Telegram or WhatsApp.",
+        "Start Hermes intake": "Start Hermes intake",
+        "Van eerste gesprek naar werkende Hermes-agentflow": "From first conversation to a working Hermes agent flow",
+        "We maken inzet concreet: niet “we doen iets met AI”, maar een beheerde Hermes-agentflow die veilig draait en aansluit op de kanalen die je al gebruikt.": "We make deployment concrete: not “we do something with AI”, but a managed Hermes agent flow that runs safely and fits the channels you already use.",
         "Wat je krijgt": "What you get",
-        "Een werkende Trusted Agent met Hermes als motor en OpenClaw als communicatiekanaal. Voor de €29-starter is de activatieflow al grotendeels te automatiseren.": "A working Trusted Agent with Hermes as the engine and OpenClaw as the communication channel. For the €29 starter, the activation flow is already largely automatable.",
+        "Een werkende Trusted Agent op Hermes. Voor de €29-starter is de activatieflow grotendeels te automatiseren: intake invullen, Telegram bot koppelen, secrets veilig opslaan en daarna Mollie-checkout starten.": "A working Trusted Agent on Hermes. For the €29 starter, the activation flow can be largely automated: complete the intake, connect the Telegram bot, store secrets safely and then start the Mollie checkout.",
         "E-mail concepten": "Email drafts",
         "Browser / desktop": "Browser / desktop",
-        "Gegevens & agentkeuze": "Details & agent choice",
-        "E-mailadres invullen, Hermes of OpenClaw kiezen en aangeven via welk kanaal de agent moet starten.": "Enter your email address, choose Hermes or OpenClaw and specify which channel should launch the agent.",
+        "Intake & kanaalkeuze": "Intake & channel selection",
+        "We verzamelen naam, e-mailadres en use-case en kiezen Telegram als eerste kanaal voor de Hermes-agent.": "We collect your name, email address and use case and choose Telegram as the first channel for the Hermes agent.",
         "E-mailadres bevestigen": "Confirm email address",
         "De eigenaar bevestigt het adres voordat de bot live gaat en de omgeving aan het account wordt gekoppeld.": "The owner confirms the address before the bot goes live and the environment is linked to the account.",
-        "Betaling starten": "Start payment",
-        "Voorwaarden akkoord, daarna checkout via iDEAL of kaart voor de €29-route.": "Accept the terms, then continue to checkout via iDEAL or card for the €29 route.",
-        "Botinstallatie (~3–5 min)": "Bot installation (~3–5 min)",
-        "Telegram bot-token en modelroute encrypted opslaan, tenant aanmaken en de eerste worker automatisch activeren.": "Store the Telegram bot token and model route encrypted, create the tenant and automatically activate the first worker.",
+        "Mollie-checkout starten": "Start Mollie checkout",
+        "Na akkoord maakt de backend een Mollie-checkout aan voor iDEAL of kaartbetaling van de gekozen route.": "After approval, the backend creates a Mollie checkout for iDEAL or card payment of the chosen route.",
+        "Hermes activeren (~3–5 min)": "Activate Hermes (~3–5 min)",
+        "Telegram bot-token en modelroute encrypted opslaan, tenant aanmaken en de eerste Hermes-worker automatisch activeren.": "Store the Telegram bot token and model route encrypted, create the tenant and automatically activate the first Hermes worker.",
         "Welkomstbericht & eerste test": "Welcome message & first test",
         "De agent stuurt een eerste bericht; daarna lopen we alleen nog workflowgrenzen en menselijke goedkeuringen na.": "The agent sends a first message; after that we only review workflow boundaries and human approvals.",
         "Nog bewust begeleid:": "Still intentionally guided:",
         "use-case aanscherpen, guardrails instellen, prompts/skills finetunen en bepalen welke acties altijd menselijke goedkeuring nodig hebben.": "sharpening the use case, setting guardrails, fine-tuning prompts/skills and deciding which actions always require human approval.",
-        "Deploy Hermes": "Deploy Hermes",
-        "Deploy OpenClaw": "Deploy OpenClaw",
         "Telegram + WhatsApp flow": "Telegram + WhatsApp flow",
         "De agent leeft in het kanaal waar de gebruiker al zit. Telegram is ideaal voor snelle start en interne teams; WhatsApp is handig voor gebruikers die geen nieuwe tool willen leren.": "The agent lives in the channel where the user already is. Telegram is ideal for quick starts and internal teams; WhatsApp is useful for users who do not want to learn a new tool.",
         "Jij · WhatsApp": "You · WhatsApp",
@@ -854,7 +848,7 @@
         "Handig voor Codex/ChatGPT-workflows": "Useful for Codex/ChatGPT workflows",
         "Toegang kan later worden ingetrokken": "Access can be revoked later",
         "Hoe het werkt:": "How it works:",
-        "tijdens deployment kiezen we de primaire modelroute en minimaal één fallback. Sleutels of OAuth-tokens worden niet in de website gezet; ze horen in de private agent-workspace. Hermes gebruikt de gekozen provider voor het denkwerk, OpenClaw levert het Telegram/WhatsApp-kanaal, en gevoelige acties blijven wachten op menselijke goedkeuring.": "during deployment we choose the primary model route and at least one fallback. Keys or OAuth tokens are not placed in the website; they belong in the private agent workspace. Hermes uses the chosen provider for reasoning, OpenClaw provides the Telegram/WhatsApp channel, and sensitive actions keep waiting for human approval.",
+        "tijdens deployment kiezen we de primaire modelroute en minimaal één fallback. Sleutels of OAuth-tokens worden niet in de website gezet; ze horen in de private agent-workspace. Hermes gebruikt de gekozen provider voor het denkwerk, werkt via Telegram, WhatsApp of browser, en gevoelige acties blijven wachten op menselijke goedkeuring.": "during deployment we choose the primary model route and at least one fallback. Keys or OAuth tokens are not placed in the website; they belong in the private agent workspace. Hermes uses the chosen provider for reasoning, works through Telegram, WhatsApp or browser, and sensitive actions keep waiting for human approval.",
         "Waar draait je agent?": "Where does your agent run?",
         "Managed, dedicated of bring your own": "Managed, dedicated or bring your own",
         "De standaardroute is een beheerde Trusted Agents-omgeving. Wie meer isolatie of eigenaarschap wil, kiest voor een dedicated server of brengt eigen infrastructuur mee.": "The standard route is a managed Trusted Agents environment. Those who want more isolation or ownership choose a dedicated server or bring their own infrastructure.",
@@ -877,11 +871,11 @@
         "voor automatische provisioning is Hetzner de voorkeursroute. Hostinger blijft interessant als optionele affiliate- of klant-hostingroute, maar niet als standaard backend voor de managed omgeving.": "for automatic provisioning, Hetzner is the preferred route. Hostinger remains interesting as an optional affiliate or customer-hosting route, but not as the standard backend for the managed environment.",
         "Mac mini AI-workstation": "Mac mini AI workstation",
         "Je eigen Mac mini als private AI-basis": "Your own Mac mini as a private AI base",
-        "Voor wie liever op eigen Apple-hardware werkt, richt Trusted Agents een Mac mini M4 of bestaande Mac in als private AI-workstation. Afhankelijk van je workflow kiezen we Hermes, OpenClaw of een heldere combinatie van beide , met Telegram, WhatsApp of browser als dagelijkse ingang.": "For anyone who prefers to work on their own Apple hardware, Trusted Agents can set up a Mac mini M4 or existing Mac as a private AI workstation. Depending on your workflow, we choose Hermes, OpenClaw or a clear combination of both , with Telegram, WhatsApp or browser as the daily entry point.",
+        "Voor wie liever op eigen Apple-hardware werkt, richt Trusted Agents een Mac mini M4 of bestaande Mac in als private AI-workstation. Afhankelijk van je workflow richten we Hermes in met Telegram, WhatsApp of browser als dagelijkse ingang.": "For anyone who prefers to work on their own Apple hardware, Trusted Agents can set up a Mac mini M4 or existing Mac as a private AI workstation. Depending on your workflow, we configure Hermes with Telegram, WhatsApp or browser as the daily entry point.",
         "Installatie": "Installation",
         "Wat we inrichten": "What we set up",
         "Geen losse demo, maar een werkende basisconfiguratie die past bij jouw dagelijkse vragen en terugkerende taken.": "Not a loose demo, but a working base configuration that fits your daily questions and recurring tasks.",
-        "Installatie en configuratie van Hermes of OpenClaw": "Installation and configuration of Hermes or OpenClaw",
+        "Installatie en configuratie van Hermes": "Installation and configuration of Hermes",
         "Koppeling met Telegram, WhatsApp of browser": "Connection to Telegram, WhatsApp or browser",
         "Eén of meer passende modelroutes via je eigen accounts": "One or more suitable model routes through your own accounts",
         "Eerste eenvoudige automatiseringen en duidelijke overdracht": "Initial simple automations and a clear handover",
@@ -906,33 +900,32 @@
         "Wanneer AI met persoonlijke gegevens, kwetsbare context of gevoelige informatie werkt, moet het niet alleen handig zijn. Het moet uitlegbaar, beheersbaar en begrensd zijn.": "When AI works with personal data, vulnerable contexts or sensitive information, it must not only be useful. It must be explainable, controllable and bounded.",
         "“Niet alles wat technologisch kan is ook maatschappelijk gewenst.”": "“Not everything that is technologically possible is socially desirable.”",
         ", lijn vanuit bernarddonners-ai.nl, vertaald naar veilige zakelijke toepassing": ", line from bernarddonners-ai.nl, translated into safe business application",
-        "Klaar om je eerste MKB-agent te starten?": "Ready to start your first SMB agent?",
-        "Begin niet met betalen, maar met invullen. Kies eerst Hermes of OpenClaw, vul je gegevens in en bepaal pas daarna hoe de activatie verdergaat.": "Do not start with payment, start with filling in the details. Choose Hermes or OpenClaw first, enter your information and only then decide how activation continues.",
+        "Klaar om je eerste Trusted Agent te starten?": "Ready to start your first Trusted Agent?",
+        "Begin niet met betalen, maar met invullen. We starten met Hermes, verzamelen eerst de intakegegevens en bepalen pas daarna hoe activatie en betaling verdergaan.": "Do not start with payment, start with filling in the details. We start with Hermes, collect the intake details first, and only then determine how activation and payment continue.",
         "Lees Bernards AI-visie": "Read Bernard's AI vision",
         "Altijd met menselijke goedkeuring, duidelijke datagrenzen en verantwoord gebruik. Eerst gegevens, dan pas bevestiging, betaling en activatie.": "Always with human approval, clear data boundaries and responsible use. First the details, then confirmation, payment and activation.",
-        "Deze knoppen openen hieronder direct het intakeformulier, met Hermes of OpenClaw alvast geselecteerd. Betaling en activatie volgen pas na het invullen van de gegevens.": "These buttons open the intake form directly below, with Hermes or OpenClaw already selected. Payment and activation only follow after the details are filled in.",
+        "Hieronder open je direct het intakeformulier voor Hermes. Betaling en activatie volgen pas na het invullen van de gegevens.": "Below you open the Hermes intake form directly. Payment and activation only follow after the details are filled in.",
         "Vul je gegevens in": "Enter your details",
         "Naam, e-mailadres en bedrijfsnaam voor de eerste intake.": "Name, email address and company name for the first intake.",
-        "Kies Hermes of OpenClaw": "Choose Hermes or OpenClaw",
-        "Bepaal welk type agent je wilt starten in de €29-route.": "Decide which type of agent you want to start in the €29 route.",
+        "Hermes-route bevestigen": "Confirm the Hermes route",
+        "Trusted Agents werkt publiek met één heldere route: Hermes als agentlaag.": "Trusted Agents presents one clear public route: Hermes as the agent layer.",
         "Koppel je kanaal": "Connect your channel",
         "Telegram eerst, WhatsApp volgt later als aparte route.": "Telegram first, WhatsApp will follow later as a separate route.",
         "Voeg token en modeltoegang toe": "Add token and model access",
-        "Bot-token en modelroute gaan pas daarna de activatieflow in.": "Bot token and model route only enter the activation flow after that.",
-        "Daarna pas bevestiging en activatie": "Only then confirmation and activation",
-        "Pas na deze intake volgen akkoord, betaling en eerste botinstallatie.": "Only after this intake do approval, payment and first bot installation follow.",
+        "Bot-token en modelroute gaan daarna veilig de activatieflow in.": "Bot token and model route then safely enter the activation flow.",
+        "Daarna pas Mollie en activatie": "Only then Mollie and activation",
+        "Pas na deze intake volgen akkoord, checkout en eerste botinstallatie.": "Only after this intake do approval, checkout and first bot installation follow.",
         "€29 / maand per bot": "€29 / month per bot",
         "€29 / maand per agent": "€29 / month per agent",
-        "Geen grote startkosten, direct opzegbaar en eerst je gegevens verzamelen zoals in de Trustable-flow.": "No large upfront costs, cancellable right away, and first collect your details like in the Trustable flow.",
+        "Geen grote startkosten, direct opzegbaar en eerst je gegevens verzamelen. Daarna volgen tenant-aanmaak, veilige opslag en Mollie-checkout.": "No large upfront costs, cancellable right away, and first collect your details. After that come tenant creation, secure storage and Mollie checkout.",
         "Bestel je agent": "Order your agent",
         "Start met je intake, niet met afrekenen": "Start with your intake, not with checkout",
-        "Kies hieronder Hermes of OpenClaw en vul de gegevens in die nodig zijn voor de eerste activatiestap. Daarna volgt pas bevestiging, betaling en installatie.": "Choose Hermes or OpenClaw below and enter the details needed for the first activation step. Only after that do confirmation, payment and installation follow.",
+        "Vul hieronder de gegevens in die nodig zijn voor de eerste Hermes-activatiestap. Daarna volgen pas bevestiging, Mollie-betaling en installatie.": "Fill in the details below that are needed for the first Hermes activation step. Only after that do confirmation, Mollie payment and installation follow.",
         "E-mailadres": "Email address",
         "Naam": "Name",
         "Bedrijf": "Company",
-        "Kies je AI Agent": "Choose your AI Agent",
-        "Managed agent voor rustige, beheersbare workflowautomatisering.": "Managed agent for calm, controllable workflow automation.",
-        "Open-source agentlaag voor Telegram-first intake en activering.": "Open-source agent layer for Telegram-first intake and activation.",
+        "Je agentlaag": "Your agent layer",
+        "Managed agent voor rustige, beheersbare workflowautomatisering via Trusted Agents.": "Managed agent for calm, controllable workflow automation through Trusted Agents.",
         "Telegram": "Telegram",
         "WhatsApp binnenkort": "WhatsApp coming soon",
         "Telegram Bot Token": "Telegram Bot Token",
@@ -942,7 +935,6 @@
         "Ik begrijp dat ik verantwoordelijk blijf voor de configuratie en antwoorden van mijn bot en gevoelige acties eerst moet goedkeuren.": "I understand that I remain responsible for my bot's configuration and answers and that I must approve sensitive actions first.",
         "Maak intake klaar": "Prepare intake",
         "Hermes Agent": "Hermes Agent",
-        "OpenClaw Bot": "OpenClaw Bot",
         "Gegevens klaar voor activatie.": "Details ready for activation.",
         "Controleer de samenvatting hieronder en open daarna de intake-mail met alle ingevulde gegevens.": "Check the summary below and then open the intake email with all completed details.",
         "Open intake-mail": "Open intake email",
@@ -1065,7 +1057,7 @@
       orderForm.addEventListener('submit', (event) => {
         event.preventDefault();
         const data = Object.fromEntries(new FormData(orderForm).entries());
-        const agentLabel = data.agent === 'openclaw' ? 'OpenClaw Bot' : 'Hermes Agent';
+        const agentLabel = 'Hermes Agent';
         const lines = [
           'Ik wil graag een agent starten via de €29-route.',
           '',
