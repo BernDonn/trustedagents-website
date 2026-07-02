@@ -1,0 +1,41 @@
+services:
+  reverse-proxy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - onboarding-backend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    networks:
+      - onboarding
+
+  onboarding-backend:
+    build:
+      context: .
+    restart: unless-stopped
+    env_file:
+      - .env.production
+    environment:
+      TRUSTED_AGENTS_HOST: 0.0.0.0
+      TRUSTED_AGENTS_PORT: 8088
+      TRUSTED_AGENTS_DB: /data/onboarding.sqlite3
+    volumes:
+      - onboarding-data:/data
+    expose:
+      - "8088"
+    networks:
+      - onboarding
+
+networks:
+  onboarding:
+    name: trusted-agents-onboarding
+
+volumes:
+  onboarding-data:
+  caddy-data:
+  caddy-config:

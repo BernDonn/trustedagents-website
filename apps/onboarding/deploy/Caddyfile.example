@@ -1,0 +1,16 @@
+{
+  email admin@example.com
+}
+
+ONBOARDING_DOMAIN {
+  encode gzip zstd
+
+  @health path /health
+  handle @health {
+    reverse_proxy onboarding-backend:8088
+  }
+
+  handle {
+    reverse_proxy onboarding-backend:8088
+  }
+}

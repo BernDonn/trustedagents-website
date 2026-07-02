@@ -24,6 +24,7 @@ Prepare these inputs outside Git:
 ## Runtime env for the first live version
 
 Use `.env.production.example` as the template and provide real values only on the server.
+Use `docker-compose.production.yml` for the first live stack and copy `deploy/Caddyfile.example` to a local-only `deploy/Caddyfile` on the server.
 
 Minimum live variables:
 - `TRUSTED_AGENTS_MASTER_KEY`
