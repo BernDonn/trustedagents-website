@@ -22,7 +22,7 @@
     <section class="panel">
       <span class="eyebrow">Bernard admin</span>
       <h1>Tenantoverzicht.</h1>
-      <p class="lead">Hier zie je de onboardingstatus zonder secrets. Tokenwaarden blijven encrypted in de backend en worden niet aan de adminpagina teruggegeven.</p>
+      <p class="lead">Hier zie je de onboardingstatus zonder secrets. Tokenwaarden blijven encrypted in de backend en worden niet aan de adminpagina teruggegeven. Na terugkeer uit Mollie kan deze pagina de betaalstatus meteen opnieuw ophalen.</p>
       <div id="message" class="notice" style="margin:22px 0">Tenants laden...</div>
       <div style="overflow:auto">
         <table class="table" aria-label="Tenantoverzicht">
@@ -39,6 +39,9 @@
     const tbody = document.querySelector('#tenants');
     const message = document.querySelector('#message');
     const refresh = document.querySelector('#refresh');
+    const params = new URLSearchParams(window.location.search);
+    const selectedTenantId = params.get('tenant_id') || '';
+    const fromCheckout = params.get('from_checkout') === '1';
 
     function shortTenant(id){ return id ? id.slice(0, 18) + '…' : ''; }
     function shortRef(id){ return id ? id.slice(0, 16) + '…' : '—'; }
@@ -53,13 +56,17 @@
       tbody.innerHTML = '';
       for (const tenant of payload.tenants){
         const actions = [];
-        if (tenant.payment_checkout_url && tenant.payment_status !== 'active') {
+        if (tenant.payment_checkout_url && tenant.payment_status !== 'active' && tenant.payment_status !== 'paid') {
           actions.push(`<a class="button secondary" target="_blank" rel="noreferrer" href="${tenant.payment_checkout_url}">Checkout</a>`);
+        }
+        if (tenant.payment_reference && tenant.payment_status !== 'active') {
+          actions.push(`<button type="button" class="secondary" data-sync="${tenant.id}">Sync betaling</button>`);
         }
         if (tenant.payment_status !== 'active') {
           actions.push(`<button type="button" data-active="${tenant.id}">Markeer actief</button>`);
         }
         const tr = document.createElement('tr');
+        if (tenant.id === selectedTenantId) tr.style.outline = '2px solid rgba(57,208,122,.55)';
         tr.innerHTML = `
           <td><span class="pill">${shortTenant(tenant.id)}</span></td>
           <td><strong>${tenant.customer_name}</strong><br><span class="muted">${tenant.email}</span><br><span class="muted">${tenant.company_name || ''}</span></td>
@@ -77,7 +84,27 @@
         tbody.innerHTML = '<tr><td colspan="9" class="muted">Nog geen tenants. Maak eerst een demo-tenant aan.</td></tr>';
       }
       message.className = 'notice good';
+      if (selectedTenantId) {
+        const selected = payload.tenants.find(t => t.id === selectedTenantId);
+        if (selected) {
+          message.textContent = fromCheckout
+            ? `Terug uit Mollie. Tenant ${selectedTenantId.slice(0, 18)}… staat nu op ${selected.payment_status} / ${selected.status}.`
+            : `Tenant ${selectedTenantId.slice(0, 18)}… geladen met status ${selected.payment_status} / ${selected.status}.`;
+          return;
+        }
+      }
       message.textContent = `${payload.tenants.length} tenant(s) geladen.`;
+    }
+
+    async function syncPayment(tenantId){
+      const response = await fetch('/api/payments/sync-status', {
+        method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({tenant_id: tenantId})
+      });
+      const payload = await response.json();
+      if (!response.ok) throw new Error(payload.message || payload.error || 'Kon payment-status niet synchroniseren');
+      await loadTenants();
+      return payload;
     }
 
     async function markActive(tenantId){
@@ -91,6 +118,19 @@
     }
 
     document.addEventListener('click', async (event) => {
+      const syncBtn = event.target.closest('[data-sync]');
+      if (syncBtn) {
+        syncBtn.disabled = true;
+        try {
+          const payload = await syncPayment(syncBtn.dataset.sync);
+          message.className = 'notice good';
+          message.textContent = `Betaalstatus gesynchroniseerd: ${payload.payment_status} / ${payload.status}`;
+        }
+        catch (error) { message.className = 'notice bad'; message.textContent = error.message; }
+        finally { syncBtn.disabled = false; }
+        return;
+      }
+
       const btn = event.target.closest('[data-active]');
       if (!btn) return;
       btn.disabled = true;
@@ -98,8 +138,23 @@
       catch (error) { message.className = 'notice bad'; message.textContent = error.message; }
       finally { btn.disabled = false; }
     });
+
+    async function boot(){
+      if (fromCheckout && selectedTenantId) {
+        try {
+          message.className = 'notice';
+          message.textContent = 'Terug uit Mollie, betaalstatus wordt opgehaald...';
+          await syncPayment(selectedTenantId);
+        } catch (error) {
+          message.className = 'notice bad';
+          message.textContent = `Kon status niet automatisch ophalen: ${error.message}`;
+        }
+      }
+      await loadTenants();
+    }
+
     refresh.addEventListener('click', () => loadTenants().catch(error => {message.className='notice bad'; message.textContent=error.message;}));
-    loadTenants().catch(error => {message.className='notice bad'; message.textContent=error.message;});
+    boot().catch(error => {message.className='notice bad'; message.textContent=error.message;});
   </script>
 </body>
 </html>

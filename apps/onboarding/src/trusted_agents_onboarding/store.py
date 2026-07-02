@@ -51,6 +51,10 @@ TENANT_EXTRA_COLUMNS = {
     "payment_checkout_url": "TEXT",
 }
 
+PAID_PAYMENT_STATUSES = {"paid"}
+PENDING_PAYMENT_STATUSES = {"open", "pending", "authorized"}
+FAILED_PAYMENT_STATUSES = {"failed", "expired", "canceled"}
+
 
 @dataclass(frozen=True)
 class TenantRecord:
@@ -100,7 +104,7 @@ class OnboardingStore:
             customer_name=req.customer_name,
             company_name=req.company_name,
             model_provider=req.model_provider,
-            status="pending_payment",
+            status="intake_received",
             payment_status="not_started",
             payment_provider=None,
             payment_reference=None,
@@ -136,6 +140,16 @@ class OnboardingStore:
                 (f"evt_{uuid.uuid4().hex}", tenant_id, "tenant.created", "Tenant created from onboarding form", now),
             )
         return record
+
+    def _status_for_payment(self, payment_status: str) -> str:
+        normalized = payment_status.strip().lower()
+        if normalized in PAID_PAYMENT_STATUSES:
+            return "activation_pending"
+        if normalized in PENDING_PAYMENT_STATUSES:
+            return "payment_pending"
+        if normalized in FAILED_PAYMENT_STATUSES:
+            return "payment_failed"
+        return "payment_unknown"
 
     def get_tenant(self, tenant_id: str) -> TenantRecord:
         with self.connect() as con:
@@ -173,10 +187,18 @@ class OnboardingStore:
             cur = con.execute(
                 """
                 UPDATE tenants
-                SET payment_provider=?, payment_reference=?, payment_checkout_url=?, payment_status=?, updated_at=?
+                SET status=?, payment_provider=?, payment_reference=?, payment_checkout_url=?, payment_status=?, updated_at=?
                 WHERE id=?
                 """,
-                (provider, payment_reference, checkout_url, payment_status, now, tenant_id),
+                (
+                    self._status_for_payment(payment_status),
+                    provider,
+                    payment_reference,
+                    checkout_url,
+                    payment_status,
+                    now,
+                    tenant_id,
+                ),
             )
             if cur.rowcount != 1:
                 raise KeyError(f"unknown tenant {tenant_id}")
@@ -197,7 +219,7 @@ class OnboardingStore:
         with self.connect() as con:
             cur = con.execute(
                 "UPDATE tenants SET status=?, payment_status=?, updated_at=? WHERE id=?",
-                ("provisioning", "active", now, tenant_id),
+                ("active", "active", now, tenant_id),
             )
             if cur.rowcount != 1:
                 raise KeyError(f"unknown tenant {tenant_id}")
@@ -211,10 +233,11 @@ class OnboardingStore:
         message = f"Payment status updated: {payment_status}"
         if payment_reference:
             message = f"Payment status updated: {payment_status} ({payment_reference})"
+        internal_status = self._status_for_payment(payment_status)
         with self.connect() as con:
             cur = con.execute(
                 "UPDATE tenants SET status=?, payment_status=?, updated_at=? WHERE id=?",
-                ("pending_payment", payment_status, now, tenant_id),
+                (internal_status, payment_status, now, tenant_id),
             )
             if cur.rowcount != 1:
                 raise KeyError(f"unknown tenant {tenant_id}")

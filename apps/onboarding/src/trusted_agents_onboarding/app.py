@@ -114,6 +114,14 @@ class OnboardingHandler(BaseHTTPRequestHandler):
             tenants = [asdict(t) for t in self.store.list_tenants()]
             self._json(HTTPStatus.OK, {"tenants": tenants})
             return
+        if path.startswith("/api/admin/tenants/"):
+            tenant_id = path.removeprefix("/api/admin/tenants/").strip()
+            if not tenant_id:
+                self._json(HTTPStatus.BAD_REQUEST, {"error": "validation_error", "message": "tenant_id is required"})
+                return
+            tenant = self.store.get_tenant(tenant_id)
+            self._json(HTTPStatus.OK, {"tenant": asdict(tenant)})
+            return
         self._json(HTTPStatus.NOT_FOUND, {"error": "not_found"})
 
     def do_POST(self) -> None:  # noqa: N802
@@ -164,11 +172,26 @@ class OnboardingHandler(BaseHTTPRequestHandler):
                     raise ValidationError("payment id is required")
                 status = self.payment_gateway.fetch_payment(payment_id)
                 tenant = self.store.get_tenant_by_payment_reference(status.payment_id)
-                if status.is_paid:
-                    self.store.mark_payment_active(tenant.id, status.payment_id)
-                else:
-                    self.store.mark_payment_status(tenant.id, status.status, status.payment_id)
+                self.store.mark_payment_status(tenant.id, status.status, status.payment_id)
                 self._json(HTTPStatus.OK, {"ok": True, "payment_id": status.payment_id, "status": status.status})
+                return
+            if path == "/api/payments/sync-status":
+                data = self._read_json()
+                tenant_id = str(data.get("tenant_id", "")).strip()
+                payment_id = str(data.get("payment_id", "")).strip()
+                if tenant_id:
+                    tenant = self.store.get_tenant(tenant_id)
+                    payment_id = payment_id or str(tenant.payment_reference or "").strip()
+                elif payment_id:
+                    tenant = self.store.get_tenant_by_payment_reference(payment_id)
+                else:
+                    raise ValidationError("tenant_id or payment_id is required")
+                if not payment_id:
+                    raise ValidationError("payment_reference is not available for this tenant")
+                status = self.payment_gateway.fetch_payment(payment_id)
+                self.store.mark_payment_status(tenant.id, status.status, status.payment_id)
+                updated = self.store.get_tenant(tenant.id)
+                self._json(HTTPStatus.OK, {**self._tenant_response(updated), "synced": True})
                 return
             if path == "/api/payments/manual-active":
                 data = self._read_json()

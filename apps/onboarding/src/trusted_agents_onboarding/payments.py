@@ -73,7 +73,7 @@ class MollieGateway(PaymentGateway):
         payload = {
             "amount": {"currency": "EUR", "value": amount},
             "description": f"Trusted Agents — {tenant.plan} — {tenant.company_name}",
-            "redirectUrl": f"{self.public_base_url}/admin?tenant_id={tenant.tenant_id}",
+            "redirectUrl": f"{self.public_base_url}/admin?tenant_id={tenant.tenant_id}&from_checkout=1",
             "webhookUrl": f"{self.public_base_url}/api/payments/mollie/webhook",
             "metadata": {
                 "tenant_id": tenant.tenant_id,

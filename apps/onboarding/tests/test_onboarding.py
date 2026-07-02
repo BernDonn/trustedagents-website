@@ -103,7 +103,7 @@ def test_onboarding_stores_encrypted_secrets(tmp_path, monkeypatch):
     tenant = store.create_tenant(req)
 
     assert tenant.email == "user@example.nl"
-    assert tenant.status == "pending_payment"
+    assert tenant.status == "intake_received"
     assert tenant.payment_status == "not_started"
     assert store.get_secret(tenant.id, "telegram_bot_token") == "telegram-secret-value"
 
@@ -190,6 +190,7 @@ def test_mollie_checkout_and_webhook_flow(tmp_path, monkeypatch):
             method="POST",
             payload={"tenant_id": tenant_id},
         )
+        assert checkout_payload["status"] == "payment_pending"
         assert checkout_payload["payment_provider"] == "mollie"
         assert checkout_payload["payment_status"] == "open"
         assert checkout_payload["checkout_url"].startswith("https://checkout.example/")
@@ -210,7 +211,48 @@ def test_mollie_checkout_and_webhook_flow(tmp_path, monkeypatch):
         admin_payload = api_json(f"{server.base_url}/api/admin/tenants")
         tenant = admin_payload["tenants"][0]
         assert tenant["id"] == tenant_id
-        assert tenant["status"] == "provisioning"
-        assert tenant["payment_status"] == "active"
+        assert tenant["status"] == "activation_pending"
+        assert tenant["payment_status"] == "paid"
         assert tenant["payment_provider"] == "mollie"
         assert tenant["payment_reference"] == payment_id
+
+
+def test_payment_sync_status_endpoint_updates_selected_tenant(tmp_path, monkeypatch):
+    monkeypatch.setenv(MASTER_KEY_ENV, generate_master_key())
+    store = OnboardingStore(tmp_path / "onboarding.sqlite3", SecretBox.from_env())
+    gateway = FakeGateway(payment_status="open")
+
+    with DemoServer(store, gateway) as server:
+        tenant_payload = api_json(
+            f"{server.base_url}/api/onboarding/intents",
+            method="POST",
+            payload={
+                "email": "sync@example.nl",
+                "plan": "starter",
+                "customer_name": "Sync User",
+                "company_name": "Sync BV",
+                "telegram_bot_token": "telegram-secret-value",
+                "model_provider": "anthropic",
+                "model_api_key": "model-secret-value",
+                "accepted_responsibility": True,
+                "accepted_terms": True,
+            },
+        )
+        tenant_id = tenant_payload["tenant_id"]
+
+        checkout_payload = api_json(
+            f"{server.base_url}/api/payments/create-checkout",
+            method="POST",
+            payload={"tenant_id": tenant_id},
+        )
+        assert checkout_payload["status"] == "payment_pending"
+
+        gateway.payment_status = "paid"
+        sync_payload = api_json(
+            f"{server.base_url}/api/payments/sync-status",
+            method="POST",
+            payload={"tenant_id": tenant_id},
+        )
+        assert sync_payload["synced"] is True
+        assert sync_payload["status"] == "activation_pending"
+        assert sync_payload["payment_status"] == "paid"
