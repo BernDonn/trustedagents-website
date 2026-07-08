@@ -169,6 +169,9 @@
     .check input{margin-top:4px}
     .notice{margin-top:18px;background:#f0e6d6;border:1px solid var(--line);border-radius:22px;padding:18px;color:#304034;line-height:1.6}
     .notice strong{display:block;margin-bottom:8px;color:#17240f}
+    .setup-note{border:1px solid rgba(22,63,43,.16);background:#eef7e5;border-radius:20px;padding:16px 18px;color:#26382c;line-height:1.55}
+    .setup-note strong{display:block;color:var(--green);margin-bottom:6px}
+    .setup-note code{background:rgba(255,255,255,.72);border:1px solid rgba(22,63,43,.12);border-radius:9px;padding:2px 6px;font-size:13px}
     footer{padding:34px 24px;color:#626961;border-top:1px solid var(--line)}
     .foot-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     @media(max-width:1100px){.nav-links{display:none}}
@@ -365,9 +368,9 @@
         <article class="product featured">
           <span class="tag">1 · Starter</span>
           <h3>Managed Agent</h3>
-          <p class="muted">De eenvoudigste manier om te starten. Je krijgt een beheerde Hermes-agent in de Trusted Agents-omgeving, met een rustige intake en duidelijke begeleiding.</p>
-          <ul><li>Intake met jouw gegevens en gewenste inzet</li><li>Telegram als eerste kanaal</li><li>Betaling via Mollie, iDEAL of kaart</li><li>Veilige activatie en eerste testbericht</li></ul>
-          <div class="price">€29 <span>/ maand per bot</span></div>
+          <p class="muted">De eenvoudigste manier om te starten. Je krijgt een beheerde Hermes-agent op een private Europese VPS, met installatie, beheer en duidelijke begeleiding. Het AI-gebruik loopt via je eigen ChatGPT/Codex-account.</p>
+          <ul><li>Private EU-VPS, installatie en beheer</li><li>Telegram als eerste kanaal</li><li>Klant koppelt zelf ChatGPT/Codex via OAuth</li><li>Betaling via Mollie, iDEAL of kaart</li></ul>
+          <div class="price">€29 <span>/ maand per agent · AI-gebruik via eigen account</span></div>
           <div class="hero-actions" style="margin:4px 0 0">
             <a class="button light" href="#bestel-agent">Start Hermes intake</a>
           </div>
@@ -396,7 +399,7 @@
       <div class="deploy-grid">
         <article class="deploy-panel">
           <h3>Wat je krijgt</h3>
-          <p class="muted">Een werkende Trusted Agent op Hermes, met een duidelijk startproces. Eerst de intake, daarna pas activatie en betaling.</p>
+          <p class="muted">Een werkende Trusted Agent op Hermes, met een duidelijk startproces. Jij betaalt voor VPS, installatie en beheer; het ChatGPT/Codex-account blijft van de klant.</p>
           <div class="channel-row">
             <span class="channel">Telegram</span>
             <span class="channel">WhatsApp</span>
@@ -406,9 +409,10 @@
           <div class="deploy-steps">
             <div class="deploy-step"><div><strong>1. Intake</strong><br><span class="muted">We verzamelen je gegevens en bespreken kort waarvoor je de agent wilt gebruiken.</span></div></div>
             <div class="deploy-step"><div><strong>2. Kanaal kiezen</strong><br><span class="muted">We starten standaard met Telegram. Later kunnen andere kanalen volgen.</span></div></div>
-            <div class="deploy-step"><div><strong>3. Bevestigen en betalen</strong><br><span class="muted">Pas na de intake volgt de bevestiging en, als je verder wilt, de betaling via Mollie.</span></div></div>
-            <div class="deploy-step"><div><strong>4. Activatie</strong><br><span class="muted">Daarna richten we Hermes veilig in en activeren we je eerste agent.</span></div></div>
-            <div class="deploy-step"><div><strong>5. Eerste test</strong><br><span class="muted">Je ontvangt een eerste bericht en we controleren samen of alles goed staat.</span></div></div>
+            <div class="deploy-step"><div><strong>3. ChatGPT koppelen</strong><br><span class="muted">De klant logt zelf in via de officiële ChatGPT/Codex OAuth-code. Geen wachtwoord of API-sleutel in dit formulier.</span></div></div>
+            <div class="deploy-step"><div><strong>4. Bevestigen en betalen</strong><br><span class="muted">Na de intake volgt de bevestiging en, als je verder wilt, de betaling via Mollie.</span></div></div>
+            <div class="deploy-step"><div><strong>5. Activatie</strong><br><span class="muted">Daarna richten we Hermes veilig in en activeren we je eerste agent.</span></div></div>
+            <div class="deploy-step"><div><strong>6. Eerste test</strong><br><span class="muted">Je ontvangt een eerste bericht en we controleren samen of alles goed staat.</span></div></div>
           </div>
           <div class="flow-note" style="margin-top:18px"><strong>Belangrijk:</strong> gevoelige acties blijven altijd onder menselijke controle. De agent bereidt voor, maar handelt niet zomaar zelfstandig.</div>
           <div class="hero-actions" style="margin-top:22px">
@@ -431,41 +435,41 @@
 
     <section class="section" id="providers">
       <div class="eyebrow">Modelkeuze</div>
-      <h2>Hermes kiest de best passende modelroute</h2>
-      <p class="lead">Voor de meeste klanten hoeft modelkeuze niet ingewikkeld te zijn. Trusted Agents richt Hermes zo in dat per taak een passende route wordt gebruikt, met ruimte voor prijs, snelheid en kwaliteit.</p>
+      <h2>Opgezet met ChatGPT of OpenRouter</h2>
+      <p class="lead">Start eenvoudig met ChatGPT: je gebruikt je bestaande account en koppelt die tijdens installatie via de officiële OAuth-code. Wil je liever werken met API-budgetten of meerdere modellen, dan richten we OpenRouter of een andere API-route in.</p>
       <div class="provider-grid">
         <article class="provider-card">
-          <span class="tag">Directe API</span>
-          <strong>Anthropic API-sleutel</strong>
-          <p class="muted">Een directe route voor klanten die zelf een Anthropic-account gebruiken. Geschikt voor zorgvuldig schrijven, samenvatten en analyseren.</p>
-          <ul><li>Rechtstreeks via Anthropic</li><li>Eigen verbruik en facturatie</li><li>Geschikt als vaste of reserve-route</li></ul>
+          <span class="tag">OAuth</span>
+          <strong>ChatGPT via je eigen account</strong>
+          <p class="muted">De voorkeursroute voor nieuwe klanten. Je logt zelf in via de officiële OAuth/device-code; je deelt geen wachtwoord en kunt toegang later weer intrekken.</p>
+          <ul><li>Geen wachtwoord delen</li><li>Geen API-key in het formulier</li><li>Eigen account, eigen gebruikslimieten</li></ul>
         </article>
         <article class="provider-card">
           <span class="tag">Modelrouter</span>
-          <strong>OpenRouter API-sleutel</strong>
-          <p class="muted">Een flexibele route voor wie toegang wil tot meerdere modellen via één koppeling.</p>
+          <strong>OpenRouter of eigen API</strong>
+          <p class="muted">Optioneel voor klanten die liever met een API-key, modelbudget of meerdere modellen werken. Dit spreken we apart af en richten we transparant in.</p>
           <ul><li>Meerdere modellen via één ingang</li><li>Handig voor wisselen of terugvallen</li><li>Praktisch bij vergelijking van prijs en kwaliteit</li></ul>
         </article>
         <article class="provider-card">
-          <span class="tag">OAuth</span>
-          <strong>ChatGPT / OpenAI Codex OAuth</strong>
-          <p class="muted">Voor klanten die liever inloggen dan losse sleutels beheren. De koppeling kan later weer worden ingetrokken.</p>
-          <ul><li>Geen API-key kopiëren</li><li>Eenvoudige start</li><li>Toegang later weer intrekbaar</li></ul>
+          <span class="tag">Tijdelijk</span>
+          <strong>Bootstrap of fallback</strong>
+          <p class="muted">Alleen tijdelijk als dat nodig is voor installatie of support. Daarna draait de agent op de klant zijn eigen modeltoegang.</p>
+          <ul><li>Beperkt gebruik</li><li>Geen structureel gebruik van mijn account</li><li>Verwijderen na klantkoppeling</li></ul>
         </article>
       </div>
-      <div class="flow-note"><strong>Transparant:</strong> je zit niet vast aan één modelleverancier. We spreken vooraf af welke route we gebruiken en hoe we omgaan met kosten, toegang en menselijke goedkeuring.</div>
+      <div class="flow-note"><strong>Transparant:</strong> de €29 dekt de VPS, installatie en beheer. Modelgebruik loopt via je eigen ChatGPT-account of via je eigen API-route, bijvoorbeeld OpenRouter. We vragen geen ChatGPT-wachtwoord in het formulier.</div>
     </section>
 
     <section class="section" id="hosting">
       <div class="eyebrow">Waar draait je agent?</div>
       <h2>Managed, dedicated of bring your own</h2>
-      <p class="lead">De standaardroute is een beheerde Trusted Agents-omgeving. Wie meer isolatie of eigenaarschap wil, kiest voor een dedicated server of brengt eigen infrastructuur mee.</p>
+      <p class="lead">De standaardroute voor nieuwe klanten is een eigen Hetzner VPS die door Trusted Agents wordt ingericht en beheerd. Zo blijft hosting duidelijk gescheiden van het persoonlijke ChatGPT/Codex-account van de klant.</p>
       <div class="provider-grid">
         <article class="provider-card">
           <span class="tag">1 · Managed</span>
-          <strong>Trusted Agents Cloud</strong>
-          <p class="muted">De agent draait op door Trusted Agents beheerde Europese infrastructuur. Klanten krijgen een eigen bot, eigen configuratie en gescheiden geheimen.</p>
-          <ul><li>Beste start voor €29/maand</li><li>Snelle activatie</li><li>Beheer, updates en monitoring inbegrepen</li></ul>
+          <strong>Private Hetzner VPS</strong>
+          <p class="muted">De agent draait op een Europese VPS met eigen Linux-gebruiker, eigen Hermes-configuratie en klantgebonden OAuth. Geen gedeeld ChatGPT-account.</p>
+          <ul><li>€29/maand voor VPS + beheer</li><li>Klant koppelt zelf ChatGPT</li><li>Installatie, updates en monitoring inbegrepen</li></ul>
         </article>
         <article class="provider-card">
           <span class="tag">2 · Dedicated</span>
@@ -541,19 +545,19 @@
             <div class="order-step"><span class="badge">1</span><div><strong>Vul je gegevens in</strong><p class="muted">Naam, e-mailadres en bedrijfsnaam voor de eerste intake.</p></div></div>
             <div class="order-step"><span class="badge">2</span><div><strong>Hermes bevestigen</strong><p class="muted">Trusted Agents werkt publiek met één duidelijke route: Hermes.</p></div></div>
             <div class="order-step"><span class="badge">3</span><div><strong>Koppel je kanaal</strong><p class="muted">Telegram eerst, WhatsApp volgt later als aparte route.</p></div></div>
-            <div class="order-step"><span class="badge">4</span><div><strong>Voeg toegang toe</strong><p class="muted">Bot-token en modeltoegang worden pas daarna veilig verwerkt.</p></div></div>
+            <div class="order-step"><span class="badge">4</span><div><strong>Koppel ChatGPT zelf</strong><p class="muted">Tijdens installatie log je zelf in via de officiële OAuth-code. Je deelt geen wachtwoord met ons.</p></div></div>
             <div class="order-step"><span class="badge">5</span><div><strong>Daarna pas betaling en activatie</strong><p class="muted">Pas na de intake volgen akkoord, betaling en de eerste installatie.</p></div></div>
           </div>
           <div class="order-price">
-            <div class="eyebrow" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:var(--lime)">€29 / maand per bot</div>
+            <div class="eyebrow" style="background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:var(--lime)">€29 / maand per agent</div>
             <div class="price" style="margin-top:18px">€29 <span>/ maand per agent</span></div>
-            <p class="muted" style="margin-top:14px">Geen grote startkosten. Eerst de intake, daarna pas inrichting, veilige opslag en betaling.</p>
+            <p class="muted" style="margin-top:14px">Voor private VPS, installatie en beheer. AI-gebruik loopt via je eigen ChatGPT/Codex-account.</p>
           </div>
         </div>
         <article class="order-card">
           <div class="eyebrow">Bestel je agent</div>
           <h2>Start met je intake</h2>
-          <p class="lead">Vul hieronder je gegevens in. Daarna kijken we samen of de route klopt, voordat activatie en betaling starten.</p>
+          <p class="lead">Vul hieronder je gegevens in. Je hoeft hier geen ChatGPT-wachtwoord of API-sleutel te delen: de OAuth-koppeling gebeurt later rechtstreeks bij OpenAI.</p>
           <form id="order-form" style="display:grid;gap:18px;margin-top:28px">
             <div class="field full">
               <label for="order-email">E-mailadres</label>
@@ -587,8 +591,10 @@
               <input id="order-telegram-token" name="telegram_bot_token" required>
             </div>
             <div class="field full">
-              <label for="order-model-key">Anthropic API-sleutel</label>
-              <input id="order-model-key" name="model_api_key" required>
+              <label>ChatGPT of OpenRouter</label>
+              <input type="hidden" id="order-model-provider" name="model_provider" value="openai-codex">
+              <input type="hidden" id="order-model-key" name="model_api_key" value="oauth-door-klant-tijdens-installatie">
+              <div class="setup-note"><strong>Start met ChatGPT, of kies een API-route</strong>Standaard koppelen we je eigen ChatGPT-account tijdens de installatie via de officiële OAuth/device-code. Wil je liever OpenRouter of een andere API gebruiken, dan spreken we dat na de intake af. Jij logt zelf in; wij zien je wachtwoord niet.</div>
             </div>
             <div class="field full">
               <label for="order-voucher">Vouchercode</label>
@@ -779,12 +785,12 @@
         "Drie duidelijke startopties": "Three clear ways to start",
         "1 · Starter": "1 · Starter",
         "Managed Agent": "Managed Agent",
-        "De eenvoudigste manier om te starten. Je krijgt een beheerde Hermes-agent in de Trusted Agents-omgeving, met een rustige intake en duidelijke begeleiding.": "The simplest way to start. You get a managed Hermes agent in the Trusted Agents environment, with a calm intake and clear guidance.",
-        "Intake met jouw gegevens en gewenste inzet": "Intake with your details and intended use",
+        "De eenvoudigste manier om te starten. Je krijgt een beheerde Hermes-agent op een private Europese VPS, met installatie, beheer en duidelijke begeleiding. Het AI-gebruik loopt via je eigen ChatGPT/Codex-account.": "The simplest way to start. You get a managed Hermes agent on a private European VPS, with installation, management and clear guidance. AI usage runs through your own ChatGPT/Codex account.",
+        "Private EU-VPS, installatie en beheer": "Private EU VPS, installation and management",
         "Telegram als eerste kanaal": "Telegram as the first channel",
+        "Klant koppelt zelf ChatGPT/Codex via OAuth": "Customer connects ChatGPT/Codex via OAuth",
         "Betaling via Mollie, iDEAL of kaart": "Payment via Mollie, iDEAL or card",
-        "Veilige activatie en eerste testbericht": "Safe activation and first test message",
-        "/ maand per bot": "/ month per bot",
+        "/ maand per agent · AI-gebruik via eigen account": "/ month per agent · AI usage through own account",
         "2 · Dedicated": "2 · Dedicated",
         "Private Agent Server": "Private Agent Server",
         "Voor wie extra afscherming wil. Je krijgt een eigen omgeving met apart beheer, monitoring en onderhoud.": "For those who want extra separation. You get your own environment with separate management, monitoring and maintenance.",
@@ -806,18 +812,20 @@
         "Zo start je eenvoudig": "This is how you start simply",
         "Geen ingewikkeld traject. We beginnen klein, richten Hermes veilig in en zorgen dat je stap voor stap weet wat er gebeurt.": "No complicated process. We start small, set up Hermes safely and make sure you know step by step what happens.",
         "Wat je krijgt": "What you get",
-        "Een werkende Trusted Agent op Hermes, met een duidelijk startproces. Eerst de intake, daarna pas activatie en betaling.": "A working Trusted Agent on Hermes, with a clear start process. First the intake, only then activation and payment.",
+        "Een werkende Trusted Agent op Hermes, met een duidelijk startproces. Jij betaalt voor VPS, installatie en beheer; het ChatGPT/Codex-account blijft van de klant.": "A working Trusted Agent on Hermes, with a clear start process. You pay for VPS, installation and management; the ChatGPT/Codex account remains the customer's own.",
         "E-mail concepten": "Email drafts",
         "Browser / desktop": "Browser / desktop",
         "1. Intake": "1. Intake",
         "We verzamelen je gegevens en bespreken kort waarvoor je de agent wilt gebruiken.": "We collect your details and briefly discuss what you want the agent to do.",
         "2. Kanaal kiezen": "2. Choose a channel",
         "We starten standaard met Telegram. Later kunnen andere kanalen volgen.": "We start with Telegram by default. Other channels can follow later.",
-        "3. Bevestigen en betalen": "3. Confirm and pay",
-        "Pas na de intake volgt de bevestiging en, als je verder wilt, de betaling via Mollie.": "Only after the intake comes confirmation and, if you want to continue, payment through Mollie.",
-        "4. Activatie": "4. Activation",
+        "3. ChatGPT koppelen": "3. Connect ChatGPT",
+        "De klant logt zelf in via de officiële ChatGPT/Codex OAuth-code. Geen wachtwoord of API-sleutel in dit formulier.": "The customer logs in via the official ChatGPT/Codex OAuth code. No password or API key in this form.",
+        "4. Bevestigen en betalen": "4. Confirm and pay",
+        "Na de intake volgt de bevestiging en, als je verder wilt, de betaling via Mollie.": "After the intake comes confirmation and, if you want to continue, payment through Mollie.",
+        "5. Activatie": "5. Activation",
         "Daarna richten we Hermes veilig in en activeren we je eerste agent.": "After that, we set up Hermes safely and activate your first agent.",
-        "5. Eerste test": "5. First test",
+        "6. Eerste test": "6. First test",
         "Je ontvangt een eerste bericht en we controleren samen of alles goed staat.": "You receive a first message and we check together whether everything is set correctly.",
         "Belangrijk:": "Important:",
         "gevoelige acties blijven altijd onder menselijke controle. De agent bereidt voor, maar handelt niet zomaar zelfstandig.": "sensitive actions always remain under human control. The agent prepares work, but does not act on its own just like that.",
@@ -830,36 +838,37 @@
         "Akkoord met mail 1 en 2. Mail 3 eerst aanpassen: korter en zakelijker.": "Approved for emails 1 and 2. First adjust email 3: shorter and more businesslike.",
         "We beginnen bewust eenvoudig: één agent, één duidelijke taak en één kanaal. Pas als dat goed werkt, breiden we uit.": "We deliberately start simply: one agent, one clear task and one channel. Only when that works well do we expand.",
         "Modelkeuze": "Model choice",
-        "Hermes kiest de best passende modelroute": "Hermes chooses the best fitting model route",
-        "Voor de meeste klanten hoeft modelkeuze niet ingewikkeld te zijn. Trusted Agents richt Hermes zo in dat per taak een passende route wordt gebruikt, met ruimte voor prijs, snelheid en kwaliteit.": "For most customers, model choice does not need to be complicated. Trusted Agents configures Hermes so that a suitable route is used per task, with room for price, speed and quality.",
-        "Directe API": "Direct API",
-        "Anthropic API-sleutel": "Anthropic API key",
-        "Een directe route voor klanten die zelf een Anthropic-account gebruiken. Geschikt voor zorgvuldig schrijven, samenvatten en analyseren.": "A direct route for customers who use their own Anthropic account. Suitable for careful writing, summarizing and analysis.",
-        "Rechtstreeks via Anthropic": "Directly via Anthropic",
-        "Eigen verbruik en facturatie": "Own usage and billing",
-        "Geschikt als vaste of reserve-route": "Suitable as a main or backup route",
+        "Opgezet met ChatGPT of OpenRouter": "Set up with ChatGPT or OpenRouter",
+        "Start eenvoudig met ChatGPT: je gebruikt je bestaande account en koppelt die tijdens installatie via de officiële OAuth-code. Wil je liever werken met API-budgetten of meerdere modellen, dan richten we OpenRouter of een andere API-route in.": "Start simply with ChatGPT: you use your existing account and connect it during installation through the official OAuth code. If you prefer API budgets or multiple models, we set up OpenRouter or another API route.",
+        "OAuth": "OAuth",
+        "ChatGPT via je eigen account": "ChatGPT through your own account",
+        "De voorkeursroute voor nieuwe klanten. Je logt zelf in via de officiële OAuth/device-code; je deelt geen wachtwoord en kunt toegang later weer intrekken.": "The preferred route for new customers. You log in yourself through the official OAuth/device code; you do not share a password and can revoke access later.",
+        "Geen wachtwoord delen": "No password sharing",
+        "Geen API-key in het formulier": "No API key in the form",
+        "Eigen account, eigen gebruikslimieten": "Own account, own usage limits",
         "Modelrouter": "Model router",
-        "OpenRouter API-sleutel": "OpenRouter API key",
-        "Een flexibele route voor wie toegang wil tot meerdere modellen via één koppeling.": "A flexible route for anyone who wants access to multiple models through one connection.",
+        "OpenRouter of eigen API": "OpenRouter or your own API",
+        "Optioneel voor klanten die liever met een API-key, modelbudget of meerdere modellen werken. Dit spreken we apart af en richten we transparant in.": "Optional for customers who prefer an API key, model budget or multiple models. We agree this separately and set it up transparently.",
         "Meerdere modellen via één ingang": "Multiple models through one gateway",
         "Handig voor wisselen of terugvallen": "Useful for switching or falling back",
         "Praktisch bij vergelijking van prijs en kwaliteit": "Practical when comparing price and quality",
-        "ChatGPT / OpenAI Codex OAuth": "ChatGPT / OpenAI Codex OAuth",
-        "Voor klanten die liever inloggen dan losse sleutels beheren. De koppeling kan later weer worden ingetrokken.": "For customers who prefer logging in over managing separate keys. The connection can later be revoked again.",
-        "Geen API-key kopiëren": "No API key copying",
-        "Eenvoudige start": "Simple start",
-        "Toegang later weer intrekbaar": "Access can be revoked later",
+        "Tijdelijk": "Temporary",
+        "Bootstrap of fallback": "Bootstrap or fallback",
+        "Alleen tijdelijk als dat nodig is voor installatie of support. Daarna draait de agent op de klant zijn eigen modeltoegang.": "Only temporarily if needed for installation or support. After that, the agent runs on the customer's own model access.",
+        "Beperkt gebruik": "Limited use",
+        "Geen structureel gebruik van mijn account": "No structural use of my account",
+        "Verwijderen na klantkoppeling": "Remove after customer connection",
         "Transparant:": "Transparent:",
-        "je zit niet vast aan één modelleverancier. We spreken vooraf af welke route we gebruiken en hoe we omgaan met kosten, toegang en menselijke goedkeuring.": "you are not locked into one model provider. We agree in advance which route we use and how we handle costs, access and human approval.",
+        "de €29 dekt de VPS, installatie en beheer. Modelgebruik loopt via je eigen ChatGPT-account of via je eigen API-route, bijvoorbeeld OpenRouter. We vragen geen ChatGPT-wachtwoord in het formulier.": "the €29 covers VPS, installation and management. Model usage runs through your own ChatGPT account or your own API route, for example OpenRouter. We do not ask for a ChatGPT password in the form.",
         "Waar draait je agent?": "Where does your agent run?",
         "Managed, dedicated of bring your own": "Managed, dedicated or bring your own",
-        "De standaardroute is een beheerde Trusted Agents-omgeving. Wie meer isolatie of eigenaarschap wil, kiest voor een dedicated server of brengt eigen infrastructuur mee.": "The standard route is a managed Trusted Agents environment. Those who want more isolation or ownership choose a dedicated server or bring their own infrastructure.",
+        "De standaardroute voor nieuwe klanten is een eigen Hetzner VPS die door Trusted Agents wordt ingericht en beheerd. Zo blijft hosting duidelijk gescheiden van het persoonlijke ChatGPT/Codex-account van de klant.": "The standard route for new customers is their own Hetzner VPS, set up and managed by Trusted Agents. This keeps hosting clearly separate from the customer's personal ChatGPT/Codex account.",
         "1 · Managed": "1 · Managed",
-        "Trusted Agents Cloud": "Trusted Agents Cloud",
-        "De agent draait op door Trusted Agents beheerde Europese infrastructuur. Klanten krijgen een eigen bot, eigen configuratie en gescheiden geheimen.": "The agent runs on European infrastructure managed by Trusted Agents. Customers get their own bot, configuration and separated secrets.",
-        "Beste start voor €29/maand": "Best start for €29/month",
-        "Snelle activatie": "Quick activation",
-        "Beheer, updates en monitoring inbegrepen": "Management, updates and monitoring included",
+        "Private Hetzner VPS": "Private Hetzner VPS",
+        "De agent draait op een Europese VPS met eigen Linux-gebruiker, eigen Hermes-configuratie en klantgebonden OAuth. Geen gedeeld ChatGPT-account.": "The agent runs on a European VPS with its own Linux user, Hermes configuration and customer-bound OAuth. No shared ChatGPT account.",
+        "€29/maand voor VPS + beheer": "€29/month for VPS + management",
+        "Klant koppelt zelf ChatGPT": "Customer connects ChatGPT themselves",
+        "Installatie, updates en monitoring inbegrepen": "Installation, updates and monitoring included",
         "Eigen Hetzner VPS": "Own Hetzner VPS",
         "Voor klanten met hogere eisen aan isolatie. De server wordt automatisch ingericht en door Trusted Agents beheerd.": "For customers with higher isolation requirements. The server is automatically set up and managed by Trusted Agents.",
         "Eigen VPS per klant": "Own VPS per customer",
@@ -913,16 +922,16 @@
         "Trusted Agents werkt publiek met één duidelijke route: Hermes.": "Trusted Agents works publicly with one clear route: Hermes.",
         "Koppel je kanaal": "Connect your channel",
         "Telegram eerst, WhatsApp volgt later als aparte route.": "Telegram first, WhatsApp will follow later as a separate route.",
-        "Voeg toegang toe": "Add access",
-        "Bot-token en modeltoegang worden pas daarna veilig verwerkt.": "Bot token and model access are only processed safely after that.",
+        "Koppel ChatGPT zelf": "Connect ChatGPT yourself",
+        "Tijdens installatie log je zelf in via de officiële OAuth-code. Je deelt geen wachtwoord met ons.": "During installation, you log in yourself via the official OAuth code. You do not share your password with us.",
         "Daarna pas betaling en activatie": "Only then payment and activation",
         "Pas na de intake volgen akkoord, betaling en de eerste installatie.": "Only after the intake come approval, payment and the first installation.",
-        "€29 / maand per bot": "€29 / month per bot",
         "€29 / maand per agent": "€29 / month per agent",
-        "Geen grote startkosten. Eerst de intake, daarna pas inrichting, veilige opslag en betaling.": "No large upfront costs. First the intake, only then setup, secure storage and payment.",
+        "/ maand per agent": "/ month per agent",
+        "Voor private VPS, installatie en beheer. AI-gebruik loopt via je eigen ChatGPT/Codex-account.": "For private VPS, installation and management. AI usage runs through your own ChatGPT/Codex account.",
         "Bestel je agent": "Order your agent",
         "Start met je intake": "Start with your intake",
-        "Vul hieronder je gegevens in. Daarna kijken we samen of de route klopt, voordat activatie en betaling starten.": "Fill in your details below. After that we check together whether the route fits before activation and payment start.",
+        "Vul hieronder je gegevens in. Je hoeft hier geen ChatGPT-wachtwoord of API-sleutel te delen: de OAuth-koppeling gebeurt later rechtstreeks bij OpenAI.": "Fill in your details below. You do not need to share a ChatGPT password or API key here: the OAuth connection happens later directly with OpenAI.",
         "E-mailadres": "Email address",
         "Naam": "Name",
         "Bedrijf": "Company",
@@ -931,18 +940,21 @@
         "Telegram": "Telegram",
         "WhatsApp binnenkort": "WhatsApp coming soon",
         "Telegram Bot Token": "Telegram Bot Token",
-        "Anthropic API-sleutel": "Anthropic API key",
+        "ChatGPT of OpenRouter": "ChatGPT or OpenRouter",
+        "Start met ChatGPT, of kies een API-route": "Start with ChatGPT, or choose an API route",
+        "Standaard koppelen we je eigen ChatGPT-account tijdens de installatie via de officiële OAuth/device-code. Wil je liever OpenRouter of een andere API gebruiken, dan spreken we dat na de intake af. Jij logt zelf in; wij zien je wachtwoord niet.": "By default, we connect your own ChatGPT account during installation through the official OAuth/device code. If you prefer OpenRouter or another API, we agree that after the intake. You log in yourself; we do not see your password.",
         "Vouchercode": "Voucher code",
         "Ik heb de voorwaarden en het privacybeleid gelezen.": "I have read the terms and the privacy policy.",
         "Ik begrijp dat ik verantwoordelijk blijf voor de configuratie en antwoorden van mijn bot en gevoelige acties eerst moet goedkeuren.": "I understand that I remain responsible for my bot's configuration and answers and that I must approve sensitive actions first.",
         "Maak intake klaar": "Prepare intake",
         "Hermes Agent": "Hermes Agent",
         "Gegevens klaar voor activatie.": "Details ready for activation.",
-        "Controleer de samenvatting hieronder en open daarna de intake-mail met alle ingevulde gegevens.": "Check the summary below and then open the intake email with all completed details.",
+        "Controleer de samenvatting hieronder en open daarna de intake-mail. De ChatGPT-koppeling gebeurt later via officiële OAuth.": "Check the summary below and then open the intake email. The ChatGPT connection happens later via official OAuth.",
         "Open intake-mail": "Open intake email",
         "Gekozen agent": "Selected agent",
         "Kanaal": "Channel",
         "Modelroute": "Model route",
+        "ChatGPT/Codex OAuth door klant tijdens installatie": "ChatGPT/Codex OAuth by the customer during installation",
         "Eerst invullen, dan pas bevestiging en betaling.": "First fill in the details, then confirmation and payment.",
         "Voorwaarden & privacy": "Terms & privacy",
         "Duidelijke afspraken voor verantwoord gebruik": "Clear agreements for responsible use",
@@ -1069,7 +1081,7 @@
           `Bedrijf: ${data.company_name || ''}`,
           `E-mail: ${data.email || ''}`,
           `Telegram Bot Token: ${data.telegram_bot_token || ''}`,
-          `Anthropic API-sleutel: ${data.model_api_key || ''}`,
+          `Modeltoegang: ChatGPT/Codex OAuth door klant tijdens installatie`,
           `Vouchercode: ${data.voucher_code || '-'}`,
           '',
           'Ik heb de voorwaarden gelezen en begrijp dat gevoelige acties eerst akkoord nodig hebben.'
@@ -1080,10 +1092,10 @@
         orderResult.hidden = false;
         orderResult.innerHTML = `
           <strong>Gegevens klaar voor activatie.</strong>
-          Controleer de samenvatting hieronder en open daarna de intake-mail met alle ingevulde gegevens.<br><br>
+          Controleer de samenvatting hieronder en open daarna de intake-mail. De ChatGPT-koppeling gebeurt later via officiële OAuth.<br><br>
           <span><strong>Gekozen agent:</strong> ${agentLabel}</span><br>
           <span><strong>Kanaal:</strong> ${data.channel || 'telegram'}</span><br>
-          <span><strong>Modelroute:</strong> Anthropic</span><br><br>
+          <span><strong>Modelroute:</strong> ChatGPT/Codex OAuth door klant tijdens installatie</span><br><br>
           <a class="button secondary" href="${href}">Open intake-mail</a>
           <div style="margin-top:12px">Eerst invullen, dan pas bevestiging en betaling.</div>
         `;

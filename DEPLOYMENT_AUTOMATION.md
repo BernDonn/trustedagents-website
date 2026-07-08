@@ -9,13 +9,13 @@ From Bernard's screenshots, the onboarding pattern is:
 1. Customer enters email address.
 2. Customer chooses Hermes Agent or OpenClaw Bot.
 3. Customer pastes a Telegram Bot Token.
-4. Customer pastes an Anthropic / Claude API key.
+4. Customer does **not** paste a ChatGPT password or API key. ChatGPT/Codex is connected later through the official OAuth/device-code flow on the customer's own account.
 5. Customer accepts terms and a responsibility checkbox.
 6. Customer starts installation.
 7. Platform creates an order and redirects to payment.
-8. After subscription payment, platform provisions the bot/agent and connects Telegram + Claude.
+8. After subscription payment, platform provisions the bot/agent, connects Telegram and guides the customer through ChatGPT/Codex OAuth.
 
-Important: uploaded screenshots showed live secrets. Treat the Telegram token and Anthropic key as temporary/test-only and rotate/revoke them before any real use.
+Important: uploaded screenshots showed live secrets. Treat Telegram tokens as temporary/test-only and rotate/revoke them before any real use. Do not collect ChatGPT passwords or long-lived customer OAuth secrets in a public form.
 
 ## Hetzner vs Hostinger for this product
 
@@ -70,10 +70,10 @@ At €29/month, avoid giving every customer a fully separate VPS by default unle
 
 Recommended pricing model, now chosen as the public product structure:
 
-1. **Starter — €29/month per bot**
-   - Runs in a managed shared Trusted Agents environment.
-   - Each customer gets isolated container/process, encrypted secrets and separate Telegram bot config.
-   - Best margin and easiest operations.
+1. **Starter — €29/month per agent**
+   - Runs on a tightly controlled private EU VPS / managed environment, with installation and management included.
+   - Each customer gets isolated Hermes config, encrypted Telegram token storage and a customer-owned ChatGPT/Codex OAuth route.
+   - The €29 covers VPS/install/management, not hidden AI usage.
    - This is the default offer on the website: `Managed Agent`.
 
 2. **Dedicated — higher price, public starting point €79/month**

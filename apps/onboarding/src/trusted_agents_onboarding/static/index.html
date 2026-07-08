@@ -23,10 +23,10 @@
       <section class="panel">
         <span class="eyebrow">Hermes onboarding demo</span>
         <h1>Start je eerste Hermes-agent.</h1>
-        <p class="lead">Deze demo laat de eerste Mollie-stap zien voor Trusted Agents op Hermes: intakegegevens invullen, tenant aanmaken, gevoelige tokens encrypted opslaan en daarna een checkout-link genereren voor de testbetaling.</p>
+        <p class="lead">Deze demo laat de eerste Mollie-stap zien voor Trusted Agents op Hermes: intakegegevens invullen, tenant aanmaken, Telegram-token veilig opslaan, checkout-link genereren en daarna starten met ChatGPT via het bestaande account of met OpenRouter/API.</p>
         <div class="status-list">
-          <div class="status-item"><span class="badge">1</span><p><strong>Intake</strong><br><span class="muted">Naam, e-mail, plan en technische tokens worden gecontroleerd.</span></p></div>
-          <div class="status-item"><span class="badge">2</span><p><strong>Veilige opslag</strong><br><span class="muted">Secrets worden encrypted opgeslagen; de admin ziet geen tokenwaarden.</span></p></div>
+          <div class="status-item"><span class="badge">1</span><p><strong>Intake</strong><br><span class="muted">Naam, e-mail, plan en Telegram-token worden gecontroleerd.</span></p></div>
+          <div class="status-item"><span class="badge">2</span><p><strong>Modelroute</strong><br><span class="muted">Standaard ChatGPT via OAuth; OpenRouter of een andere API-route kan apart worden afgesproken.</span></p></div>
           <div class="status-item"><span class="badge">3</span><p><strong>Checkout</strong><br><span class="muted">De backend maakt een Mollie-checkout aan voor de gekozen planprijs.</span></p></div>
         </div>
       </section>
@@ -39,9 +39,9 @@
             <div class="field"><label for="company_name">Bedrijf</label><input id="company_name" name="company_name" autocomplete="organization" required value="Demo BV"></div>
             <div class="field"><label for="email">E-mail</label><input id="email" name="email" type="email" autocomplete="email" required value="demo@example.nl"></div>
             <div class="field"><label for="plan">Plan</label><select id="plan" name="plan"><option value="starter">Managed Agent — €29/mnd</option><option value="dedicated">Private Agent Server — vanaf €79/mnd</option><option value="bring-your-own">Bring your own — setup & beheer</option></select></div>
-            <div class="field"><label for="model_provider">Modelprovider</label><select id="model_provider" name="model_provider"><option value="anthropic">Anthropic / Claude</option><option value="openrouter">OpenRouter</option><option value="openai-codex">OpenAI Codex OAuth</option><option value="other">Anders</option></select></div>
+            <div class="field"><label for="model_provider">Modelroute</label><select id="model_provider" name="model_provider"><option value="openai-codex" selected>ChatGPT via eigen account / OAuth</option><option value="openrouter">OpenRouter of eigen API-route</option><option value="anthropic">Anthropic/API-route apart afspreken</option><option value="other">Anders</option></select></div>
             <div class="field"><label for="telegram_bot_token">Telegram bot-token</label><input id="telegram_bot_token" name="telegram_bot_token" required value="DEMO_TELEGRAM_TOKEN"></div>
-            <div class="field full"><label for="model_api_key">Model API-key</label><input id="model_api_key" name="model_api_key" value="DEMO_MODEL_KEY"></div>
+            <div class="field full"><label for="model_api_key">ChatGPT of OpenRouter</label><input id="model_api_key" name="model_api_key" value="" placeholder="Laat leeg voor ChatGPT OAuth; API-route bespreken we na intake"><p class="muted" style="margin:8px 0 0">Standaard logt de klant tijdens installatie zelf in met het bestaande ChatGPT-account via OAuth. Voor OpenRouter of een andere API-route vragen we alleen een key wanneer dat echt nodig is.</p></div>
           </div>
           <label class="check"><input type="checkbox" name="accepted_responsibility" checked> <span>Ik begrijp dat ik verantwoordelijk blijf voor controle van AI-output en gevoelige acties eerst moet goedkeuren.</span></label>
           <label class="check"><input type="checkbox" name="accepted_terms" checked> <span>Ik ga akkoord met de voorwaarden en gebruik alleen gegevens die ik rechtmatig mag verwerken.</span></label>
@@ -51,7 +51,7 @@
       </section>
     </main>
 
-    <p class="footer">Demo-only: gebruik hier geen echte klanttokens. Voor echte onboarding voegen we Mollie testmode, HTTPS en admin-auth toe.</p>
+    <p class="footer">Demo-only: gebruik hier geen echte Telegram-tokens. Start standaard met ChatGPT via OAuth; OpenRouter of een andere API-route kan na intake. Voor echte onboarding voegen we Mollie testmode, HTTPS en admin-auth toe.</p>
   </div>
 
   <script>
