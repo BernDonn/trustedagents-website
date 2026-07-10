@@ -120,7 +120,7 @@
     .product.featured{background:#10291f;color:white;transform:translateY(-10px)}
     .product.featured .muted{color:#d6e5d9}.product.featured .tag{background:rgba(215,242,104,.15);color:var(--lime);border-color:rgba(215,242,104,.3)}
     .tag{align-self:flex-start;border:1px solid var(--line);border-radius:999px;padding:8px 10px;font-weight:800;font-size:12px;color:var(--green);text-transform:uppercase;letter-spacing:.08em}
-    ul{padding-left:19px;margin:0;line-height:1.75;color:inherit}.price{font-size:34px;font-weight:800;letter-spacing:-.04em;margin-top:auto}.price span{font-size:14px;color:inherit;font-weight:600;opacity:.75}
+    ul{padding-left:19px;margin:0;line-height:1.75;color:inherit}.price{font-size:34px;font-weight:800;letter-spacing:-.04em;margin-top:auto}.price.package-price-inline{margin-top:0}.price.package-price-offset{margin-top:84px}.price span{font-size:14px;color:inherit;font-weight:600;opacity:.75}.price span.macmini-price-note{font-size:1em;font-weight:800;opacity:1;letter-spacing:-.04em}
     .deploy-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px}
     .deploy-panel{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:28px;box-shadow:0 12px 35px rgba(20,35,24,.05)}
     .deploy-steps{counter-reset:step;display:grid;gap:14px;margin-top:18px}
@@ -378,13 +378,13 @@
 
     <section class="section" id="prijzen">
       <div class="eyebrow">Pakketten</div>
-      <h2>Drie duidelijke startopties</h2>
+      <h2>Drie manieren om Hermes te draaien</h2>
       <div class="products">
         <article class="product featured">
           <span class="tag">1 · Starter</span>
           <h3>Managed Agent</h3>
           <p class="muted">De eenvoudigste manier om te starten. Je krijgt een beheerde Hermes-agent op een private Europese VPS, met installatie, beheer en duidelijke begeleiding. Het AI-gebruik loopt via je eigen ChatGPT/Codex-account.</p>
-          <ul><li>Private EU-VPS, installatie en beheer</li><li>Telegram of WhatsApp als eerste kanaal</li><li>Klant koppelt zelf ChatGPT/Codex via OAuth</li><li>Betaling via Mollie, iDEAL of kaart</li></ul>
+          <ul><li>Private EU-VPS, installatie en beheer</li><li>Telegram of WhatsApp als eerste kanaal</li><li>Klant koppelt zelf ChatGPT/Codex via OAuth</li><li>Menselijke goedkeuring voor gevoelige acties</li></ul>
           <div class="price">€29 <span>/ maand per agent · AI-gebruik via eigen account</span></div>
           <div class="hero-actions" style="margin:4px 0 0">
             <a class="button light" href="#bestel-agent">Start Hermes intake</a>
@@ -393,16 +393,16 @@
         <article class="product">
           <span class="tag">2 · Dedicated</span>
           <h3>Private Agent Server</h3>
-          <p class="muted">Voor wie extra afscherming wil. Je krijgt een eigen omgeving met apart beheer, monitoring en onderhoud.</p>
-          <ul><li>Eigen server of private workspace</li><li>Beheer en updates inbegrepen</li><li>Meer controle over data en toegang</li><li>Geschikt voor gevoelige toepassingen</li></ul>
-          <div class="price">Vanaf €79 <span>/ maand</span></div>
+          <p class="muted">Voor wie extra afscherming wil: een eigen beheerde Hetzner VPS of Europese cloudomgeving, automatisch ingericht en door Trusted Agents beheerd met aparte monitoring en onderhoud.</p>
+          <ul><li>Eigen VPS per klant, vanaf €79 / maand</li><li>Cloud-init/Terraform-ready installatie</li><li>Meer controle over data en toegang</li><li>Geschikt voor privacygevoelige workflows</li></ul>
+          <div class="price package-price-inline package-price-offset">Vanaf €79 <span>/ maand</span></div>
         </article>
         <article class="product">
           <span class="tag">3 · Bring your own</span>
           <h3>Eigen cloud of Mac</h3>
-          <p class="muted">Voor wie liever met een eigen server of Mac werkt. Trusted Agents helpt met installatie, koppeling en overdracht.</p>
-          <ul><li>Je eigen VPS, Mac mini of bestaande omgeving</li><li>Eenmalige setup</li><li>Support mogelijk</li><li>Jij houdt de infrastructuur in beheer</li></ul>
-          <div class="price">Setup + beheer</div>
+          <p class="muted">Voor mensen en organisaties die zelf eigenaar willen blijven van de infrastructuurrelatie: eigen Mac mini, VPS of bestaande cloud. Trusted Agents verzorgt setup, koppeling, updates of support volgens afspraak.</p>
+          <ul><li>Eigen Mac mini, VPS of bestaande cloud</li><li>Eenmalige setup, verder geen beheerskosten</li><li>Maandelijkse support of beheerabonnement mogelijk</li><li>Jij houdt eigenaarschap over infrastructuur en toegang</li></ul>
+          <div class="price package-price-inline">Set up: €399 <span class="macmini-price-note">(incl. Mac mini €1299)</span></div>
         </article>
       </div>
     </section>
@@ -496,7 +496,7 @@
           <span class="tag">3 · Bring your own</span>
           <strong>Eigen cloud, VPS of Mac</strong>
           <p class="muted">Voor mensen en organisaties die zelf de infrastructuurrelatie houden. Trusted Agents verzorgt setup, koppeling, updates of support volgens afspraak.</p>
-          <ul><li>Eigen Mac mini, VPS of bestaande cloud</li><li>Meer eigenaarschap</li><li>Setupfee + beheerabonnement mogelijk</li></ul>
+          <ul><li>Eigen Mac mini, VPS of bestaande cloud</li><li>Meer eigenaarschap</li><li>Setupfee €399, daarna geen verplicht beheerabonnement</li></ul>
         </article>
       </div>
       <div class="flow-note"><strong>Infrastructuurkeuze:</strong> voor automatische provisioning is Hetzner de voorkeursroute. Hostinger blijft interessant als optionele affiliate- of klant-hostingroute, maar niet als standaard backend voor de managed omgeving.</div>
@@ -797,32 +797,33 @@
         "Beschermd:": "Protected:",
         "conceptdetails, demonstraties, namen en mogelijke samenwerkingen worden pas gedeeld wanneer dat expliciet is afgesproken.": "concept details, demonstrations, names and potential collaborations are only shared when explicitly agreed.",
         "Pakketten": "Packages",
-        "Drie duidelijke startopties": "Three clear ways to start",
+        "Drie manieren om Hermes te draaien": "Three ways to run Hermes",
         "1 · Starter": "1 · Starter",
         "Managed Agent": "Managed Agent",
         "De eenvoudigste manier om te starten. Je krijgt een beheerde Hermes-agent op een private Europese VPS, met installatie, beheer en duidelijke begeleiding. Het AI-gebruik loopt via je eigen ChatGPT/Codex-account.": "The simplest way to start. You get a managed Hermes agent on a private European VPS, with installation, management and clear guidance. AI usage runs through your own ChatGPT/Codex account.",
         "Private EU-VPS, installatie en beheer": "Private EU VPS, installation and management",
         "Telegram of WhatsApp als eerste kanaal": "Telegram or WhatsApp as the first channel",
         "Klant koppelt zelf ChatGPT/Codex via OAuth": "Customer connects ChatGPT/Codex via OAuth",
-        "Betaling via Mollie, iDEAL of kaart": "Payment via Mollie, iDEAL or card",
+        "Menselijke goedkeuring voor gevoelige acties": "Human approval for sensitive actions",
         "/ maand per agent · AI-gebruik via eigen account": "/ month per agent · AI usage through own account",
         "2 · Dedicated": "2 · Dedicated",
         "Private Agent Server": "Private Agent Server",
-        "Voor wie extra afscherming wil. Je krijgt een eigen omgeving met apart beheer, monitoring en onderhoud.": "For those who want extra separation. You get your own environment with separate management, monitoring and maintenance.",
-        "Eigen server of private workspace": "Own server or private workspace",
+        "Voor wie extra afscherming wil: een eigen beheerde Hetzner VPS of Europese cloudomgeving, automatisch ingericht en door Trusted Agents beheerd met aparte monitoring en onderhoud.": "For those who want extra separation: their own managed Hetzner VPS or European cloud environment, automatically set up and managed by Trusted Agents with separate monitoring and maintenance.",
+        "Eigen VPS per klant, vanaf €79 / maand": "Own VPS per customer, from €79 / month",
         "Beheer en updates inbegrepen": "Management and updates included",
         "Meer controle over data en toegang": "More control over data and access",
-        "Geschikt voor gevoelige toepassingen": "Suitable for sensitive use cases",
+        "Geschikt voor privacygevoelige workflows": "Suitable for privacy-sensitive workflows",
         "Vanaf €79": "From €79",
         "/ maand": "/ month",
         "3 · Bring your own": "3 · Bring your own",
         "Eigen cloud of Mac": "Own cloud or Mac",
-        "Voor wie liever met een eigen server of Mac werkt. Trusted Agents helpt met installatie, koppeling en overdracht.": "For those who prefer to work with their own server or Mac. Trusted Agents helps with installation, connection and handover.",
+        "Voor mensen en organisaties die zelf eigenaar willen blijven van de infrastructuurrelatie: eigen Mac mini, VPS of bestaande cloud. Trusted Agents verzorgt setup, koppeling, updates of support volgens afspraak.": "For people and organizations that want to remain owner of the infrastructure relationship: their own Mac mini, VPS or existing cloud. Trusted Agents provides setup, integration, updates or support as agreed.",
         "Je eigen VPS, Mac mini of bestaande omgeving": "Your own VPS, Mac mini or existing environment",
-        "Eenmalige setup": "One-time setup",
-        "Support mogelijk": "Support available",
-        "Jij houdt de infrastructuur in beheer": "You keep control of the infrastructure",
-        "Setup + beheer": "Setup + management",
+        "Eenmalige setup, verder geen beheerskosten": "One-time setup, no further management costs",
+        "Maandelijkse support of beheerabonnement mogelijk": "Monthly support or management subscription possible",
+        "Jij houdt eigenaarschap over infrastructuur en toegang": "You keep ownership of infrastructure and access",
+        "Set up: €399": "Set up: €399",
+        "(incl. Mac mini €1299)": "(incl. Mac mini €1299)",
         "Start Hermes intake": "Start Hermes intake",
         "Zo start je eenvoudig": "This is how you start simply",
         "Geen ingewikkeld traject. We beginnen klein, richten Hermes veilig in en zorgen dat je stap voor stap weet wat er gebeurt.": "No complicated process. We start small, set up Hermes safely and make sure you know step by step what happens.",
@@ -892,7 +893,7 @@
         "Voor mensen en organisaties die zelf de infrastructuurrelatie houden. Trusted Agents verzorgt setup, koppeling, updates of support volgens afspraak.": "For people and organizations that keep the infrastructure relationship themselves. Trusted Agents provides setup, integration, updates or support as agreed.",
         "Eigen Mac mini, VPS of bestaande cloud": "Own Mac mini, VPS or existing cloud",
         "Meer eigenaarschap": "More ownership",
-        "Setupfee + beheerabonnement mogelijk": "Setup fee + management subscription possible",
+        "Setupfee €399, daarna geen verplicht beheerabonnement": "Setup fee €399, then no mandatory management subscription",
         "Infrastructuurkeuze:": "Infrastructure choice:",
         "voor automatische provisioning is Hetzner de voorkeursroute. Hostinger blijft interessant als optionele affiliate- of klant-hostingroute, maar niet als standaard backend voor de managed omgeving.": "for automatic provisioning, Hetzner is the preferred route. Hostinger remains interesting as an optional affiliate or customer-hosting route, but not as the standard backend for the managed environment.",
         "Mac mini AI-workstation": "Mac mini AI workstation",
