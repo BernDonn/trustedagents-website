@@ -103,9 +103,17 @@
     .tile .nr{color:var(--green);font-weight:850;font-size:13px;letter-spacing:.12em;margin-bottom:42px;display:block}
     .tile.dark{background:var(--green);color:#fff;border-color:var(--green)}
     .tile.dark .muted{color:#dfe8db}
-    .usecases{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:32px}
-    .case{background:#fffaf1;border:1px solid var(--line);border-radius:26px;padding:24px;display:grid;gap:18px}
-    .case small{font-weight:850;letter-spacing:.1em;color:var(--green);text-transform:uppercase}
+    .usecases{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:32px}
+    .case{background:#fffaf1;border:1px solid var(--line);border-radius:26px;padding:0;overflow:hidden;box-shadow:0 12px 35px rgba(20,35,24,.05)}
+    .case summary{list-style:none;cursor:pointer}
+    .case summary::-webkit-details-marker{display:none}
+    .case-summary{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:20px 22px}
+    .case-summary small{font-weight:850;letter-spacing:.1em;color:var(--green);text-transform:uppercase}
+    .case-summary h3{margin:6px 0 0;font-size:22px;line-height:1.12}
+    .expand-label{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(22,63,43,.14);background:#f0e6d6;border-radius:999px;padding:8px 11px;color:var(--green);font-size:13px;font-weight:850;white-space:nowrap}
+    .expand-label:after{content:"+";display:grid;place-items:center;width:20px;height:20px;border-radius:999px;background:#fff;border:1px solid var(--line)}
+    details[open] > summary .expand-label:after{content:"−"}
+    .case-body{display:grid;gap:16px;padding:18px 22px 22px;border-top:1px solid rgba(222,213,196,.72)}
     .example{background:#f0e6d6;border-radius:18px;padding:13px;color:#304034;font-size:14px}
     .products{display:grid;grid-template-columns:1.15fr .85fr .85fr;gap:18px;margin-top:34px}
     .product{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:28px;display:flex;flex-direction:column;gap:18px;min-height:390px}
@@ -155,6 +163,12 @@
     .field{display:grid;gap:8px}
     .field.full{grid-column:1/-1}
     .field label{font-size:15px;font-weight:800;color:#243228}
+    .label-help{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+    .label-help details{display:inline-block}
+    .label-help summary{list-style:none;width:20px;height:20px;border-radius:999px;display:inline-grid;place-items:center;background:#d7f268;color:#17240f;border:1px solid rgba(22,63,43,.18);font-size:13px;font-weight:900;cursor:pointer}
+    .label-help summary::-webkit-details-marker{display:none}
+    .label-help details[open] summary{background:#17240f;color:#d7f268}
+    .help-pop{margin-top:8px;background:#17240f;color:#f7f2e7;border-radius:16px;padding:12px 14px;line-height:1.45;font-size:13px;font-weight:550;max-width:560px;box-shadow:0 12px 26px rgba(16,21,18,.18)}
     .field input{width:100%;border:1px solid var(--line);border-radius:18px;padding:16px 18px;background:#fff;font:inherit;color:var(--ink)}
     .field input:focus{outline:2px solid rgba(35,86,60,.18);border-color:var(--green2)}
     .agent-choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -176,6 +190,7 @@
     .foot-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     @media(max-width:1100px){.nav-links{display:none}}
     @media(max-width:900px){.hero,.two-col,.proof,.footer-cta,.order-layout,.trust-layout,.compare-grid{grid-template-columns:1fr}.products,.grid,.usecases,.deploy-grid,.provider-grid,.legal-grid,.order-grid,.agent-choice-grid{grid-template-columns:1fr}.hero{min-height:auto}.product.featured{transform:none}.order-card{padding:26px}.footer-cta-actions{justify-items:stretch}.footer-cta:after{font-size:54px;right:-10px;bottom:-12px}.trust-stack,.trust-visual,.compare-card{padding:22px;border-radius:28px}.trust-item{grid-template-columns:42px 1fr 24px;padding:14px}.trust-icon{width:36px;height:36px;font-size:18px}.compare-card h3{font-size:24px}}
+    @media(max-width:560px){.case-summary{grid-template-columns:1fr;gap:12px;padding:18px}.expand-label{justify-content:space-between;width:100%}.case-body{padding:16px 18px 18px}}
   </style>
 </head>
 <body>
@@ -203,7 +218,7 @@
     <section class="section hero">
       <div>
         <div class="eyebrow">Mensgerichte AI-agents · Hermes · Trusted Agents</div>
-        <h1>Veilige AI-agents. Data onder controle.</h1>
+        <h1>Veilige AI-agents. Data onder controle</h1>
         <p class="lead">Initiatiefnemer Bernard Donners, Lector AI aan TIO Business School in Amsterdam en Groningen, werkt met een team van experts aan agent-oplossingen op basis van Hermes die rust, overzicht en menselijke regie terugbrengen in persoonlijke contexten , via Telegram, WhatsApp en andere vertrouwde kanalen.</p>
         <div class="hero-actions">
           <a class="button light" href="#deploy">Start een pilot</a>
@@ -239,7 +254,7 @@
 
     <section class="section" id="second-brain" style="padding-top:10px;padding-bottom:18px">
       <div class="eyebrow">Waarom Trusted Agents?</div>
-      <h2>Niet nog een losse chat, maar een geheugen dat zich opbouwt.</h2>
+      <h2>Niet nog een losse chat, maar een geheugen dat zich opbouwt</h2>
       <p class="lead">Gewone AI-chatgesprekken resetten te vaak. Trusted Agents koppelt Hermes aan een kennislaag die afspraken, notities, eerdere keuzes en terugkerende context bruikbaar houdt , zodat ondersteuning zich opbouwt in plaats van verdwijnt.</p>
       <div class="compare-aside">Dat maakt het verschil tussen losse output en een systeem dat echt meeleert: niet alleen antwoorden genereren, maar overzicht bewaren, verbanden terughalen en op een verantwoord moment de juiste context weer naar voren brengen. Voor mensgerichte ondersteuning is dat geen luxe, maar de basis voor rust, overzicht en regie.</div>
       <div class="compare-grid">
@@ -264,7 +279,7 @@
         <div class="trust-layout">
           <div>
             <div class="eyebrow">Vertrouwde agentlaag</div>
-            <h2>Niet alleen slim. Ook begrensd en beheersbaar.</h2>
+            <h2>Niet alleen slim. Ook begrensd en beheersbaar</h2>
             <p class="lead">Veel AI-projecten blijven hangen in losse prompts en experimenten. Trusted Agents draait het om: we beginnen bij terugkerende ondersteuning, afspraken over data, duidelijke grenzen en een agent die pas handelt wanneer dat verantwoord is.</p>
             <p class="muted">Bernard Donners is Lector AI aan TIO Business School in Amsterdam en Groningen. Op <a href="https://www.bernarddonners-ai.nl" style="color:#d7f268;font-weight:700;text-decoration:underline;text-underline-offset:3px">bernarddonners-ai.nl</a> werkt hij zijn visie uit: generatieve AI is een General Purpose Technology, maar de waarde ontstaat pas na de hype , als mensen beter leren denken, beslissen en organiseren.</p>
             <div class="trust-list">
@@ -315,11 +330,11 @@
 
     <section class="section">
       <div class="eyebrow">Vertrouwen in de praktijk</div>
-      <h2>Niet alleen slim. Ook beheersbaar.</h2>
+      <h2>Niet alleen slim. Ook beheersbaar</h2>
       <div class="grid">
         <article class="tile"><span class="nr">01</span><h3>Blijvend geheugen</h3><p class="muted">De agent onthoudt afspraken, voorkeuren en eerdere sessies, zodat context niet telkens opnieuw hoeft.</p></article>
         <article class="tile"><span class="nr">02</span><h3>Menselijke controle</h3><p class="muted">Mail, publicaties en gevoelige acties worden klaargezet voor akkoord. Jij blijft eigenaar van de beslissing.</p></article>
-        <article class="tile dark"><span class="nr">03</span><h3>Private EU-infrastructuur</h3><p class="muted">Een beheerde omgeving met duidelijke afspraken over toegang, logging, back-ups en data-opslag.</p></article>
+        <article class="tile dark"><span class="nr">03</span><h3>Private EU-infrastructuur</h3><p class="muted">Een beheerde omgeving met duidelijke afspraken over toegang, controleerbaarheid, back-ups en data-opslag.</p></article>
         <article class="tile"><span class="nr">04</span><h3>Gepland & proactief</h3><p class="muted">Dagelijkse briefings, controles, monitoring en opvolging draaien op schema , zonder dat iemand eraan hoeft te denken.</p></article>
         <article class="tile"><span class="nr">05</span><h3>Waar je al werkt</h3><p class="muted">Gebruik via mail, Telegram, WhatsApp of browser. Ook via de Web UI op je iPhone — geen app installeren.</p></article>
         <article class="tile"><span class="nr">06</span><h3>AI-geletterdheid</h3><p class="muted">Bernards rol als Lector AI helpt teams begrijpen wat AI wel en niet moet doen.</p></article>
@@ -331,13 +346,13 @@
       <h2>Zeven soorten ondersteuning die je kunt overdragen</h2>
       <p class="lead">De eerste versie richt zich op concrete, terugkerende workflows. Klein beginnen, veilig bewijzen, daarna uitbreiden , met ruimte voor mensgerichte pilots waar rust, vertrouwen en regie centraal staan.</p>
       <div class="usecases">
-        <article class="case"><small>Inbox & agenda</small><h3>Een assistent die voorwerk doet</h3><p class="muted">Samenvatten, triëren, conceptantwoorden schrijven en reminders klaarzetten.</p><div class="example">“Elke ochtend: vat mijn inbox samen, markeer urgente mails en zet conceptantwoorden klaar.”</div></article>
-        <article class="case"><small>Onderzoek & monitoring</small><h3>Continu zicht op wat ertoe doet</h3><p class="muted">Volg bronnen, afspraken, ontwikkelingen of signalen die voor jou of je omgeving relevant zijn en ontvang rustige, bruikbare briefings.</p><div class="example">“Elke maandag 09:00: vat samen wat er veranderd is en wat ik echt moet onthouden.”</div></article>
-        <article class="case"><small>Workflowautomatisering</small><h3>Het herhaalbare dagelijks geregeld</h3><p class="muted">Documenten ordenen, lijstjes bijhouden, intake vastleggen en ontbrekende informatie signaleren zonder onnodige frictie.</p><div class="example">“Nieuwe notitie binnen → op de juiste plek zetten → markeren wat nog ontbreekt.”</div></article>
-        <article class="case"><small>Content & kennis</small><h3>Van losse notities naar heldere steun</h3><p class="muted">Berichten, samenvattingen, uitleg en contextnotities in een rustige, herkenbare toon.</p><div class="example">“Maak van deze notities een korte uitleg, een vriendelijk bericht en een geheugensteun voor later.”</div></article>
-        <article class="case"><small>Familie & netwerk</small><h3>Afstemmen zonder ruis</h3><p class="muted">Bereid updates, herinneringen en terugkoppelingen voor zodat mensen rond dezelfde persoon beter afgestemd blijven.</p><div class="example">“Vat samen wat vandaag belangrijk was en zet een rustige update klaar voor familie.”</div></article>
-        <article class="case"><small>Dagstructuur</small><h3>Rust in het verloop van de dag</h3><p class="muted">Herinneringen, volgorde, check-ins en kleine terugkerende prompts die helpen om grip te houden zonder te overvragen.</p><div class="example">“Begin rustig: wat zijn vandaag de drie dingen die ik niet moet vergeten?”</div></article>
-        <article class="case"><small>Geheugensteun</small><h3>Mensgerichte ondersteuning</h3><p class="muted">Een voorzichtige verkenning van AI die mensen helpt overzicht te houden in dagelijkse situaties , met privacy, rust en menselijke regie als uitgangspunt.</p><div class="example">“Een kleine, veilige steunlaag voor momenten waarop context en overzicht belangrijk zijn.”</div></article>
+        <details class="case"><summary class="case-summary"><span><small>Inbox & agenda</small><h3>Een assistent die voorwerk doet</h3></span><span class="expand-label">Bekijk details</span></summary><div class="case-body"><p class="muted">Samenvatten, triëren, conceptantwoorden schrijven en reminders klaarzetten.</p><div class="example">“Elke ochtend: vat mijn inbox samen, markeer urgente mails en zet conceptantwoorden klaar.”</div></div></details>
+        <details class="case"><summary class="case-summary"><span><small>Onderzoek & monitoring</small><h3>Continu zicht op wat ertoe doet</h3></span><span class="expand-label">Bekijk details</span></summary><div class="case-body"><p class="muted">Volg bronnen, afspraken, ontwikkelingen of signalen die voor jou of je omgeving relevant zijn en ontvang rustige, bruikbare briefings.</p><div class="example">“Elke maandag 09:00: vat samen wat er veranderd is en wat ik echt moet onthouden.”</div></div></details>
+        <details class="case"><summary class="case-summary"><span><small>Workflowautomatisering</small><h3>Het herhaalbare dagelijks geregeld</h3></span><span class="expand-label">Bekijk details</span></summary><div class="case-body"><p class="muted">Documenten ordenen, lijstjes bijhouden, intake vastleggen en ontbrekende informatie signaleren zonder onnodige frictie.</p><div class="example">“Nieuwe notitie binnen → op de juiste plek zetten → markeren wat nog ontbreekt.”</div></div></details>
+        <details class="case"><summary class="case-summary"><span><small>Content & kennis</small><h3>Van losse notities naar heldere steun</h3></span><span class="expand-label">Bekijk details</span></summary><div class="case-body"><p class="muted">Berichten, samenvattingen, uitleg en contextnotities in een rustige, herkenbare toon.</p><div class="example">“Maak van deze notities een korte uitleg, een vriendelijk bericht en een geheugensteun voor later.”</div></div></details>
+        <details class="case"><summary class="case-summary"><span><small>Familie & netwerk</small><h3>Afstemmen zonder ruis</h3></span><span class="expand-label">Bekijk details</span></summary><div class="case-body"><p class="muted">Bereid updates, herinneringen en terugkoppelingen voor zodat mensen rond dezelfde persoon beter afgestemd blijven.</p><div class="example">“Vat samen wat vandaag belangrijk was en zet een rustige update klaar voor familie.”</div></div></details>
+        <details class="case"><summary class="case-summary"><span><small>Dagstructuur</small><h3>Rust in het verloop van de dag</h3></span><span class="expand-label">Bekijk details</span></summary><div class="case-body"><p class="muted">Herinneringen, volgorde, check-ins en kleine terugkerende prompts die helpen om grip te houden zonder te overvragen.</p><div class="example">“Begin rustig: wat zijn vandaag de drie dingen die ik niet moet vergeten?”</div></div></details>
+        <details class="case"><summary class="case-summary"><span><small>Geheugensteun</small><h3>Mensgerichte ondersteuning</h3></span><span class="expand-label">Bekijk details</span></summary><div class="case-body"><p class="muted">Een voorzichtige verkenning van AI die mensen helpt overzicht te houden in dagelijkse situaties , met privacy, rust en menselijke regie als uitgangspunt.</p><div class="example">“Een kleine, veilige steunlaag voor momenten waarop context en overzicht belangrijk zijn.”</div></div></details>
       </div>
     </section>
 
@@ -369,7 +384,7 @@
           <span class="tag">1 · Starter</span>
           <h3>Managed Agent</h3>
           <p class="muted">De eenvoudigste manier om te starten. Je krijgt een beheerde Hermes-agent op een private Europese VPS, met installatie, beheer en duidelijke begeleiding. Het AI-gebruik loopt via je eigen ChatGPT/Codex-account.</p>
-          <ul><li>Private EU-VPS, installatie en beheer</li><li>Telegram als eerste kanaal</li><li>Klant koppelt zelf ChatGPT/Codex via OAuth</li><li>Betaling via Mollie, iDEAL of kaart</li></ul>
+          <ul><li>Private EU-VPS, installatie en beheer</li><li>Telegram of WhatsApp als eerste kanaal</li><li>Klant koppelt zelf ChatGPT/Codex via OAuth</li><li>Betaling via Mollie, iDEAL of kaart</li></ul>
           <div class="price">€29 <span>/ maand per agent · AI-gebruik via eigen account</span></div>
           <div class="hero-actions" style="margin:4px 0 0">
             <a class="button light" href="#bestel-agent">Start Hermes intake</a>
@@ -408,7 +423,7 @@
           </div>
           <div class="deploy-steps">
             <div class="deploy-step"><div><strong>1. Intake</strong><br><span class="muted">We verzamelen je gegevens en bespreken kort waarvoor je de agent wilt gebruiken.</span></div></div>
-            <div class="deploy-step"><div><strong>2. Kanaal kiezen</strong><br><span class="muted">We starten standaard met Telegram. Later kunnen andere kanalen volgen.</span></div></div>
+            <div class="deploy-step"><div><strong>2. Kanaal kiezen</strong><br><span class="muted">Je kiest bij de intake direct Telegram of WhatsApp. Andere kanalen kunnen later volgen.</span></div></div>
             <div class="deploy-step"><div><strong>3. ChatGPT koppelen</strong><br><span class="muted">De klant logt zelf in via de officiële ChatGPT/Codex OAuth-code. Geen wachtwoord of API-sleutel in dit formulier.</span></div></div>
             <div class="deploy-step"><div><strong>4. Bevestigen en betalen</strong><br><span class="muted">Na de intake volgt de bevestiging en, als je verder wilt, de betaling via Mollie.</span></div></div>
             <div class="deploy-step"><div><strong>5. Activatie</strong><br><span class="muted">Daarna richten we Hermes veilig in en activeren we je eerste agent.</span></div></div>
@@ -422,7 +437,7 @@
         </article>
         <article class="deploy-panel">
           <h3>Werken in een vertrouwd kanaal</h3>
-          <p class="muted">Je gebruikt de agent in een kanaal dat al bekend voelt. We starten met Telegram, omdat dat snel en praktisch is. Andere kanalen kunnen later volgen.</p>
+          <p class="muted">Je gebruikt de agent in een kanaal dat al bekend voelt. Je kunt starten met Telegram of WhatsApp, afhankelijk van wat voor jou het vertrouwdst werkt. Andere kanalen kunnen later volgen.</p>
           <div class="chat" style="background:#13291f;border-radius:24px;padding:18px">
             <div class="bubble"><div class="mini">Jij · WhatsApp</div>Vat mijn inbox samen en zet de drie belangrijkste antwoorden klaar.</div>
             <div class="bubble agent"><div class="mini">Hermes · update</div>Ik heb 18 mails bekeken. Drie vragen actie. Ik heb conceptantwoorden opgesteld en één reminder gezet. Wil je ze controleren?</div>
@@ -501,7 +516,7 @@
         <article class="provider-card">
           <span class="tag">Privacy</span>
           <strong>Data op je eigen Mac</strong>
-          <p class="muted">Chats, documenten, logs en configuratie kunnen volledig op je eigen machine blijven. Na oplevering kan remote toegang worden ingetrokken.</p>
+          <p class="muted">Chats, documenten, controle-informatie en configuratie kunnen volledig op je eigen machine blijven. Na oplevering kan remote toegang worden ingetrokken.</p>
           <ul><li>API-sleutels op jouw naam en factuur</li><li>Lokale modellen mogelijk waar privacy zwaarder weegt</li><li>Geen verplicht platformabonnement van mijn kant</li><li>Geschikt voor mensen die controle boven gemak zetten</li></ul>
         </article>
         <article class="provider-card">
@@ -518,7 +533,7 @@
       <div class="proof">
         <div>
           <div class="eyebrow" style="background:rgba(255,255,255,.08);color:var(--lime);border-color:rgba(255,255,255,.15)">Security & data</div>
-          <h2>Nederlandse controle is geen detail. Het is de basis.</h2>
+          <h2>Nederlandse controle is geen detail. Het is de basis</h2>
           <p class="muted">Wanneer AI met persoonlijke gegevens, kwetsbare context of gevoelige informatie werkt, moet het niet alleen handig zijn. Het moet uitlegbaar, beheersbaar en begrensd zijn.</p>
         </div>
         <div class="quote">“Niet alles wat technologisch kan is ook maatschappelijk gewenst.”<br><br><span style="font-size:15px;color:#c9d6cc">, lijn vanuit bernarddonners-ai.nl, vertaald naar veilige zakelijke toepassing</span></div>
@@ -544,7 +559,7 @@
           <div class="order-steps">
             <div class="order-step"><span class="badge">1</span><div><strong>Vul je gegevens in</strong><p class="muted">Naam, e-mailadres en bedrijfsnaam voor de eerste intake.</p></div></div>
             <div class="order-step"><span class="badge">2</span><div><strong>Hermes bevestigen</strong><p class="muted">Trusted Agents werkt publiek met één duidelijke route: Hermes.</p></div></div>
-            <div class="order-step"><span class="badge">3</span><div><strong>Koppel je kanaal</strong><p class="muted">Telegram eerst, WhatsApp volgt later als aparte route.</p></div></div>
+            <div class="order-step"><span class="badge">3</span><div><strong>Koppel je kanaal</strong><p class="muted">Kies direct Telegram of WhatsApp als eerste route.</p></div></div>
             <div class="order-step"><span class="badge">4</span><div><strong>Koppel ChatGPT zelf</strong><p class="muted">Tijdens installatie log je zelf in via de officiële OAuth-code. Je deelt geen wachtwoord met ons.</p></div></div>
             <div class="order-step"><span class="badge">5</span><div><strong>Daarna pas betaling en activatie</strong><p class="muted">Pas na de intake volgen akkoord, betaling en de eerste installatie.</p></div></div>
           </div>
@@ -579,16 +594,16 @@
               </div>
             </div>
             <div class="field full">
-              <label>Telegram</label>
+              <label>Kanaal</label>
               <input type="hidden" name="channel" id="order-channel" value="telegram">
               <div class="segment-switch" aria-label="Kanaalkeuze">
                 <button type="button" class="active" data-channel-option="telegram">Telegram</button>
-                <button type="button" class="disabled" disabled>WhatsApp binnenkort</button>
+                <button type="button" data-channel-option="whatsapp">WhatsApp</button>
               </div>
             </div>
             <div class="field full">
-              <label for="order-telegram-token">Telegram Bot Token</label>
-              <input id="order-telegram-token" name="telegram_bot_token" required>
+              <label for="order-channel-token" class="label-help"><span id="order-channel-token-label">Telegram Bot Token</span> <details><summary aria-label="Uitleg kanaal-token">?</summary><div class="help-pop" id="order-channel-token-help">Dit is de sleutel waarmee jouw agent via jouw eigen Telegram-bot berichten kan ontvangen en beantwoorden. Maak de bot gratis aan via <a href="https://telegram.me/BotFather" target="_blank" rel="noopener">BotFather</a>. Hulp nodig? Lees deze <a href="https://imsocial.nl/telegram/wat-is-een-telegram-bot-wat-kun-je-ermee-en-hoe-maak-je-er-een" target="_blank" rel="noopener">Nederlandse uitleg</a>.</div></details></label>
+              <input id="order-channel-token" name="channel_token" required>
             </div>
             <div class="field full">
               <label>ChatGPT of OpenRouter</label>
@@ -626,7 +641,7 @@
             <li>Risicovolle acties, externe communicatie, publicaties, betalingen en besluiten vereisen menselijke controle en expliciet akkoord.</li>
             <li>De klant staat ervoor in dat aangeleverde gegevens rechtmatig mogen worden verwerkt en geen rechten van derden schenden.</li>
             <li>Trusted Agents mag werkzaamheden opschorten wanneer gebruik onveilig, onrechtmatig of strijdig met afspraken lijkt.</li>
-            <li>Aansprakelijkheid is beperkt tot directe schade en maximaal het bedrag dat voor de betreffende dienst is betaald, voor zover wettelijk toegestaan.</li>
+            <li>Trusted Agents neemt geen aansprakelijkheid over voor gebruik van AI-output; de klant blijft verantwoordelijk voor controle, besluiten, externe acties en gevolgen, binnen de grenzen van de wet.</li>
           </ul>
         </article>
         <article class="acceptance-box">
@@ -634,7 +649,7 @@
           <h3>Bevestiging bij activatie</h3>
           <p>Deze bevestiging hoort bij intake, offerte en activatie van iedere agent.</p>
           <div class="checkline">Ik begrijp dat ik verantwoordelijk ben voor het controleren van AI-output voordat ik die gebruik, verstuur, publiceer of omzet in een besluit.</div>
-          <div class="checkline">Ik begrijp dat een AI-agent fouten kan maken en dat Trusted Agents geen aansprakelijkheid aanvaardt voor beslissingen die zonder menselijke controle worden genomen.</div>
+          <div class="checkline">Ik begrijp dat een AI-agent fouten kan maken en dat ik verantwoordelijk blijf voor controle, besluiten, externe acties en gevolgen.</div>
           <div class="checkline">Ik begrijp dat ik geen gegevens mag aanleveren waarvoor ik geen rechtmatige grondslag of toestemming heb.</div>
           <div class="checkline">Ik begrijp dat gevoelige acties pas mogen plaatsvinden na mijn expliciete akkoord.</div>
         </article>
@@ -683,10 +698,10 @@
         "Hosting": "Hosting",
         "Plan pilot": "Book pilot",
         "Mensgerichte AI-agents · Hermes · Trusted Agents": "Human-centered AI agents · Hermes · Trusted Agents",
-        "Veilige AI-agents. Data onder controle.": "Secure AI agents. Data under control.",
+        "Veilige AI-agents. Data onder controle": "Secure AI agents. Data under control.",
         "Start een pilot": "Start a pilot",
         "Waarom Trusted Agents?": "Why Trusted Agents?",
-        "Niet nog een losse chat, maar een geheugen dat zich opbouwt.": "Not another isolated chat, but a memory that compounds.",
+        "Niet nog een losse chat, maar een geheugen dat zich opbouwt": "Not another isolated chat, but a memory that compounds.",
         "Dat maakt het verschil tussen losse output en een systeem dat echt meeleert: niet alleen antwoorden genereren, maar overzicht bewaren, verbanden terughalen en op een verantwoord moment de juiste context weer naar voren brengen. Voor mensgerichte ondersteuning is dat geen luxe, maar de basis voor rust, overzicht en regie.": "That is the difference between isolated output and a system that truly learns along the way: not just generating answers, but preserving overview, retrieving connections and bringing back the right context at the right responsible moment. For human-centered support, that is not a luxury but the basis for calm, overview and control.",
         "Losse AI-chat": "Standalone AI chat",
         "Snel antwoord, maar weinig blijvend houvast": "Fast answers, but little lasting support",
@@ -702,7 +717,7 @@
         "Beter passend bij persoonlijke en mensgerichte workflows": "Better suited to personal and human-centered workflows",
         "Hoe werkt het": "How it works",
         "Vertrouwde agentlaag": "Trusted agent layer",
-        "Niet alleen slim. Ook begrensd en beheersbaar.": "Not only smart. Also bounded and controllable.",
+        "Niet alleen slim. Ook begrensd en beheersbaar": "Not only smart. Also bounded and controllable.",
         "Vertrouwen in de praktijk": "Trust in practice",
         "Initiatiefnemer Bernard Donners, Lector AI aan TIO Business School in Amsterdam en Groningen, werkt met een team van experts aan agent-oplossingen op basis van Hermes die rust, overzicht en menselijke regie terugbrengen in persoonlijke contexten , via Telegram, WhatsApp en andere vertrouwde kanalen.": "Founder Bernard Donners, Professor of Applied AI at TIO Business School in Amsterdam and Groningen, works with a team of experts on agent solutions based on Hermes that restore calm, overview and human control in personal contexts , through Telegram, WhatsApp and other familiar channels.",
         "Bekijk security-aanpak": "View security approach",
@@ -727,13 +742,13 @@
         "Bernard Donners is Lector AI aan TIO Business School in Amsterdam en Groningen. Op": "Bernard Donners is Professor of Applied AI at TIO Business School in Amsterdam and Groningen. On",
         "werkt hij zijn visie uit: generatieve AI is een General Purpose Technology, maar de waarde ontstaat pas na de hype , als mensen beter leren denken, beslissen en organiseren.": "he develops his vision: generative AI is a General Purpose Technology, but value only emerges after the hype , when people learn to think, decide and organize better.",
         "Wat maakt een agent vertrouwd?": "What makes an agent trusted?",
-        "Niet alleen slim. Ook beheersbaar.": "Not just smart. Also controllable.",
+        "Niet alleen slim. Ook beheersbaar": "Not just smart. Also controllable.",
         "Blijvend geheugen": "Persistent memory",
         "De agent onthoudt afspraken, voorkeuren en eerdere sessies, zodat context niet telkens opnieuw hoeft.": "The agent remembers agreements, preferences and previous sessions, so context does not need to be repeated every time.",
         "Menselijke controle": "Human control",
         "Mail, publicaties en gevoelige acties worden klaargezet voor akkoord. Jij blijft eigenaar van de beslissing.": "Email, publications and sensitive actions are prepared for approval. You remain the owner of the decision.",
         "Private EU-infrastructuur": "Private EU infrastructure",
-        "Een beheerde omgeving met duidelijke afspraken over toegang, logging, back-ups en data-opslag.": "A managed environment with clear agreements about access, logging, backups and data storage.",
+        "Een beheerde omgeving met duidelijke afspraken over toegang, controleerbaarheid, back-ups en data-opslag.": "A managed environment with clear agreements about access, auditability, backups and data storage.",
         "Gepland & proactief": "Scheduled & proactive",
         "Dagelijkse briefings, controles, monitoring en opvolging draaien op schema , zonder dat iemand eraan hoeft te denken.": "Daily briefings, checks, monitoring and follow-up run on schedule , without anyone having to remember.",
         "Waar je al werkt": "Where you already work",
@@ -787,7 +802,7 @@
         "Managed Agent": "Managed Agent",
         "De eenvoudigste manier om te starten. Je krijgt een beheerde Hermes-agent op een private Europese VPS, met installatie, beheer en duidelijke begeleiding. Het AI-gebruik loopt via je eigen ChatGPT/Codex-account.": "The simplest way to start. You get a managed Hermes agent on a private European VPS, with installation, management and clear guidance. AI usage runs through your own ChatGPT/Codex account.",
         "Private EU-VPS, installatie en beheer": "Private EU VPS, installation and management",
-        "Telegram als eerste kanaal": "Telegram as the first channel",
+        "Telegram of WhatsApp als eerste kanaal": "Telegram or WhatsApp as the first channel",
         "Klant koppelt zelf ChatGPT/Codex via OAuth": "Customer connects ChatGPT/Codex via OAuth",
         "Betaling via Mollie, iDEAL of kaart": "Payment via Mollie, iDEAL or card",
         "/ maand per agent · AI-gebruik via eigen account": "/ month per agent · AI usage through own account",
@@ -818,7 +833,7 @@
         "1. Intake": "1. Intake",
         "We verzamelen je gegevens en bespreken kort waarvoor je de agent wilt gebruiken.": "We collect your details and briefly discuss what you want the agent to do.",
         "2. Kanaal kiezen": "2. Choose a channel",
-        "We starten standaard met Telegram. Later kunnen andere kanalen volgen.": "We start with Telegram by default. Other channels can follow later.",
+        "Je kiest bij de intake direct Telegram of WhatsApp. Andere kanalen kunnen later volgen.": "During intake you immediately choose Telegram or WhatsApp. Other channels can follow later.",
         "3. ChatGPT koppelen": "3. Connect ChatGPT",
         "De klant logt zelf in via de officiële ChatGPT/Codex OAuth-code. Geen wachtwoord of API-sleutel in dit formulier.": "The customer logs in via the official ChatGPT/Codex OAuth code. No password or API key in this form.",
         "4. Bevestigen en betalen": "4. Confirm and pay",
@@ -830,7 +845,7 @@
         "Belangrijk:": "Important:",
         "gevoelige acties blijven altijd onder menselijke controle. De agent bereidt voor, maar handelt niet zomaar zelfstandig.": "sensitive actions always remain under human control. The agent prepares work, but does not act on its own just like that.",
         "Werken in een vertrouwd kanaal": "Working in a familiar channel",
-        "Je gebruikt de agent in een kanaal dat al bekend voelt. We starten met Telegram, omdat dat snel en praktisch is. Andere kanalen kunnen later volgen.": "You use the agent in a channel that already feels familiar. We start with Telegram because it is fast and practical. Other channels can follow later.",
+        "Je gebruikt de agent in een kanaal dat al bekend voelt. Je kunt starten met Telegram of WhatsApp, afhankelijk van wat voor jou het vertrouwdst werkt. Andere kanalen kunnen later volgen.": "You use the agent in a channel that already feels familiar. You can start with Telegram or WhatsApp, depending on what feels most familiar to you. Other channels can follow later.",
         "Jij · WhatsApp": "You · WhatsApp",
         "Vat mijn inbox samen en zet de drie belangrijkste antwoorden klaar.": "Summarize my inbox and prepare the three most important replies.",
         "Ik heb 18 mails bekeken. Drie vragen actie. Ik heb conceptantwoorden opgesteld en één reminder gezet. Wil je ze controleren?": "I reviewed 18 emails. Three require action. I drafted replies and set one reminder. Do you want to review them?",
@@ -892,7 +907,7 @@
         "Eerste eenvoudige automatiseringen en duidelijke overdracht": "Initial simple automations and a clear handover",
         "Privacy": "Privacy",
         "Data op je eigen Mac": "Data on your own Mac",
-        "Chats, documenten, logs en configuratie kunnen volledig op je eigen machine blijven. Na oplevering kan remote toegang worden ingetrokken.": "Chats, documents, logs and configuration can remain entirely on your own machine. After delivery, remote access can be revoked.",
+        "Chats, documenten, controle-informatie en configuratie kunnen volledig op je eigen machine blijven. Na oplevering kan remote toegang worden ingetrokken.": "Chats, documents, control information and configuration can remain entirely on your own machine. After delivery, remote access can be revoked.",
         "API-sleutels op jouw naam en factuur": "API keys in your own name and billing account",
         "Lokale modellen mogelijk waar privacy zwaarder weegt": "Local models possible where privacy weighs more heavily",
         "Geen verplicht platformabonnement van mijn kant": "No mandatory platform subscription from my side",
@@ -907,7 +922,7 @@
         "Belangrijk over kosten:": "Important about costs:",
         "de setup staat los van hardware, AI-API's, domeinen, telefonie of andere externe diensten. Tijdens intake bepalen we welke route past: volledig beheerd, eigen Mac mini of een hybride vorm.": "the setup is separate from hardware, AI APIs, domains, telephony or other external services. During intake we determine which route fits: fully managed, your own Mac mini or a hybrid form.",
         "Security & data": "Security & data",
-        "Nederlandse controle is geen detail. Het is de basis.": "Dutch control is not a detail. It is the basis.",
+        "Nederlandse controle is geen detail. Het is de basis": "Dutch control is not a detail. It is the basis.",
         "Wanneer AI met persoonlijke gegevens, kwetsbare context of gevoelige informatie werkt, moet het niet alleen handig zijn. Het moet uitlegbaar, beheersbaar en begrensd zijn.": "When AI works with personal data, vulnerable contexts or sensitive information, it must not only be useful. It must be explainable, controllable and bounded.",
         "“Niet alles wat technologisch kan is ook maatschappelijk gewenst.”": "“Not everything that is technologically possible is socially desirable.”",
         ", lijn vanuit bernarddonners-ai.nl, vertaald naar veilige zakelijke toepassing": ", line from bernarddonners-ai.nl, translated into safe business application",
@@ -921,7 +936,7 @@
         "Hermes bevestigen": "Confirm Hermes",
         "Trusted Agents werkt publiek met één duidelijke route: Hermes.": "Trusted Agents works publicly with one clear route: Hermes.",
         "Koppel je kanaal": "Connect your channel",
-        "Telegram eerst, WhatsApp volgt later als aparte route.": "Telegram first, WhatsApp will follow later as a separate route.",
+        "Kies direct Telegram of WhatsApp als eerste route.": "Choose Telegram or WhatsApp directly as the first route.",
         "Koppel ChatGPT zelf": "Connect ChatGPT yourself",
         "Tijdens installatie log je zelf in via de officiële OAuth-code. Je deelt geen wachtwoord met ons.": "During installation, you log in yourself via the official OAuth code. You do not share your password with us.",
         "Daarna pas betaling en activatie": "Only then payment and activation",
@@ -938,7 +953,7 @@
         "Je agentlaag": "Your agent layer",
         "Managed agent voor rustige, beheersbare workflowautomatisering via Trusted Agents.": "Managed agent for calm, controllable workflow automation through Trusted Agents.",
         "Telegram": "Telegram",
-        "WhatsApp binnenkort": "WhatsApp coming soon",
+        "WhatsApp": "WhatsApp",
         "Telegram Bot Token": "Telegram Bot Token",
         "ChatGPT of OpenRouter": "ChatGPT or OpenRouter",
         "Start met ChatGPT, of kies een API-route": "Start with ChatGPT, or choose an API route",
@@ -967,12 +982,12 @@
         "Risicovolle acties, externe communicatie, publicaties, betalingen en besluiten vereisen menselijke controle en expliciet akkoord.": "Risky actions, external communication, publications, payments and decisions require human control and explicit approval.",
         "De klant staat ervoor in dat aangeleverde gegevens rechtmatig mogen worden verwerkt en geen rechten van derden schenden.": "The customer warrants that submitted data may be lawfully processed and does not infringe third-party rights.",
         "Trusted Agents mag werkzaamheden opschorten wanneer gebruik onveilig, onrechtmatig of strijdig met afspraken lijkt.": "Trusted Agents may suspend work when use appears unsafe, unlawful or contrary to agreements.",
-        "Aansprakelijkheid is beperkt tot directe schade en maximaal het bedrag dat voor de betreffende dienst is betaald, voor zover wettelijk toegestaan.": "Liability is limited to direct damage and at most the amount paid for the relevant service, to the extent permitted by law.",
+        "Trusted Agents neemt geen aansprakelijkheid over voor gebruik van AI-output; de klant blijft verantwoordelijk voor controle, besluiten, externe acties en gevolgen, binnen de grenzen van de wet.": "Trusted Agents does not take over liability for use of AI output; the customer remains responsible for review, decisions, external actions and consequences, within the boundaries of the law.",
         "Verantwoord gebruik": "Responsible use",
         "Bevestiging bij activatie": "Confirmation at activation",
         "Deze bevestiging hoort bij intake, offerte en activatie van iedere agent.": "This confirmation belongs to the intake, quotation and activation of every agent.",
         "Ik begrijp dat ik verantwoordelijk ben voor het controleren van AI-output voordat ik die gebruik, verstuur, publiceer of omzet in een besluit.": "I understand that I am responsible for checking AI output before I use, send, publish or turn it into a decision.",
-        "Ik begrijp dat een AI-agent fouten kan maken en dat Trusted Agents geen aansprakelijkheid aanvaardt voor beslissingen die zonder menselijke controle worden genomen.": "I understand that an AI agent can make mistakes and that Trusted Agents accepts no liability for decisions made without human control.",
+        "Ik begrijp dat een AI-agent fouten kan maken en dat ik verantwoordelijk blijf voor controle, besluiten, externe acties en gevolgen.": "I understand that an AI agent can make mistakes and that I remain responsible for review, decisions, external actions and consequences.",
         "Ik begrijp dat ik geen gegevens mag aanleveren waarvoor ik geen rechtmatige grondslag of toestemming heb.": "I understand that I may not submit data for which I have no lawful basis or consent.",
         "Ik begrijp dat gevoelige acties pas mogen plaatsvinden na mijn expliciete akkoord.": "I understand that sensitive actions may only take place after my explicit approval.",
         "Privacybeleid": "Privacy policy",
@@ -993,7 +1008,24 @@
         "Bij twijfel geldt: eerst menselijke beoordeling, daarna pas actie.": "When in doubt: human review first, action later.",
         "Privacybeleid": "Privacy policy",
         "· Gebouwd voor individuen, mensgerichte ondersteuning en Bernards AI-visie.": "· Built for individuals, human-centered support and Bernard's AI vision.",
-        "Gebouwd voor individuen, mensgerichte ondersteuning en Bernards AI-visie.": "Built for individuals, human-centered support and Bernard's AI vision."
+        "Gebouwd voor individuen, mensgerichte ondersteuning en Bernards AI-visie.": "Built for individuals, human-centered support and Bernard's AI vision.",
+        "Veilige AI-agents. Data onder controle": "Secure AI agents. Data under control",
+        "Niet nog een losse chat, maar een geheugen dat zich opbouwt": "Not another isolated chat, but a memory that compounds",
+        "Niet alleen slim. Ook begrensd en beheersbaar": "Not only smart. Also bounded and controllable",
+        "Niet alleen slim. Ook beheersbaar": "Not just smart. Also controllable",
+        "Nederlandse controle is geen detail. Het is de basis": "Dutch control is not a detail. It is the basis",
+        "Bekijk details": "View details",
+        "Telegram of WhatsApp als eerste kanaal": "Telegram or WhatsApp as the first channel",
+        "Een beheerde omgeving met duidelijke afspraken over toegang, controleerbaarheid, back-ups en data-opslag.": "A managed environment with clear agreements about access, auditability, backups and data storage.",
+        "Je kiest bij de intake direct Telegram of WhatsApp. Andere kanalen kunnen later volgen.": "During intake you immediately choose Telegram or WhatsApp. Other channels can follow later.",
+        "Je kunt starten met Telegram of WhatsApp, afhankelijk van wat voor jou het vertrouwdst werkt. Andere kanalen kunnen later volgen.": "You can start with Telegram or WhatsApp, depending on what feels most familiar to you. Other channels can follow later.",
+        "Kies direct Telegram of WhatsApp als eerste route.": "Choose Telegram or WhatsApp directly as the first route.",
+        "Kanaaltoken": "Channel token",
+        "WhatsApp Token": "WhatsApp Token",
+        "Plak hier de WhatsApp-token of toegangssleutel die we gebruiken om jouw agent aan WhatsApp te koppelen. We controleren de juiste route tijdens de installatie.": "Paste the WhatsApp token or access key we use to connect your agent to WhatsApp. We check the right route during installation.",
+        "Chats, documenten, controle-informatie en configuratie kunnen volledig op je eigen machine blijven.": "Chats, documents, control information and configuration can remain entirely on your own machine.",
+        "Trusted Agents neemt geen aansprakelijkheid over voor gebruik van AI-output; de klant blijft verantwoordelijk voor controle, besluiten, externe acties en gevolgen, binnen de grenzen van de wet.": "Trusted Agents does not take over liability for use of AI output; the customer remains responsible for review, decisions, external actions and consequences, within the boundaries of the law.",
+        "Ik begrijp dat een AI-agent fouten kan maken en dat ik verantwoordelijk blijf voor controle, besluiten, externe acties en gevolgen.": "I understand that an AI agent can make mistakes and that I remain responsible for review, decisions, external actions and consequences."
       }
     };
 
@@ -1027,6 +1059,9 @@
       document.querySelectorAll('[data-lang-button]').forEach(button => {
         button.classList.toggle('active', button.dataset.langButton === lang);
       });
+      if(orderChannelInput){
+        setSelectedChannel(orderChannelInput.value || 'telegram');
+      }
       localStorage.setItem('trustedAgentsLang', lang);
     }
 
@@ -1038,6 +1073,9 @@
     const orderResult = document.querySelector('#order-result');
     const orderAgentInput = document.querySelector('#order-agent');
     const orderChannelInput = document.querySelector('#order-channel');
+    const orderChannelToken = document.querySelector('#order-channel-token');
+    const orderChannelTokenLabel = document.querySelector('#order-channel-token-label');
+    const orderChannelTokenHelp = document.querySelector('#order-channel-token-help');
 
     function setSelectedAgent(agent){
       if(!orderAgentInput) return;
@@ -1049,10 +1087,38 @@
 
     function setSelectedChannel(channel){
       if(!orderChannelInput) return;
-      orderChannelInput.value = channel;
+      const selectedChannel = channel === 'whatsapp' ? 'whatsapp' : 'telegram';
+      orderChannelInput.value = selectedChannel;
       document.querySelectorAll('[data-channel-option]').forEach(button => {
-        button.classList.toggle('active', button.dataset.channelOption === channel);
+        button.classList.toggle('active', button.dataset.channelOption === selectedChannel);
       });
+      const lang = document.body.dataset.lang === 'en' ? 'en' : 'nl';
+      const channelCopy = {
+        nl: {
+          telegram: {
+            label: 'Telegram Bot Token',
+            help: 'Dit is de sleutel waarmee jouw agent via jouw eigen Telegram-bot berichten kan ontvangen en beantwoorden. Maak de bot gratis aan via <a href="https://telegram.me/BotFather" target="_blank" rel="noopener">BotFather</a>. Hulp nodig? Lees deze <a href="https://imsocial.nl/telegram/wat-is-een-telegram-bot-wat-kun-je-ermee-en-hoe-maak-je-er-een" target="_blank" rel="noopener">Nederlandse uitleg</a>.'
+          },
+          whatsapp: {
+            label: 'WhatsApp Token',
+            help: 'Plak hier de WhatsApp-token of toegangssleutel die we gebruiken om jouw agent aan WhatsApp te koppelen. We controleren de juiste route tijdens de installatie.'
+          }
+        },
+        en: {
+          telegram: {
+            label: 'Telegram Bot Token',
+            help: 'This is the key that lets your agent receive and answer messages through your own Telegram bot. Create the bot for free through <a href="https://telegram.me/BotFather" target="_blank" rel="noopener">BotFather</a>.'
+          },
+          whatsapp: {
+            label: 'WhatsApp Token',
+            help: 'Paste the WhatsApp token or access key we use to connect your agent to WhatsApp. We check the right route during installation.'
+          }
+        }
+      };
+      const copy = channelCopy[lang][selectedChannel];
+      if(orderChannelTokenLabel) orderChannelTokenLabel.textContent = copy.label;
+      if(orderChannelTokenHelp) orderChannelTokenHelp.innerHTML = copy.help;
+      if(orderChannelToken) orderChannelToken.placeholder = copy.label;
     }
 
     document.querySelectorAll('[data-onboarding-agent]').forEach(link => {
@@ -1080,7 +1146,7 @@
           `Naam: ${data.customer_name || ''}`,
           `Bedrijf: ${data.company_name || ''}`,
           `E-mail: ${data.email || ''}`,
-          `Telegram Bot Token: ${data.telegram_bot_token || ''}`,
+          `Kanaaltoken: ${data.channel_token || ''}`,
           `Modeltoegang: ChatGPT/Codex OAuth door klant tijdens installatie`,
           `Vouchercode: ${data.voucher_code || '-'}`,
           '',
