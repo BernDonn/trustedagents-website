@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Trusted Agents , Veilige AI-agents voor individuen en mensgerichte ondersteuning</title>
+  <title>Trusted Agents, Veilige AI-agents voor individuen en mensgerichte ondersteuning</title>
   <meta name="description" content="Trusted Agents levert beheerde AI-agents voor individuen en mensgerichte ondersteuning: veilig, controleerbaar en AVG-bewust." />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap');
@@ -105,16 +105,24 @@
     .tile.dark .muted{color:#dfe8db}
     .usecases{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:32px}
     .case{background:#fffaf1;border:1px solid var(--line);border-radius:26px;padding:0;overflow:hidden;box-shadow:0 12px 35px rgba(20,35,24,.05)}
-    .case summary{list-style:none;cursor:pointer}
-    .case summary::-webkit-details-marker{display:none}
-    .case-summary{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:20px 22px}
-    .case-summary small{font-weight:850;letter-spacing:.1em;color:var(--green);text-transform:uppercase}
-    .case-summary h3{margin:6px 0 0;font-size:22px;line-height:1.12}
+    .case summary,.integration-card summary{list-style:none;cursor:pointer}
+    .case summary::-webkit-details-marker,.integration-card summary::-webkit-details-marker{display:none}
+    .case-summary,.integration-summary{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;padding:20px 22px}
+    .case-summary small,.integration-summary .tag{font-weight:850;letter-spacing:.1em;color:var(--green);text-transform:uppercase}
+    .case-summary h3,.integration-summary h3{margin:6px 0 0;font-size:22px;line-height:1.12}
     .expand-label{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(22,63,43,.14);background:#f0e6d6;border-radius:999px;padding:8px 11px;color:var(--green);font-size:13px;font-weight:850;white-space:nowrap}
     .expand-label:after{content:"+";display:grid;place-items:center;width:20px;height:20px;border-radius:999px;background:#fff;border:1px solid var(--line)}
     details[open] > summary .expand-label:after{content:"−"}
-    .case-body{display:grid;gap:16px;padding:18px 22px 22px;border-top:1px solid rgba(222,213,196,.72)}
+    .case-body,.integration-body{display:grid;gap:16px;padding:18px 22px 22px;border-top:1px solid rgba(222,213,196,.72)}
     .example{background:#f0e6d6;border-radius:18px;padding:13px;color:#304034;font-size:14px}
+    .integration-wrap{background:linear-gradient(180deg,rgba(255,250,241,.86),rgba(240,230,214,.74));border:1px solid var(--line);border-radius:38px;padding:34px;box-shadow:0 16px 42px rgba(20,35,24,.06)}
+    .integration-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:28px}
+    .integration-card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:0;overflow:hidden;box-shadow:0 12px 30px rgba(20,35,24,.045)}
+    .integration-card .muted{font-size:16px}
+    .integration-apps{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+    .app-chip{display:inline-flex;border:1px solid rgba(22,63,43,.14);background:#f0e6d6;border-radius:999px;padding:7px 10px;color:var(--green);font-size:13px;font-weight:800}
+    .integration-note{margin-top:22px;background:#10291f;color:#fff;border-radius:24px;padding:22px;line-height:1.55}
+    .integration-note .muted{color:#dce7dc}
     .products{display:grid;grid-template-columns:1.15fr .85fr .85fr;gap:18px;margin-top:34px}
     .product{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:28px;display:flex;flex-direction:column;gap:18px;min-height:390px}
     .product.featured{background:#10291f;color:white;transform:translateY(-10px)}
@@ -130,6 +138,23 @@
     .provider-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
     .provider-card{background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:26px;display:flex;flex-direction:column;gap:16px;min-height:310px}
     .provider-card strong{font-size:21px;letter-spacing:-.035em}.provider-card code{background:#f0e6d6;border-radius:10px;padding:3px 7px;font-size:13px}
+    details.provider-card{min-height:auto}
+    .provider-summary{list-style:none;cursor:pointer;display:flex;flex-direction:column;gap:16px}
+    .provider-summary::-webkit-details-marker{display:none}
+    .provider-summary::marker{display:none}
+    .provider-toggle{display:inline-flex;align-items:center;gap:8px;margin-top:auto;font-weight:800;color:var(--green)}
+    .provider-toggle:after{content:"+";display:inline-grid;place-items:center;width:24px;height:24px;border-radius:999px;background:#f0e6d6;border:1px solid var(--line)}
+    details[open] .provider-toggle:after{content:"−"}
+    .provider-summary-list{display:grid;gap:8px;padding-left:19px;margin:0;color:var(--muted)}
+    .provider-summary-list li{line-height:1.6}
+    .provider-detail{display:grid;gap:20px;padding-top:8px}
+    .provider-detail .provider-grid{margin-top:0}
+    .provider-detail .provider-card{min-height:0}
+    .price-mini-table{display:grid;gap:10px;margin-top:4px}
+    .price-mini-row{display:grid;grid-template-columns:1.15fr .9fr;gap:12px;align-items:start;padding:12px 14px;border:1px solid var(--line);border-radius:18px;background:#fff}
+    .price-mini-row strong{font-size:15px;letter-spacing:-.01em}
+    .price-mini-row span{display:block;color:var(--muted);font-size:14px;line-height:1.45}
+    .price-mini-cost{font-weight:850;color:var(--green);text-align:right}
     .flow-note{margin-top:22px;background:#f0e6d6;border:1px solid var(--line);border-radius:24px;padding:20px;color:#304034;line-height:1.55}
     .legal-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:32px}
     .legal-card{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:26px;display:grid;gap:14px}
@@ -189,8 +214,8 @@
     footer{padding:34px 24px;color:#626961;border-top:1px solid var(--line)}
     .foot-inner{max-width:var(--max);margin:0 auto;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     @media(max-width:1100px){.nav-links{display:none}}
-    @media(max-width:900px){.hero,.two-col,.proof,.footer-cta,.order-layout,.trust-layout,.compare-grid{grid-template-columns:1fr}.products,.grid,.usecases,.deploy-grid,.provider-grid,.legal-grid,.order-grid,.agent-choice-grid{grid-template-columns:1fr}.hero{min-height:auto}.product.featured{transform:none}.order-card{padding:26px}.footer-cta-actions{justify-items:stretch}.footer-cta:after{font-size:54px;right:-10px;bottom:-12px}.trust-stack,.trust-visual,.compare-card{padding:22px;border-radius:28px}.trust-item{grid-template-columns:42px 1fr 24px;padding:14px}.trust-icon{width:36px;height:36px;font-size:18px}.compare-card h3{font-size:24px}}
-    @media(max-width:560px){.case-summary{grid-template-columns:1fr;gap:12px;padding:18px}.expand-label{justify-content:space-between;width:100%}.case-body{padding:16px 18px 18px}}
+    @media(max-width:900px){.hero,.two-col,.proof,.footer-cta,.order-layout,.trust-layout,.compare-grid{grid-template-columns:1fr}.products,.grid,.usecases,.integration-grid,.deploy-grid,.provider-grid,.legal-grid,.order-grid,.agent-choice-grid{grid-template-columns:1fr}.hero{min-height:auto}.product.featured{transform:none}.order-card{padding:26px}.footer-cta-actions{justify-items:stretch}.footer-cta:after{font-size:54px;right:-10px;bottom:-12px}.trust-stack,.trust-visual,.compare-card{padding:22px;border-radius:28px}.trust-item{grid-template-columns:42px 1fr 24px;padding:14px}.trust-icon{width:36px;height:36px;font-size:18px}.compare-card h3{font-size:24px}}
+    @media(max-width:560px){.case-summary,.integration-summary{grid-template-columns:1fr;gap:12px;padding:18px}.expand-label{justify-content:space-between;width:100%}.case-body,.integration-body{padding:16px 18px 18px}}
   </style>
 </head>
 <body>
@@ -205,6 +230,7 @@
       </div>
       <div class="nav-links">
         <a href="#oplossingen">Oplossingen</a>
+        <a href="#koppelingen">Koppelingen</a>
         <a href="#security">Security</a>
         <a href="#providers">Modelkeuze</a>
         <a href="#hosting">Hosting</a>
@@ -448,31 +474,70 @@
       </div>
     </section>
 
-    <section class="section" id="providers">
-      <div class="eyebrow">Modelkeuze</div>
-      <h2>Opgezet met ChatGPT of OpenRouter</h2>
-      <p class="lead">Start eenvoudig met ChatGPT: je gebruikt je bestaande account en koppelt die tijdens installatie via de officiële OAuth-code. Wil je liever werken met API-budgetten of meerdere modellen, dan richten we OpenRouter of een andere API-route in.</p>
-      <div class="provider-grid">
-        <article class="provider-card">
-          <span class="tag">OAuth</span>
-          <strong>ChatGPT via je eigen account</strong>
-          <p class="muted">De voorkeursroute voor nieuwe klanten. Je logt zelf in via de officiële OAuth/device-code; je deelt geen wachtwoord en kunt toegang later weer intrekken.</p>
-          <ul><li>Geen wachtwoord delen</li><li>Geen API-key in het formulier</li><li>Eigen account, eigen gebruikslimieten</li></ul>
-        </article>
-        <article class="provider-card">
-          <span class="tag">Modelrouter</span>
-          <strong>OpenRouter of eigen API</strong>
-          <p class="muted">Optioneel voor klanten die liever met een API-key, modelbudget of meerdere modellen werken. Dit spreken we apart af en richten we transparant in.</p>
-          <ul><li>Meerdere modellen via één ingang</li><li>Handig voor wisselen of terugvallen</li><li>Praktisch bij vergelijking van prijs en kwaliteit</li></ul>
-        </article>
-        <article class="provider-card">
-          <span class="tag">Tijdelijk</span>
-          <strong>Bootstrap of fallback</strong>
-          <p class="muted">Alleen tijdelijk als dat nodig is voor installatie of support. Daarna draait de agent op de klant zijn eigen modeltoegang.</p>
-          <ul><li>Beperkt gebruik</li><li>Geen structureel gebruik van mijn account</li><li>Verwijderen na klantkoppeling</li></ul>
-        </article>
+    <section class="section" id="koppelingen">
+      <div class="integration-wrap">
+        <div class="eyebrow">Koppelingen met n8n</div>
+        <h2>Koppelt met de systemen die je al gebruikt</h2>
+        <p class="lead">Hermes blijft de rustige agentlaag voor context, geheugen en menselijke afstemming. Voor vaste, herhaalbare stappen kan n8n de voorspelbare uitvoering doen: mail lezen, agenda bijwerken, formulieren verwerken, dossiers aanvullen of een betaalstatus doorgeven. Zo blijft de agent mensgericht, maar worden routinetaken wel betrouwbaar gekoppeld.</p>
+        <div class="integration-grid">
+          <details class="integration-card"><summary class="integration-summary"><span><span class="tag">Mail & agenda</span><h3>Inbox, afspraken en opvolging</h3></span><span class="expand-label">Bekijk details</span></summary><div class="integration-body"><p class="muted">Laat mail samenvatten, urgente berichten markeren, reminders klaarzetten en agenda-updates doorgeven zonder dat de agent zomaar namens jou verstuurt.</p><div class="integration-apps"><span class="app-chip">Outlook</span><span class="app-chip">Gmail</span><span class="app-chip">Teams</span><span class="app-chip">Google Calendar</span></div></div></details>
+          <details class="integration-card"><summary class="integration-summary"><span><span class="tag">Notities & documenten</span><h3>Van losse informatie naar bruikbaar overzicht</h3></span><span class="expand-label">Bekijk details</span></summary><div class="integration-body"><p class="muted">Gebruik Drive, OneDrive, notities of intakebestanden als bron voor samenvattingen, geheugensteun en ontbrekende-informatie-checks.</p><div class="integration-apps"><span class="app-chip">Drive</span><span class="app-chip">OneDrive</span><span class="app-chip">Apple Notes</span><span class="app-chip">PDF</span></div></div></details>
+          <details class="integration-card"><summary class="integration-summary"><span><span class="tag">Dossiers & intake</span><h3>Aanvragen komen op de juiste plek</h3></span><span class="expand-label">Bekijk details</span></summary><div class="integration-body"><p class="muted">Nieuwe intake, formulieren of updates kunnen naar een dossier, spreadsheet of mailbox, met een korte samenvatting en voorgestelde opvolging.</p><div class="integration-apps"><span class="app-chip">Forms</span><span class="app-chip">Sheets</span><span class="app-chip">Airtable</span><span class="app-chip">Notion</span></div></div></details>
+          <details class="integration-card"><summary class="integration-summary"><span><span class="tag">Betaling & activatie</span><h3>Van intake naar veilige start</h3></span><span class="expand-label">Bekijk details</span></summary><div class="integration-body"><p class="muted">Formulieren, webhooks en Mollie kunnen intake, akkoord, betaalstatus en activatie gescheiden houden. Eerst menselijk akkoord, daarna pas uitvoering.</p><div class="integration-apps"><span class="app-chip">Mollie</span><span class="app-chip">Webhooks</span><span class="app-chip">Formulieren</span><span class="app-chip">E-mail</span></div></div></details>
+          <details class="integration-card"><summary class="integration-summary"><span><span class="tag">AI & agenttaken</span><h3>n8n stuurt de flow, Hermes bewaakt context</h3></span><span class="expand-label">Bekijk details</span></summary><div class="integration-body"><p class="muted">Voor AI-flows koppelen we n8n aan modellen, documenten en tools. Hermes maakt samenvattingen, concepten of acties klaar, maar gevoelige stappen blijven ter goedkeuring.</p><div class="integration-apps"><span class="app-chip">OpenAI</span><span class="app-chip">OpenRouter</span><span class="app-chip">Hermes</span><span class="app-chip">AI Agent</span></div></div></details>
+          <details class="integration-card"><summary class="integration-summary"><span><span class="tag">Eigen systemen</span><h3>Ook zonder standaardknop vaak koppelbaar</h3></span><span class="expand-label">Bekijk details</span></summary><div class="integration-body"><p class="muted">Heeft je software een API, database of webhook? Dan kunnen we vaak koppelen zonder dat je hoeft te migreren naar een ander platform.</p><div class="integration-apps"><span class="app-chip">HTTP/API</span><span class="app-chip">Postgres</span><span class="app-chip">MySQL</span><span class="app-chip">Supabase</span></div></div></details>
+        </div>
+        <div class="integration-note"><strong>Deterministische uitvoering, menselijke regie</strong><p class="muted">Hermes denkt mee en houdt context vast; n8n kan vaste stappen voorspelbaar uitvoeren. Dat maakt ondersteuning betrouwbaarder, goedkoper en beter uitlegbaar — juist wanneer privacy en vertrouwen tellen.</p></div>
       </div>
-      <div class="flow-note"><strong>Transparant:</strong> de €29 dekt de VPS, installatie en beheer. Modelgebruik loopt via je eigen ChatGPT-account of via je eigen API-route, bijvoorbeeld OpenRouter. We vragen geen ChatGPT-wachtwoord in het formulier.</div>
+    </section>
+
+    <section class="section" id="providers">
+      <div class="eyebrow">Modelkeuze & toegang</div>
+      <h2>Wijs per taak het juiste model toe</h2>
+      <p class="lead">Start eenvoudig met ChatGPT/Codex via je eigen account. Voor klanten die liever met API-budgetten, meerdere modellen of fallback werken, richten we OpenRouter of een andere eigen API-route transparant in.</p>
+      <details class="provider-card">
+        <summary class="provider-summary">
+          <span class="tag">OAuth + OpenRouter</span>
+          <strong>Twee toegangswegen, één agentlaag</strong>
+          <p class="muted">Je logt in met ChatGPT/Codex of gebruikt OpenRouter als modelhub. Daarna kiest Hermes per taak de ingestelde route en fallback.</p>
+          <ul class="provider-summary-list"><li>ChatGPT/Codex via OAuth</li><li>Claude via OAuth alleen als lichte route</li><li>OpenRouter voor meerdere modellen</li><li>Automatische fallback bij limieten of storingen</li></ul>
+          <span class="provider-toggle">Modelprijzen (per 1M tokens)</span>
+        </summary>
+        <div class="provider-detail">
+          <div class="provider-grid">
+            <article class="provider-card">
+              <span class="tag">OAuth</span>
+              <strong>ChatGPT / Codex OAuth</strong>
+              <p class="muted">Voor klanten die via ChatGPT of Codex willen werken zonder losse API-key. Je logt eenmalig in; daarna gebruikt Hermes een beveiligde OAuth-koppeling als primaire route.</p>
+              <div class="price-mini-table" aria-label="ChatGPT Plus prijs">
+                <div class="price-mini-row"><div><strong>ChatGPT Plus · GPT-5</strong><span>Richtprijs in Nederland, inclusief btw. Gebruikslimieten kunnen wisselen.</span></div><div class="price-mini-cost">€23 / maand</div></div>
+              </div>
+              <ul><li>Geen API-key kopiëren</li><li>Handig voor ChatGPT- en Codex-workflows</li><li>Plus werkt met gebruikslimieten, niet met een publieke vaste tokenpot</li></ul>
+            </article>
+            <article class="provider-card">
+              <span class="tag">OAuth</span>
+              <strong>Claude OAuth</strong>
+              <p class="muted">Voor klanten die via Claude willen werken zonder losse API-key. Anthropic staat OAuth toe, maar de beschikbare capaciteit is beperkt — geschikt als lichte route, niet voor hoog volume.</p>
+              <ul><li>Geen API-key kopiëren</li><li>Anthropic OAuth-koppeling</li><li>Beperkte capaciteit — niet als enige route voor veel gebruik</li></ul>
+            </article>
+            <article class="provider-card">
+              <span class="tag">OpenRouter</span>
+              <strong>Meerdere modellen onder één sleutel</strong>
+              <p class="muted">OpenRouter geeft via één sleutel toegang tot modellen zoals Claude, GPT, DeepSeek en GLM. Handig voor fallback, prijsbewuste routering en het kiezen van een ander model zodra dat beter past.</p>
+              <p class="muted">Bij deze modelprijzen tonen we twee bedragen per 1M tokens: input voor je prompt naar het model en output voor het antwoord terug.</p>
+              <div class="price-mini-table" aria-label="OpenRouter modelprijzen">
+                <div class="price-mini-row"><div><strong>Claude Sonnet 4</strong><span>Veelgekozen premium model voor schrijven, analyse en code.</span></div><div class="price-mini-cost">$3 / $15 per 1M</div></div>
+                <div class="price-mini-row"><div><strong>GPT-5</strong><span>Sterke allround route voor redeneren en tooling.</span></div><div class="price-mini-cost">$1.25 / $10 per 1M</div></div>
+                <div class="price-mini-row"><div><strong>GLM 5.2</strong><span>Open-weight model met sterke agentische coding- en tool-use, 1M context.</span></div><div class="price-mini-cost">$0.95 / $3 per 1M</div></div>
+                <div class="price-mini-row"><div><strong>DeepSeek V4 Pro</strong><span>Zwaardere DeepSeek-route voor complexere analyse, code en lange context.</span></div><div class="price-mini-cost">$0.435 / $0.87 per 1M</div></div>
+                <div class="price-mini-row"><div><strong>DeepSeek V4 Flash</strong><span>Snelle en goedkope DeepSeek-route voor veel volume en responsieve workflows.</span></div><div class="price-mini-cost">$0.09 / $0.18 per 1M</div></div>
+              </div>
+              <ul><li>Pay-as-you-go met officiële modelprijzen + circa 5,5% platform fee</li><li>Geschikt voor fallback, vergelijking en budgetcontrole</li><li>Hermes kiest daarna per taak de ingestelde route</li></ul>
+            </article>
+          </div>
+          <div class="flow-note"><strong>Hoe het werkt:</strong> tijdens de intake bepalen we of een OAuth-route (ChatGPT/Codex of Claude) of OpenRouter de primaire route wordt, plus minimaal één fallback. Sleutels en OAuth-tokens horen in de private agent-workspace, niet in de website.</div>
+        </div>
+      </details>
     </section>
 
     <section class="section" id="hosting">
@@ -536,7 +601,7 @@
           <h2>Nederlandse controle is geen detail. Het is de basis</h2>
           <p class="muted">Wanneer AI met persoonlijke gegevens, kwetsbare context of gevoelige informatie werkt, moet het niet alleen handig zijn. Het moet uitlegbaar, beheersbaar en begrensd zijn.</p>
         </div>
-        <div class="quote">“Niet alles wat technologisch kan is ook maatschappelijk gewenst.”<br><br><span style="font-size:15px;color:#c9d6cc">, lijn vanuit bernarddonners-ai.nl, vertaald naar veilige zakelijke toepassing</span></div>
+        <div class="quote">“Niet alles wat technologisch kan is ook maatschappelijk gewenst.”<br><br><span style="font-size:15px;color:#c9d6cc">, lijn vanuit bernarddonners-ai.nl, vertaald naar veilige mensgerichte toepassing</span></div>
       </div>
     </section>
 
@@ -691,7 +756,7 @@
   <script>
     const translations = {
       en: {
-        "Trusted Agents , Veilige AI-agents voor individuen en mensgerichte ondersteuning": "Trusted Agents , Secure AI agents for individuals and human-centered support",
+        "Trusted Agents, Veilige AI-agents voor individuen en mensgerichte ondersteuning": "Trusted Agents, Secure AI agents for individuals and human-centered support",
         "Trusted Agents levert beheerde AI-agents voor individuen en mensgerichte ondersteuning: veilig, controleerbaar en AVG-bewust.": "Trusted Agents delivers managed AI agents for individuals and human-centered support: secure, controllable and GDPR-aware.",
         "Oplossingen": "Solutions",
         "Modelkeuze": "Model choice",
@@ -876,6 +941,65 @@
         "Verwijderen na klantkoppeling": "Remove after customer connection",
         "Transparant:": "Transparent:",
         "de €29 dekt de VPS, installatie en beheer. Modelgebruik loopt via je eigen ChatGPT-account of via je eigen API-route, bijvoorbeeld OpenRouter. We vragen geen ChatGPT-wachtwoord in het formulier.": "the €29 covers VPS, installation and management. Model usage runs through your own ChatGPT account or your own API route, for example OpenRouter. We do not ask for a ChatGPT password in the form.",
+        "Koppelingen": "Integrations",
+        "Koppelingen met n8n": "n8n integrations",
+        "Koppelt met de systemen die je al gebruikt": "Connects with the systems you already use",
+        "Hermes blijft de rustige agentlaag voor context, geheugen en menselijke afstemming. Voor vaste, herhaalbare stappen kan n8n de voorspelbare uitvoering doen: mail lezen, agenda bijwerken, formulieren verwerken, dossiers aanvullen of een betaalstatus doorgeven. Zo blijft de agent mensgericht, maar worden routinetaken wel betrouwbaar gekoppeld.": "Hermes remains the calm agent layer for context, memory and human alignment. For fixed, repeatable steps, n8n can handle predictable execution: reading mail, updating calendars, processing forms, enriching files or passing on payment status. This keeps the agent human-centered while routine tasks are connected reliably.",
+        "Mail & agenda": "Mail & calendar",
+        "Inbox, afspraken en opvolging": "Inbox, appointments and follow-up",
+        "Laat mail samenvatten, urgente berichten markeren, reminders klaarzetten en agenda-updates doorgeven zonder dat de agent zomaar namens jou verstuurt.": "Summarize mail, mark urgent messages, prepare reminders and pass on calendar updates without the agent sending on your behalf just like that.",
+        "Notities & documenten": "Notes & documents",
+        "Van losse informatie naar bruikbaar overzicht": "From loose information to usable overview",
+        "Gebruik Drive, OneDrive, notities of intakebestanden als bron voor samenvattingen, geheugensteun en ontbrekende-informatie-checks.": "Use Drive, OneDrive, notes or intake files as a source for summaries, memory support and missing-information checks.",
+        "Dossiers & intake": "Files & intake",
+        "Aanvragen komen op de juiste plek": "Requests land in the right place",
+        "Nieuwe intake, formulieren of updates kunnen naar een dossier, spreadsheet of mailbox, met een korte samenvatting en voorgestelde opvolging.": "New intake, forms or updates can go to a file, spreadsheet or mailbox, with a short summary and suggested follow-up.",
+        "Betaling & activatie": "Payment & activation",
+        "Van intake naar veilige start": "From intake to safe start",
+        "Formulieren, webhooks en Mollie kunnen intake, akkoord, betaalstatus en activatie gescheiden houden. Eerst menselijk akkoord, daarna pas uitvoering.": "Forms, webhooks and Mollie can keep intake, approval, payment status and activation separate. First human approval, only then execution.",
+        "AI & agenttaken": "AI & agent tasks",
+        "n8n stuurt de flow, Hermes bewaakt context": "n8n drives the flow, Hermes guards context",
+        "Voor AI-flows koppelen we n8n aan modellen, documenten en tools. Hermes maakt samenvattingen, concepten of acties klaar, maar gevoelige stappen blijven ter goedkeuring.": "For AI flows, we connect n8n to models, documents and tools. Hermes prepares summaries, drafts or actions, but sensitive steps remain for approval.",
+        "Eigen systemen": "Own systems",
+        "Ook zonder standaardknop vaak koppelbaar": "Often connectable even without a standard button",
+        "Heeft je software een API, database of webhook? Dan kunnen we vaak koppelen zonder dat je hoeft te migreren naar een ander platform.": "If your software has an API, database or webhook, we can often connect it without forcing you to migrate to another platform.",
+        "Deterministische uitvoering, menselijke regie": "Deterministic execution, human control",
+        "Hermes denkt mee en houdt context vast; n8n kan vaste stappen voorspelbaar uitvoeren. Dat maakt ondersteuning betrouwbaarder, goedkoper en beter uitlegbaar — juist wanneer privacy en vertrouwen tellen.": "Hermes thinks along and keeps context; n8n can execute fixed steps predictably. That makes support more reliable, cheaper and easier to explain — especially when privacy and trust matter.",
+        "Modelkeuze & toegang": "Model choice & access",
+        "Wijs per taak het juiste model toe": "Assign the right model per task",
+        "Start eenvoudig met ChatGPT/Codex via je eigen account. Voor klanten die liever met API-budgetten, meerdere modellen of fallback werken, richten we OpenRouter of een andere eigen API-route transparant in.": "Start simply with ChatGPT/Codex through your own account. For customers who prefer API budgets, multiple models or fallback, we set up OpenRouter or another own API route transparently.",
+        "OAuth + OpenRouter": "OAuth + OpenRouter",
+        "Twee toegangswegen, één agentlaag": "Two access routes, one agent layer",
+        "Je logt in met ChatGPT/Codex of gebruikt OpenRouter als modelhub. Daarna kiest Hermes per taak de ingestelde route en fallback.": "You log in with ChatGPT/Codex or use OpenRouter as a model hub. After that, Hermes chooses the configured route and fallback per task.",
+        "Claude via OAuth alleen als lichte route": "Claude via OAuth only as a light route",
+        "OpenRouter voor meerdere modellen": "OpenRouter for multiple models",
+        "Automatische fallback bij limieten of storingen": "Automatic fallback during limits or outages",
+        "Modelprijzen (per 1M tokens)": "Model prices (per 1M tokens)",
+        "ChatGPT / Codex OAuth": "ChatGPT / Codex OAuth",
+        "Voor klanten die via ChatGPT of Codex willen werken zonder losse API-key. Je logt eenmalig in; daarna gebruikt Hermes een beveiligde OAuth-koppeling als primaire route.": "For customers who want to work through ChatGPT or Codex without a separate API key. You log in once; after that Hermes uses a secure OAuth connection as the primary route.",
+        "ChatGPT Plus · GPT-5": "ChatGPT Plus · GPT-5",
+        "Richtprijs in Nederland, inclusief btw. Gebruikslimieten kunnen wisselen.": "Indicative price in the Netherlands, including VAT. Usage limits can change.",
+        "Geen API-key kopiëren": "No API key copying",
+        "Handig voor ChatGPT- en Codex-workflows": "Useful for ChatGPT and Codex workflows",
+        "Plus werkt met gebruikslimieten, niet met een publieke vaste tokenpot": "Plus works with usage limits, not with a public fixed token pool",
+        "Claude OAuth": "Claude OAuth",
+        "Voor klanten die via Claude willen werken zonder losse API-key. Anthropic staat OAuth toe, maar de beschikbare capaciteit is beperkt — geschikt als lichte route, niet voor hoog volume.": "For customers who want to work through Claude without a separate API key. Anthropic allows OAuth, but available capacity is limited — suitable as a light route, not for high volume.",
+        "Anthropic OAuth-koppeling": "Anthropic OAuth connection",
+        "Beperkte capaciteit — niet als enige route voor veel gebruik": "Limited capacity — not as the only route for heavy use",
+        "OpenRouter": "OpenRouter",
+        "Meerdere modellen onder één sleutel": "Multiple models under one key",
+        "OpenRouter geeft via één sleutel toegang tot modellen zoals Claude, GPT, DeepSeek en GLM. Handig voor fallback, prijsbewuste routering en het kiezen van een ander model zodra dat beter past.": "OpenRouter gives access to models such as Claude, GPT, DeepSeek and GLM through one key. Useful for fallback, price-aware routing and choosing another model when it fits better.",
+        "Bij deze modelprijzen tonen we twee bedragen per 1M tokens: input voor je prompt naar het model en output voor het antwoord terug.": "For these model prices we show two amounts per 1M tokens: input for your prompt to the model and output for the answer back.",
+        "Veelgekozen premium model voor schrijven, analyse en code.": "Common premium model for writing, analysis and code.",
+        "Sterke allround route voor redeneren en tooling.": "Strong all-round route for reasoning and tooling.",
+        "Open-weight model met sterke agentische coding- en tool-use, 1M context.": "Open-weight model with strong agentic coding and tool use, 1M context.",
+        "Zwaardere DeepSeek-route voor complexere analyse, code en lange context.": "Heavier DeepSeek route for more complex analysis, code and long context.",
+        "Snelle en goedkope DeepSeek-route voor veel volume en responsieve workflows.": "Fast and cheap DeepSeek route for high volume and responsive workflows.",
+        "Pay-as-you-go met officiële modelprijzen + circa 5,5% platform fee": "Pay as you go with official model prices + about 5.5% platform fee",
+        "Geschikt voor fallback, vergelijking en budgetcontrole": "Suitable for fallback, comparison and budget control",
+        "Hermes kiest daarna per taak de ingestelde route": "Hermes then chooses the configured route per task",
+        "Hoe het werkt:": "How it works:",
+        "tijdens de intake bepalen we of een OAuth-route (ChatGPT/Codex of Claude) of OpenRouter de primaire route wordt, plus minimaal één fallback. Sleutels en OAuth-tokens horen in de private agent-workspace, niet in de website.": "during intake we determine whether an OAuth route (ChatGPT/Codex or Claude) or OpenRouter becomes the primary route, plus at least one fallback. Keys and OAuth tokens belong in the private agent workspace, not in the website.",
         "Waar draait je agent?": "Where does your agent run?",
         "Managed, dedicated of bring your own": "Managed, dedicated or bring your own",
         "De standaardroute voor nieuwe klanten is een eigen Hetzner VPS die door Trusted Agents wordt ingericht en beheerd. Zo blijft hosting duidelijk gescheiden van het persoonlijke ChatGPT/Codex-account van de klant.": "The standard route for new customers is their own Hetzner VPS, set up and managed by Trusted Agents. This keeps hosting clearly separate from the customer's personal ChatGPT/Codex account.",
@@ -926,7 +1050,7 @@
         "Nederlandse controle is geen detail. Het is de basis": "Dutch control is not a detail. It is the basis.",
         "Wanneer AI met persoonlijke gegevens, kwetsbare context of gevoelige informatie werkt, moet het niet alleen handig zijn. Het moet uitlegbaar, beheersbaar en begrensd zijn.": "When AI works with personal data, vulnerable contexts or sensitive information, it must not only be useful. It must be explainable, controllable and bounded.",
         "“Niet alles wat technologisch kan is ook maatschappelijk gewenst.”": "“Not everything that is technologically possible is socially desirable.”",
-        ", lijn vanuit bernarddonners-ai.nl, vertaald naar veilige zakelijke toepassing": ", line from bernarddonners-ai.nl, translated into safe business application",
+        ", lijn vanuit bernarddonners-ai.nl, vertaald naar veilige mensgerichte toepassing": ", line from bernarddonners-ai.nl, translated into safe human-centered application",
         "Klaar om je eerste Trusted Agent te starten?": "Ready to start your first Trusted Agent?",
         "We beginnen met een korte intake. Pas daarna spreken we af of we doorgaan met activatie en betaling.": "We start with a short intake. Only after that do we agree whether to continue with activation and payment.",
         "Lees Bernards AI-visie": "Read Bernard's AI vision",
@@ -1048,7 +1172,7 @@
       const dict = translations[lang] || {};
       document.documentElement.lang = lang;
       document.body.dataset.lang = lang;
-      document.title = lang === 'en' ? dict['Trusted Agents , Veilige AI-agents voor individuen en mensgerichte ondersteuning'] : 'Trusted Agents , Veilige AI-agents voor individuen en mensgerichte ondersteuning';
+      document.title = lang === 'en' ? dict['Trusted Agents, Veilige AI-agents voor individuen en mensgerichte ondersteuning'] : 'Trusted Agents, Veilige AI-agents voor individuen en mensgerichte ondersteuning';
       const meta = document.querySelector('meta[name="description"]');
       if(meta){
         meta.setAttribute('content', lang === 'en' ? dict['Trusted Agents levert beheerde AI-agents voor individuen en mensgerichte ondersteuning: veilig, controleerbaar en AVG-bewust.'] : 'Trusted Agents levert beheerde AI-agents voor individuen en mensgerichte ondersteuning: veilig, controleerbaar en AVG-bewust.');
